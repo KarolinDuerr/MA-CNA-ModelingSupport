@@ -9,4 +9,4 @@ The process for the selection of the architecture description languages that are
 
 ## Quality Model For Cloud-Native Applications: Product Factor to Entity Mapping
 
-An overview of the  analyzed can be found here: [Product Factor - Entity Mapping](CNA_QualityModel_Entities/README.md)
+The concrete mapping of each product factor to the individual entities can be found here: [Product Factor - Entity Mapping](CNA_QualityModel_Entities/ProductFactor_Entity_Mapping.md)
