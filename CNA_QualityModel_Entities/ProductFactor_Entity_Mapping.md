@@ -2,7 +2,7 @@
 
 Results retrieved from [CNA Quality Model Repository](https://github.com/r0light/cna-quality-model)[^1].    
 
-[^1]: exact mapping taken from https://github.com/r0light/cna-quality-model/blob/main/E4_final_quality_model.md, last accessed: 2022-01-30
+[^1]: exact mapping taken from https://github.com/r0light/cna-quality-model/blob/main/E4_final_quality_model.md, last accessed: 2022-02-07
 
 <table>
     <tr>
