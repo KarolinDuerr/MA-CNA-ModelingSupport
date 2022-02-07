@@ -162,8 +162,8 @@ Results retrieved from [CNA Quality Model Repository](https://github.com/r0light
       <td></td>
       <td></td>
       <td></td>
-      <td></td>
-      <td></td>
+      <td></td>      
+      <td align="center">X</td>
       <td></td>
       <td></td>
       <td></td>
@@ -192,7 +192,7 @@ Results retrieved from [CNA Quality Model Repository](https://github.com/r0light
     </tr>  
     <!---------------------------Maintainability------------------------------->
     <tr>
-        <td rowspan="29" align="center">Maintainability</td>
+        <td rowspan="34" align="center">Maintainability</td>
         <td rowspan="11" align="center">Modularity</td>
         <td>Service-orientation</td>
         <td align="center">X</td>
@@ -280,8 +280,8 @@ Results retrieved from [CNA Quality Model Repository](https://github.com/r0light
       <td></td>
       <td></td>
       <td></td>
-      <td></td>
-      <td></td>
+      <td></td>      
+      <td align="center">X</td>
       <td></td>
       <td></td>
       <td></td>
@@ -516,7 +516,7 @@ Results retrieved from [CNA Quality Model Repository](https://github.com/r0light
       <td></td>
     </tr>
     <tr>
-        <td rowspan="7" align="center">Modifiability</td>
+        <td rowspan="9" align="center">Modifiability</td>
         <td>Automated infrastructure</td>
         <td></td>
         <td></td>
@@ -581,6 +581,38 @@ Results retrieved from [CNA Quality Model Repository](https://github.com/r0light
       <td></td>
     </tr>
     <tr>
+      <td>Low coupling</td>
+      <td></td>
+      <td></td>
+      <td align="center">X</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td align="center">X</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>    
+    <tr>
+      <td>Functional decentralization</td>
+      <td align="center">X</td>
+      <td></td>
+      <td align="center">X</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td align="center">X</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
       <td>Limited request trace scope</td>
       <td></td>
       <td></td>
@@ -629,22 +661,73 @@ Results retrieved from [CNA Quality Model Repository](https://github.com/r0light
       <td></td>
     </tr>    
     <tr>
-        <td rowspan="2" align="center">Simplicity</td>
-        <td>Operation outsourcing</td>
+        <td align="center">Testability</td>
         <td></td>
         <td></td>
         <td></td>
         <td></td>
         <td></td>
-        <td align="center">X</td>
-        <td></td>
-        <td></td>
-        <td align="center">X</td>
         <td></td>
         <td></td>
         <td></td>
         <td></td>
-    </tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>    
+    <tr>
+        <td rowspan="4" align="center">Simplicity</td>
+        <td>Sparsity</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>   
+    <tr>
+      <td>Operation outsourcing</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td align="center">X</td>
+      <td></td>
+      <td></td>
+      <td align="center">X</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>   
+    <tr>
+      <td>Managed Infrastructure</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td align="center">X</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>   
     <tr>
       <td>Managed backing services</td>
       <td></td>
@@ -653,6 +736,7 @@ Results retrieved from [CNA Quality Model Repository](https://github.com/r0light
       <td></td>
       <td></td>
       <td align="center">X</td>
+      <td></td>
       <td></td>
       <td></td>
       <td></td>
@@ -738,7 +822,7 @@ Results retrieved from [CNA Quality Model Repository](https://github.com/r0light
       <td></td>
       <td></td>
       <td></td>
-      <td align="center">X</td>
+      <td></td>
       <td></td>
       <td></td>
       <td></td>
@@ -1198,8 +1282,25 @@ Results retrieved from [CNA Quality Model Repository](https://github.com/r0light
     </tr>  
     <!----------------------------Compatibility-------------------------------->    
     <tr>
-        <td rowspan="5" align="center">Compatibility</td>
-        <td rowspan="5" align="center">Interoperability</td>
+        <td rowspan="7" align="center">Compatibility</td>
+        <td align="center">Co-existence</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td rowspan="6" align="center">Interoperability</td>
         <td>API-based communication</td>
         <td></td>
         <td></td>
@@ -1214,7 +1315,7 @@ Results retrieved from [CNA Quality Model Repository](https://github.com/r0light
         <td></td>
         <td></td>
         <td></td>
-    </tr>    
+    </tr>       
     <tr>
         <td>Contract-based</td>
         <td></td>
@@ -1247,6 +1348,22 @@ Results retrieved from [CNA Quality Model Repository](https://github.com/r0light
         <td></td>
         <td></td>
     </tr>   
+    <tr>
+        <td>Mediated communication</td>
+        <td></td>
+        <td align="center">X</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td align="center">X</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>    
     <tr>
         <td>Addressing abstraction</td>
         <td></td>
@@ -1299,15 +1416,15 @@ Results retrieved from [CNA Quality Model Repository](https://github.com/r0light
     <!-------------------------------Summary----------------------------------->    
     <tr>
         <td colspan="3" align="center">Number of Product Factors per Entity</td>
-        <td align="center">7</td>
-        <td align="center">21</td>
-        <td align="center">31</td>
+        <td align="center">8</td>
+        <td align="center">22</td>
+        <td align="center">33</td>
         <td align="center">9</td>
         <td align="center">0</td>
         <td align="center">10</td>
         <td align="center">5</td>
-        <td align="center">17</td>
-        <td align="center">14</td>
+        <td align="center">20</td>
+        <td align="center">15</td>
         <td align="center">0</td>
         <td align="center">2</td>
         <td align="center">4</td>
