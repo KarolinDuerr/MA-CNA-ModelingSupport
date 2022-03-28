@@ -1,0 +1,3 @@
+cna.qualityModel.capabilities.DataStorage:
+  derived_from: tosca.capabilities.Root
+  description: When included, the Node is able to store Data Aggregate entities

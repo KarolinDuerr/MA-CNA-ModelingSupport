@@ -1,0 +1,9 @@
+cna.qualityModel.entities.ConnectsTo.Link:
+  derived_from: tosca.nodes.ConnectsTo
+  description: Relationship Type to model Link entities
+  properties:
+    # Allows modeling the specific Endpoint the Link addresses, which represents the connection between the Components
+    target_endpoint:
+      type: string
+      required: true
+      description: The Endpoint to which the linked Component connects.

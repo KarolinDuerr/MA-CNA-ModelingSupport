@@ -1,0 +1,34 @@
+cna.qualityModel.entities.BackingService:
+  derived_from: tosca.nodes.Root
+  description: Node Type to model Backing Service entities
+  properties:
+    provided_functionality:
+      type: string
+      required: false
+  requirements:
+    # Allow the definition of Links between Components
+    - endpoint_link:
+        capability: tosca.capabilities.Endpoint
+        relationship: cna.qualityModel.relationships.ConnectsTo.Link
+        occurences: [0, UNBOUNDED]
+    # Allow the definition of Data Aggregate usage
+    - uses_data:
+        capability: tosca.capabilities.Attachement
+        node: cna.qualityModel.entities.DataAggregate
+        relationship: cna.qualityModel.relationships.AttachesTo.Data
+        occurences: [0, UNBOUNDED]
+    # Allow the definition of Backing Data usage
+    - uses_backing_data:
+        capability: tosca.capabilities.Attachement
+        node: cna.qualityModel.entities.BackingData
+        relationship: cna.qualityModel.relationships.AttachesTo.Data
+        occurences: [0, UNBOUNDED]
+  capabilities:
+    # Allow assigning Endpoint entities
+    endpoint:
+      type: tosca.capabilities.Endpoint
+      occurences: [0, UNBOUNDED]
+    # Allow assigning External Endpoint entities
+    external_endpoint:
+      type: tosca.capabilities.Endpoint.Public
+      occurences: [0, UNBOUNDED]

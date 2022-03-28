@@ -1,0 +1,15 @@
+cna.qualityModel.entities.Compute.Infrastructure:
+  derived_from: tosca.nodes.Compute
+  description: Node Type to model Infrastructure entities
+  requirements:
+    # Allow the deployment on another Infrastructure entity
+    - host:
+        capability: tosca.capabilities.Compute
+        relationship: tosca.relationships.HostedOn
+        occurences: [0, 1]
+    # Allow the definition of Backing Data usage
+    - uses_backing_data:
+        capability: tosca.capabilities.Attachement
+        node: cna.qualityModel.entities.BackingData
+        relationship: cna.qualityModel.relationships.AttachesTo.Data
+        occurences: [0, UNBOUNDED]

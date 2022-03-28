@@ -1,0 +1,22 @@
+cna.qualityModel.entities.RequestTrace:
+  derived_from: tosca.nodes.Root
+  description: Node Type to model Request Trace entities
+  properties:
+    nodes:
+      type: list
+      required: false
+      entry_schema:
+        description: An existing Component, Service, Backing Service or Storage Backing Service entity which is part of this Request Trace entity
+        type: string
+    links:
+      type: list
+      required: true
+      entry_schema:
+        description: An existing Link entity which is part of this Request Trace entity
+        type: string
+  requirements:
+    # Reference to External Endpoint for which the Request Trace is defined
+    - external_endpoint:
+        capability: tosca.capabilities.Endpoint.Public
+        relationship: tosca.relationships.DependsOn
+        occurences: [1, 1]

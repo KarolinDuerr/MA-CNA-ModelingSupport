@@ -1,0 +1,7 @@
+cna.qualityModel.relationships.AttachesTo.Data:
+  derived_from: tosca.relationships.AttachesTo
+  valid_target_types: [tosca.capabilities.Attachement]
+  properties:
+    location:
+      # Override parent AttachesTo definition to make this property non-required
+      required: false

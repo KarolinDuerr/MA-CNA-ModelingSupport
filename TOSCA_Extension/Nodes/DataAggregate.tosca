@@ -1,0 +1,20 @@
+cna.qualityModel.entities.DataAggregate:
+  derived_from: tosca.nodes.Root
+  description: Node Type to model Data Aggregate entities
+  requirements:
+    # Allows Data Aggregate to be persisted by Storage Backing Service entity
+    - persistence:
+        capability: cna.qualityModel.capabilities.DataStorage
+        node: cna.qualityModel.entities.DBMS.StorageService
+        relationship: cna.qualityModel.relationships.AttachesTo.Data
+        occurences: [1, UNBOUNDED]
+  capabilities:
+    # Allows Data Aggregate to be used by other entities
+    provided_data:
+      type: tosca.capabilities.Attachement
+      valid_source_types:
+        - cna.qualityModel.entities.Root.Component
+        - cna.qualityModel.entities.SoftwareComponent.Service
+        - cna.qualityModel.entities.BackingService
+        - cna.qualityModel.entities.DBMS.StorageService
+      occurences: [1, 1]
