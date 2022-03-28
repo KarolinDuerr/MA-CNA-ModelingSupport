@@ -44,33 +44,33 @@ cna.qualityModel.entities.Root.Component:
     - host:
         capability: tosca.capabilities.Compute
         relationship: tosca.relationships.HostedOn
-        occurences: [1, 1]
+        occurrences: [1, 1]
     # Allow the definition of Links between Components
     - endpoint_link:
         capability: tosca.capabilities.Endpoint
         relationship: cna.qualityModel.relationships.ConnectsTo.Link
-        occurences: [0, UNBOUNDED]
+        occurrences: [0, UNBOUNDED]
     # Allow the definition of Data Aggregate usage
     - uses_data:
-        capability: tosca.capabilities.Attachement
+        capability: tosca.capabilities.Attachment
         node: cna.qualityModel.entities.DataAggregate
         relationship: cna.qualityModel.relationships.AttachesTo.Data
-        occurences: [0, UNBOUNDED]
+        occurrences: [0, UNBOUNDED]
     # Allow the definition of Backing Data usage
     - uses_backing_data:
-        capability: tosca.capabilities.Attachement
+        capability: tosca.capabilities.Attachment
         node: cna.qualityModel.entities.BackingData
         relationship: cna.qualityModel.relationships.AttachesTo.Data
-        occurences: [0, UNBOUNDED]
+        occurrences: [0, UNBOUNDED]
   capabilities:
     # Allow assigning Endpoint entities
     endpoint:
       type: tosca.capabilities.Endpoint
-      occurences: [0, UNBOUNDED]
+      occurrences: [0, UNBOUNDED]
     # Allow assigning External Endpoint entities
     external_endpoint:
       type: tosca.capabilities.Endpoint.Public
-      occurences: [0, UNBOUNDED]
+      occurrences: [0, UNBOUNDED]
 ```
 
 ## 4. Example

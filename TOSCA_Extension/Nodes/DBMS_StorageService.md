@@ -45,34 +45,34 @@ cna.qualityModel.entities.DBMS.StorageService:
     - endpoint_link:
         capability: tosca.capabilities.Endpoint
         relationship: cna.qualityModel.relationships.ConnectsTo.Link
-        occurences: [0, UNBOUNDED]
+        occurrences: [0, UNBOUNDED]
     # Allow the definition of Data Aggregate usage
     - uses_data:
-        capability: tosca.capabilities.Attachement
+        capability: tosca.capabilities.Attachment
         node: cna.qualityModel.entities.DataAggregate
         relationship: cna.qualityModel.relationships.AttachesTo.Data
-        occurences: [0, UNBOUNDED]
+        occurrences: [0, UNBOUNDED]
     # Allow the definition of Backing Data usage
     - uses_backing_data:
-        capability: tosca.capabilities.Attachement
+        capability: tosca.capabilities.Attachment
         node: cna.qualityModel.entities.BackingData
         relationship: cna.qualityModel.relationships.AttachesTo.Data
-        occurences: [0, UNBOUNDED]
+        occurrences: [0, UNBOUNDED]
   capabilities:
     # Allow assigning Endpoint entities
     endpoint:
       type: tosca.capabilities.Endpoint
-      occurences: [0, UNBOUNDED]
+      occurrences: [0, UNBOUNDED]
     # Allow assigning External Endpoint entities
     external_endpoint:
       type: tosca.capabilities.Endpoint.Public
-      occurences: [0, UNBOUNDED]
+      occurrences: [0, UNBOUNDED]
     # Needed so that Data Aggregates can be stored
     persist_data:
       type: cna.qualityModel.capabilities.DataStorage
       description: The ability to persist Data Aggregates like Business Objects
       valid_source_types: [cna.qualityModel.entities.DataAggregate]
-      occurences: [1, UNBOUNDED]
+      occurrences: [1, UNBOUNDED]
 ```
 
 ## 4. Example

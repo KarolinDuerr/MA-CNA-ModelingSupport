@@ -37,7 +37,7 @@ File references:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [TOSCA-File](AttachesTo_Data.tosc
 ```yaml
 cna.qualityModel.relationships.AttachesTo.Data:
   derived_from: tosca.relationships.AttachesTo
-  valid_target_types: [tosca.capabilities.Attachement]
+  valid_target_types: [tosca.capabilities.Attachment]
   properties:
     location:
       # Override parent AttachesTo definition to make this property non-required

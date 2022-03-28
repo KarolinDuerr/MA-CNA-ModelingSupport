@@ -49,14 +49,14 @@ cna.qualityModel.entities.BackingData:
         description: the value of the individual Backing Data element
   capabilities:
     provided_data:
-        type: tosca.capabilities.Attachement
+        type: tosca.capabilities.Attachment
         valid_source_types:
           - cna.qualityModel.entities.Root.Component
           - cna.qualityModel.entities.SoftwareComponent.Service
           - cna.qualityModel.entities.BackingService
           - cna.qualityModel.entities.DBMS.StorageService
           - cna.qualityModel.entities.Compute.Infrastructure
-        occurences: [1, 1]
+        occurrences: [1, 1]
 ```
 
 ## 4. Example
@@ -69,5 +69,5 @@ kafka_server:
       EVENTUATELOCAL_KAFKA_BOOTSTRAP_SERVERS: "kafka:29092"
   capabilities:
     provided_data:
-      type: tosca.capabilities.Attachement
+      type: tosca.capabilities.Attachment
 ```

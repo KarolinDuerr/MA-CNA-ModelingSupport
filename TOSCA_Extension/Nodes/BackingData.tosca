@@ -7,17 +7,17 @@ cna.qualityModel.entities.BackingData:
       required: true
       key_schema:
         type: string
-        description: the name specifiying the individual Backing Data element
+        description: The name specifying the individual Backing Data element
       entry_schema:
         type: string
-        description: the value of the individual Backing Data element
+        description: The value of the individual Backing Data element
   capabilities:
     provided_data:
-        type: tosca.capabilities.Attachement
+        type: tosca.capabilities.Attachment
         valid_source_types:
           - cna.qualityModel.entities.Root.Component
           - cna.qualityModel.entities.SoftwareComponent.Service
           - cna.qualityModel.entities.BackingService
           - cna.qualityModel.entities.DBMS.StorageService
           - cna.qualityModel.entities.Compute.Infrastructure
-        occurences: [1, 1]
+        occurrences: [1, 1]

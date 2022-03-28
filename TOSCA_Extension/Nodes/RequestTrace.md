@@ -61,7 +61,7 @@ cna.qualityModel.entities.RequestTrace:
     - external_endpoint:
         capability: tosca.capabilities.Endpoint.Public
         relationship: tosca.relationships.ConnectsTo
-        occurences: [1, 1]
+        occurrences: [1, 1]
 ```
 
 ## 4. Example

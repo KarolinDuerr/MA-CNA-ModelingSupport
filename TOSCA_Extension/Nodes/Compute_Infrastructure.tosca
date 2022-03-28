@@ -6,10 +6,10 @@ cna.qualityModel.entities.Compute.Infrastructure:
     - host:
         capability: tosca.capabilities.Compute
         relationship: tosca.relationships.HostedOn
-        occurences: [0, 1]
+        occurrences: [0, 1]
     # Allow the definition of Backing Data usage
     - uses_backing_data:
-        capability: tosca.capabilities.Attachement
+        capability: tosca.capabilities.Attachment
         node: cna.qualityModel.entities.BackingData
         relationship: cna.qualityModel.relationships.AttachesTo.Data
-        occurences: [0, UNBOUNDED]
+        occurrences: [0, UNBOUNDED]

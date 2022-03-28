@@ -97,33 +97,33 @@ cna.qualityModel.entities.Root.Component:
     - host:
         capability: tosca.capabilities.Compute
         relationship: tosca.relationships.HostedOn
-        occurences: [1, 1]
+        occurrences: [1, 1]
     # Allow the definition of Links between Components
     - endpoint_link:
         capability: tosca.capabilities.Endpoint
         relationship: cna.qualityModel.relationships.ConnectsTo.Link
-        occurences: [0, UNBOUNDED]
+        occurrences: [0, UNBOUNDED]
     # Allow the definition of Data Aggregate usage
     - uses_data:
-        capability: tosca.capabilities.Attachement
+        capability: tosca.capabilities.Attachment
         node: cna.qualityModel.entities.DataAggregate
         relationship: cna.qualityModel.relationships.AttachesTo.Data
-        occurences: [0, UNBOUNDED]
+        occurrences: [0, UNBOUNDED]
     # Allow the definition of Backing Data usage
     - uses_backing_data:
-        capability: tosca.capabilities.Attachement
+        capability: tosca.capabilities.Attachment
         node: cna.qualityModel.entities.BackingData
         relationship: cna.qualityModel.relationships.AttachesTo.Data
-        occurences: [0, UNBOUNDED]
+        occurrences: [0, UNBOUNDED]
   capabilities:
     # Allow assigning Endpoint entities
     endpoint:
       type: tosca.capabilities.Endpoint
-      occurences: [0, UNBOUNDED]
+      occurrences: [0, UNBOUNDED]
     # Allow assigning External Endpoint entities
     external_endpoint:
       type: tosca.capabilities.Endpoint.Public
-      occurences: [0, UNBOUNDED]
+      occurrences: [0, UNBOUNDED]
 ```
 
 ### 2.2 Service Entity TOSCA Representation
@@ -174,28 +174,28 @@ cna.qualityModel.entities.SoftwareComponent.Service:
     - endpoint_link:
         capability: tosca.capabilities.Endpoint
         relationship: cna.qualityModel.relationships.ConnectsTo.Link
-        occurences: [0, UNBOUNDED]
+        occurrences: [0, UNBOUNDED]
     # Allow the definition of Data Aggregate usage
     - uses_data:
-        capability: tosca.capabilities.Attachement
+        capability: tosca.capabilities.Attachment
         node: cna.qualityModel.entities.DataAggregate
         relationship: cna.qualityModel.relationships.AttachesTo.Data
-        occurences: [0, UNBOUNDED]
+        occurrences: [0, UNBOUNDED]
     # Allow the definition of Backing Data usage
     - uses_backing_data:
-        capability: tosca.capabilities.Attachement
+        capability: tosca.capabilities.Attachment
         node: cna.qualityModel.entities.BackingData
         relationship: cna.qualityModel.relationships.AttachesTo.Data
-        occurences: [0, UNBOUNDED]
+        occurrences: [0, UNBOUNDED]
   capabilities:
     # Allow assigning Endpoint entities
     endpoint:
       type: tosca.capabilities.Endpoint
-      occurences: [0, UNBOUNDED]
+      occurrences: [0, UNBOUNDED]
     # Allow assigning External Endpoint entities
     external_endpoint:
       type: tosca.capabilities.Endpoint.Public
-      occurences: [0, UNBOUNDED]
+      occurrences: [0, UNBOUNDED]
 ```
 
 ### 2.3 Storage Backing Service Entity TOSCA Representation
@@ -247,34 +247,34 @@ cna.qualityModel.entities.DBMS.StorageService:
     - endpoint_link:
         capability: tosca.capabilities.Endpoint
         relationship: cna.qualityModel.relationships.ConnectsTo.Link
-        occurences: [0, UNBOUNDED]
+        occurrences: [0, UNBOUNDED]
     # Allow the definition of Data Aggregate usage
     - uses_data:
-        capability: tosca.capabilities.Attachement
+        capability: tosca.capabilities.Attachment
         node: cna.qualityModel.entities.DataAggregate
         relationship: cna.qualityModel.relationships.AttachesTo.Data
-        occurences: [0, UNBOUNDED]
+        occurrences: [0, UNBOUNDED]
     # Allow the definition of Backing Data usage
     - uses_backing_data:
-        capability: tosca.capabilities.Attachement
+        capability: tosca.capabilities.Attachment
         node: cna.qualityModel.entities.BackingData
         relationship: cna.qualityModel.relationships.AttachesTo.Data
-        occurences: [0, UNBOUNDED]
+        occurrences: [0, UNBOUNDED]
   capabilities:
     # Allow assigning Endpoint entities
     endpoint:
       type: tosca.capabilities.Endpoint
-      occurences: [0, UNBOUNDED]
+      occurrences: [0, UNBOUNDED]
     # Allow assigning External Endpoint entities
     external_endpoint:
       type: tosca.capabilities.Endpoint.Public
-      occurences: [0, UNBOUNDED]
+      occurrences: [0, UNBOUNDED]
     # Needed so that Data Aggregates can be stored
     persist_data:
       type: cna.qualityModel.capabilities.DataStorage
       description: The ability to persist Data Aggregates like Business Objects
       valid_source_types: [cna.qualityModel.entities.DataAggregate]
-      occurences: [1, UNBOUNDED]
+      occurrences: [1, UNBOUNDED]
 ```
 
 ### 2.4 Link Entity TOSCA Representation
@@ -375,13 +375,13 @@ cna.qualityModel.entities.Compute.Infrastructure:
     - host:
         capability: tosca.capabilities.Compute
         relationship: tosca.relationships.HostedOn
-        occurences: [0, 1]
+        occurrences: [0, 1]
     # Allow the definition of Backing Data usage
     - uses_backing_data:
-        capability: tosca.capabilities.Attachement
+        capability: tosca.capabilities.Attachment
         node: cna.qualityModel.entities.BackingData
         relationship: cna.qualityModel.relationships.AttachesTo.Data
-        occurences: [0, UNBOUNDED]
+        occurrences: [0, UNBOUNDED]
 ```
 
 ## 3. Adding New Types
@@ -441,28 +441,28 @@ cna.qualityModel.entities.BackingService:
     - endpoint_link:
         capability: tosca.capabilities.Endpoint
         relationship: cna.qualityModel.relationships.ConnectsTo.Link
-        occurences: [0, UNBOUNDED]
+        occurrences: [0, UNBOUNDED]
     # Allow the definition of Data Aggregate usage
     - uses_data:
-        capability: tosca.capabilities.Attachement
+        capability: tosca.capabilities.Attachment
         node: cna.qualityModel.entities.DataAggregate
         relationship: cna.qualityModel.relationships.AttachesTo.Data
-        occurences: [0, UNBOUNDED]
+        occurrences: [0, UNBOUNDED]
     # Allow the definition of Backing Data usage
     - uses_backing_data:
-        capability: tosca.capabilities.Attachement
+        capability: tosca.capabilities.Attachment
         node: cna.qualityModel.entities.BackingData
         relationship: cna.qualityModel.relationships.AttachesTo.Data
-        occurences: [0, UNBOUNDED]
+        occurrences: [0, UNBOUNDED]
   capabilities:
     # Allow assigning Endpoint entities
     endpoint:
       type: tosca.capabilities.Endpoint
-      occurences: [0, UNBOUNDED]
+      occurrences: [0, UNBOUNDED]
     # Allow assigning External Endpoint entities
     external_endpoint:
       type: tosca.capabilities.Endpoint.Public
-      occurences: [0, UNBOUNDED]
+      occurrences: [0, UNBOUNDED]
 ```
 
 ### 3.2 Request Trace Entity Representation
@@ -530,7 +530,7 @@ cna.qualityModel.entities.RequestTrace:
     - external_endpoint:
         capability: tosca.capabilities.Endpoint.Public
         relationship: tosca.relationships.ConnectsTo
-        occurences: [1, 1]
+        occurrences: [1, 1]
 ```
 
 ### 3.3 Data Aggregate Entity Representation
@@ -580,17 +580,17 @@ cna.qualityModel.entities.DataAggregate:
         capability: cna.qualityModel.capabilities.DataStorage
         node: cna.qualityModel.entities.DBMS.StorageService
         relationship: cna.qualityModel.relationships.AttachesTo.Data
-        occurences: [1, UNBOUNDED]
+        occurrences: [1, UNBOUNDED]
   capabilities:
     # Allows Data Aggregate to be used by other entities
     provided_data:
-      type: tosca.capabilities.Attachement
+      type: tosca.capabilities.Attachment
       valid_source_types:
         - cna.qualityModel.entities.Root.Component
         - cna.qualityModel.entities.SoftwareComponent.Service
         - cna.qualityModel.entities.BackingService
         - cna.qualityModel.entities.DBMS.StorageService
-      occurences: [1, 1]
+      occurrences: [1, 1]
 ```
 
 ### 3.4 Backing Data Entity Representation
@@ -646,14 +646,14 @@ cna.qualityModel.entities.BackingData:
         description: the value of the individual Backing Data element
   capabilities:
     provided_data:
-        type: tosca.capabilities.Attachement
+        type: tosca.capabilities.Attachment
         valid_source_types:
           - cna.qualityModel.entities.Root.Component
           - cna.qualityModel.entities.SoftwareComponent.Service
           - cna.qualityModel.entities.BackingService
           - cna.qualityModel.entities.DBMS.StorageService
           - cna.qualityModel.entities.Compute.Infrastructure
-        occurences: [1, 1]
+        occurrences: [1, 1]
 ```
 
 ### 3.5 Additionally Required Type Definitions
@@ -740,7 +740,7 @@ File references:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [TOSCA-File](Relationships/Attach
 ```yaml
 cna.qualityModel.relationships.AttachesTo.Data:
   derived_from: tosca.relationships.AttachesTo
-  valid_target_types: [tosca.capabilities.Attachement]
+  valid_target_types: [tosca.capabilities.Attachment]
   properties:
     location:
       # Override parent AttachesTo definition to make this property non-required

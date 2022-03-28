@@ -43,17 +43,17 @@ cna.qualityModel.entities.DataAggregate:
         capability: cna.qualityModel.capabilities.DataStorage
         node: cna.qualityModel.entities.DBMS.StorageService
         relationship: cna.qualityModel.relationships.AttachesTo.Data
-        occurences: [1, UNBOUNDED]
+        occurrences: [1, UNBOUNDED]
   capabilities:
     # Allows Data Aggregate to be used by other entities
     provided_data:
-      type: tosca.capabilities.Attachement
+      type: tosca.capabilities.Attachment
       valid_source_types:
         - cna.qualityModel.entities.Root.Component
         - cna.qualityModel.entities.SoftwareComponent.Service
         - cna.qualityModel.entities.BackingService
         - cna.qualityModel.entities.DBMS.StorageService
-      occurences: [1, 1]
+      occurrences: [1, 1]
 ```
 
 ## 4. Example
@@ -66,5 +66,5 @@ order:
     - persistence: mysql_service
   capabilities:
     provided_data:
-      type: tosca.capabilities.Attachement
+      type: tosca.capabilities.Attachment
 ```
