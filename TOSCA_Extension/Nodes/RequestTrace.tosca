@@ -2,6 +2,9 @@ cna.qualityModel.entities.RequestTrace:
   derived_from: tosca.nodes.Root
   description: Node Type to model Request Trace entities
   properties:
+    endpoint:
+      type: string
+      required: true
     nodes:
       type: list
       required: false
@@ -18,5 +21,5 @@ cna.qualityModel.entities.RequestTrace:
     # Reference to External Endpoint for which the Request Trace is defined
     - external_endpoint:
         capability: tosca.capabilities.Endpoint.Public
-        relationship: tosca.relationships.DependsOn
+        relationship: tosca.relationships.ConnectsTo
         occurences: [1, 1]

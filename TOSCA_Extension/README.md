@@ -529,7 +529,7 @@ cna.qualityModel.entities.RequestTrace:
     # Reference to External Endpoint for which the Request Trace is defined
     - external_endpoint:
         capability: tosca.capabilities.Endpoint.Public
-        relationship: tosca.relationships.DependsOn
+        relationship: tosca.relationships.ConnectsTo
         occurences: [1, 1]
 ```
 
