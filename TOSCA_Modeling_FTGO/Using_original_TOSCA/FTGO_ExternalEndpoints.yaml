@@ -1,0 +1,67 @@
+tosca_definitions_version: tosca_simple_yaml_1_3
+
+description:
+  Explicitly modeling the different External Endpoint entities that are part of the FTGO Application
+
+metadata:
+  template_name: FTGO External Endpoint Entities
+
+topology_template:
+
+  dsl_definitions:
+    api_gateway_port: &api_gateway_port
+      port: 8087
+
+  node_templates:
+    # External Endpoints --> But currently not assignable to the actual modeled Backing Service. Thus, the following
+    #                        shows what it would look like with the normative Endpoint.Public Capability
+    api_grateway_node:
+      capabilities:
+        - external_endpoint:
+            type: tosca.capabilities.Endpoint.Public
+            metadata:
+              function: get_orders
+            properties:
+              protocol: http
+              port: *api_gateway_port
+              url_path: GET /orders?consumerId={consumerId}
+        - external_endpoint:
+            type: tosca.capabilities.Endpoint.Public
+            metadata:
+              function: get_order_by_id
+            properties:
+              protocol: http
+              port: *api_gateway_port
+              url_path: GET /orders/{orderId}
+        - external_endpoint:
+            type: tosca.capabilities.Endpoint.Public
+            metadata:
+              function: post_order
+            properties:
+              protocol: http
+              port: *api_gateway_port
+              url_path: POST /orders
+        - external_endpoint:
+            type: tosca.capabilities.Endpoint.Public
+            metadata:
+              function: post_orderCancel
+            properties:
+              protocol: http
+              port: *api_gateway_port
+              url_path: POST /orders/{orderId}/cancel
+        - external_endpoint:
+            type: tosca.capabilities.Endpoint.Public
+            metadata:
+              function: post_orderRevise
+            properties:
+              protocol: http
+              port: *api_gateway_port
+              url_path: POST /orders/{orderId}/revise
+        - external_endpoint:
+            type: tosca.capabilities.Endpoint.Public
+            metadata:
+              function: post_consumer
+            properties:
+              protocol: http
+              port: *api_gateway_port
+              url_path: POST /consumers

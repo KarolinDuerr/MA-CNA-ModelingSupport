@@ -1,0 +1,162 @@
+tosca_definitions_version: tosca_simple_yaml_1_3
+
+description:
+  Modeling the FTGO Application based on the proposed entities of the Qualtiy Model
+  introduced by Lichtenthaeler (https://github.com/r0light/cna-quality-model).
+
+metadata:
+  template_name: FTGO Application
+  tempalte_author: Karolin Duerr
+
+imports:
+  - FTGO_Links.yaml
+  - FTGO_Endpoints.yaml
+  - FTGO_ExternalEndpoints.yaml
+
+# System
+topology_template:
+
+  # Components
+  node_templates:
+
+    # Services
+    consumer_service:
+      type: tosca.nodes.SoftwareComponent
+      requirements:
+        - host:
+            node: docker_host
+            relationship: dockerHost_host_consumerService
+      ## Missing: Possibility of Endpoint and Link assignment
+
+
+    restaurant_service:
+      type: tosca.nodes.SoftwareComponent
+      requirements:
+        - host:
+            node: docker_host
+            relationship: dockerHost_host_restaurantService
+      ## Missing: Possibility of Endpoint and Link assignment
+
+
+    order_service:
+      type: tosca.nodes.SoftwareComponent
+      requirements:
+        - host:
+            node: docker_host
+            relationship: dockerHost_host_orderService
+      ## Missing: Possibility of Endpoint and Link assignment
+
+
+    kitchen_service:
+      type: tosca.nodes.SoftwareComponent
+      requirements:
+        - host:
+            node: docker_host
+            relationship: dockerHost_host_kitchenService
+      ## Missing: Possibility of Endpoint and Link assignment
+
+
+    accounting_service:
+      type: tosca.nodes.SoftwareComponent
+      requirements:
+        - host:
+            node: docker_host
+            relationship: dockerHost_host_accountingService
+      ## Missing: Possibility of Endpoint and Link assignment
+
+
+    delivery_service:
+      type: tosca.nodes.SoftwareComponent
+      requirements:
+        - host:
+            node: docker_host
+            relationship: dockerHost_host_deliveryService
+      ## Missing: Possibility of Endpoint and Link assignment
+
+
+    order_history_service:
+      type: tosca.nodes.SoftwareComponent
+      requirements:
+        - host:
+            node: docker_host
+            relationship: dockerHost_host_orderHistoryService
+      ## Missing: Possibility of Endpoint and Link assignment
+
+
+    # Backing Services --> currently not uniquely representable
+    api_gateway:
+
+    zookeeper:
+
+    kafka:
+
+    cdc_service:
+
+    zipkin:
+
+    # Storage Backing Services
+    dynamo_db_local_service:
+      type: tosca.nodes.DBMS
+      requirements:
+        - host:
+            node: docker_host
+            relationship: dockerHost_host_dynamoDbLocalService
+
+    mysql_service:
+      type: tosca.nodes.DBMS
+      properties:
+        root_password: rootpassword
+        port: 3306
+      requirements:
+        - host:
+            node: docker_host
+            relationship: dockerHost_host_mySqlService
+
+    # Infrastructures
+    docker_host:
+      type: tosca.nodes.Compute
+      # Missing: Possibility to define a HostedOn Relationship to another Compute Node
+
+    local_computer:
+      type: tosca.nodes.Compute
+
+
+    ## Missing: Representation for Data Aggregate and Request Trace entities as well as for most Backing Data entities
+
+  relationship_templates:
+    # Links --> But currently not assignable to the modeled Components (defined in imported tosca file)
+
+    # Deployment Mappings
+    dockerHost_host_consumerService:
+      type: tosca.relationships.HostedOn
+
+    dockerHost_host_restaurantService:
+      type: tosca.relationships.HostedOn
+
+    dockerHost_host_orderService:
+      type: tosca.relationships.HostedOn
+
+    dockerHost_host_kitchenService:
+      type: tosca.relationships.HostedOn
+
+    dockerHost_host_accountingService:
+      type: tosca.relationships.HostedOn
+
+    dockerHost_host_deliveryService:
+      type: tosca.relationships.HostedOn
+
+    dockerHost_host_orderHistoryService:
+      type: tosca.relationships.HostedOn
+
+    dockerHost_host_dynamoDbLocalService:
+      type: tosca.relationships.HostedOn
+
+    dockerHost_host_mySqlService:
+      type: tosca.relationships.HostedOn
+
+    localComputer_host_dockerHost:
+      type: tosca.relationships.HostedOn
+
+
+
+

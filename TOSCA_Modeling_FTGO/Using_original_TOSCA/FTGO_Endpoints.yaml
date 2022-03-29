@@ -1,0 +1,395 @@
+tosca_definitions_version: tosca_simple_yaml_1_3
+
+description:
+  Explicitly modeling the different Endpoint entities that are part of the FTGO Application
+
+metadata:
+  template_name: FTGO Endpoint Entities
+
+topology_template:
+
+  dsl_definitions:
+    order_service_port: &order_service_port
+      port: 8082
+    restaurant_service_port: &restaurant_service_port
+      port: 8084
+    delivery_service_port: &delivery_service_port
+      port: 8089
+    consumer_service_port: &consumer_service_port
+      port: 8081
+    kitchen_service_port: &kitchen_service_port
+      port: 8083
+    accounting_service_port: &accounting_service_port
+      port: 8085
+    order_history_service_port: &order_history_service_port
+      port: 8086
+    kafka_port: &kafka_port
+      port: 9092
+
+  node_templates:
+    # Endpoints --> But currently not assignable to the actual modeled Components. Thus, the following shows what it
+    #               would look like with the normative Endpoint Capability
+    order_service_node:
+      capabilities:
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: post_order
+            properties:
+              protocol: http
+              port: *order_service_port
+              url_path: POST /orders
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: post_orderCancel
+            properties:
+              protocol: http
+              port: *order_service_port
+              url_path: POST /orders/{orderId}/cancel
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: post_orderRevise
+            properties:
+              protocol: http
+              port: *order_service_port
+              url_path: POST /orders/{orderId}/revise
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: get_order_by_id
+            properties:
+              protocol: http
+              port: *order_service_port
+              url_path: GET /orders/{orderId}
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: get_restaurant_by_id
+            properties:
+              protocol: http
+              port: *order_service_port
+              url_path: GET /restaurants/{restaurantId}
+
+
+    restaurant_service_node:
+      capabilities:
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: post_restaurant
+            properties:
+              protocol: http
+              port: *restaurant_service_port
+              url_path: POST /restaurants
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: get_restaurants
+            properties:
+              protocol: http
+              port: *restaurant_service_port
+              url_path: GET /restaurants/{restaurantId}
+
+
+    delivery_service_node:
+      capabilities:
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: post_courierAvailability
+            properties:
+              protocol: http
+              port: *delivery_service_port
+              url_path: POST /couriers/{courierId}/availability
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: get_delivery_by_id
+            properties:
+              protocol: http
+              port: *delivery_service_port
+              url_path: GET /deliveries/{deliveryId}
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: get_deliveries_by_orderId
+            properties:
+              protocol: http
+              port: *delivery_service_port
+              url_path: GET /deliveries?orderId={orderId}
+
+
+    consumer_service_node:
+      capabilities:
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: post_consumers
+            properties:
+              protocol: http
+              port: *consumer_service_port
+              url_path: POST /consumers
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: get_consumer_by_id
+            properties:
+              protocol: http
+              port: *consumer_service_port
+              url_path: GET /consumers/{consumerId}
+
+
+    kitchen_service_node:
+      capabilities:
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: post_ticketAccept
+            properties:
+              protocol: http
+              port: *kitchen_service_port
+              url_path: POST /tickets/{ticketId}/accept
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: get_restaurant_by_id
+            properties:
+              protocol: http
+              port: *kitchen_service_port
+              url_path: GET /restaurants/{restaurantId}
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: get_tickets_by_orderId
+            properties:
+              protocol: http
+              port: *kitchen_service_port
+              url_path: GET /tickets?orderId={orderId}
+
+
+    accounting_service_node:
+      capabilities:
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: get_account_by_id
+            properties:
+              protocol: http
+              port: *accounting_service_port
+              url_path: GET /accounts/{accountId}
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: get_charges_by_orderId
+            properties:
+              protocol: http
+              port: *accounting_service_port
+              url_path: GET /charges?orderId={orderId}
+
+
+    order_history_service_node:
+      capabilities:
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: get_orders_by_customerId
+            properties:
+              protocol: http
+              port: *order_history_service_port
+              url_path: GET /orders?consumerId={consumerId}
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: get_order_by_id
+            properties:
+              protocol: http
+              port: *order_history_service_port
+              url_path: Get /orders/{orderId}
+
+
+    cdc_service_node:
+      capabilities:
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            properties:
+              protocol: http
+              port: 8099
+              url_path: /connect
+
+
+    zookeeper_node:
+      capabilities:
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            properties:
+              protocol: http
+              port: 2181
+              url_path: /connect
+
+
+    zipkin_node:
+      capabilities:
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            properties:
+              protocol: http
+              port: 9411
+              url_path: /connect
+
+
+      mysql_node:
+        capabilities:
+          - endpoint:
+              type: tosca.capabilities.Endpoint
+              properties:
+                protocol: http
+                port: 3306
+                url_path: /sql
+
+
+      dynamoDbLocal_node:
+        capabilities:
+          - endpoint:
+              type: tosca.capabilities.Endpoint
+              properties:
+                protocol: http
+                port: 8000
+                url_path: /sql
+
+
+      kafka_node:
+        capabilities:
+          - endpoint:
+              type: tosca.capabilities.Endpoint
+              properties:
+                protocol: tcp
+                port: *kafka_port
+                url_path: orderService Topic send-to
+          - endpoint:
+              type: tosca.capabilities.Endpoint
+              properties:
+                protocol: tcp
+                port: *kafka_port
+                url_path: orderService Topic receive-from
+          - endpoint:
+              type: tosca.capabilities.Endpoint
+              properties:
+                protocol: tcp
+                port: *kafka_port
+                url_path: consumerService Topic send-to
+          - endpoint:
+              type: tosca.capabilities.Endpoint
+              properties:
+                protocol: tcp
+                port: *kafka_port
+                url_path: consumerService Topic receive-from
+          - endpoint:
+              type: tosca.capabilities.Endpoint
+              properties:
+                protocol: tcp
+                port: *kafka_port
+                url_path: kitchenService Topic send-to
+          - endpoint:
+              type: tosca.capabilities.Endpoint
+              properties:
+                protocol: tcp
+                port: *kafka_port
+                url_path: kitchenService Topic receive-from
+          - endpoint:
+              type: tosca.capabilities.Endpoint
+              properties:
+                protocol: tcp
+                port: *kafka_port
+                url_path: accountingService Topic send-to
+          - endpoint:
+              type: tosca.capabilities.Endpoint
+              properties:
+                protocol: tcp
+                port: *kafka_port
+                url_path: accountingService Topic receive-from
+          - endpoint:
+              type: tosca.capabilities.Endpoint
+              properties:
+                protocol: tcp
+                port: *kafka_port
+                url_path: net.chrisrichardson.ftgo.orderservice.domain.Order Topic send-to
+          - endpoint:
+              type: tosca.capabilities.Endpoint
+              properties:
+                protocol: tcp
+                port: *kafka_port
+                url_path: net.chrisrichardson.ftgo.orderservice.domain.Order Topic receive-from
+          - endpoint:
+              type: tosca.capabilities.Endpoint
+              properties:
+                protocol: tcp
+                port: *kafka_port
+                url_path: net.chrisrichardson.ftgo.restaurantservice.domain.Restaurant Topic send-to
+          - endpoint:
+              type: tosca.capabilities.Endpoint
+              properties:
+                protocol: tcp
+                port: *kafka_port
+                url_path: net.chrisrichardson.ftgo.restaurantservice.domain.Restaurant Topic receive-from
+          - endpoint:
+              type: tosca.capabilities.Endpoint
+              properties:
+                protocol: tcp
+                port: *kafka_port
+                url_path: net.chrisrichardson.ftgo.consumerservice.domain.Consumer Topic send-to
+          - endpoint:
+              type: tosca.capabilities.Endpoint
+              properties:
+                protocol: tcp
+                port: *kafka_port
+                url_path: net.chrisrichardson.ftgo.consumerservice.domain.Consumer Topic receive-from
+          - endpoint:
+              type: tosca.capabilities.Endpoint
+              properties:
+                protocol: tcp
+                port: *kafka_port
+                url_path: net.chrisrichardson.ftgo.kitchenservice.domain.Ticket Topic send-to
+          - endpoint:
+              type: tosca.capabilities.Endpoint
+              properties:
+                protocol: tcp
+                port: *kafka_port
+                url_path: net.chrisrichardson.ftgo.kitchenservice.domain.Ticket Topic receive-from
+          - endpoint:
+              type: tosca.capabilities.Endpoint
+              properties:
+                protocol: tcp
+                port: *kafka_port
+                url_path: net.chrisrichardson.ftgo.orderservice.createorder.CreateOrderSaga-reply Topic send-to
+          - endpoint:
+              type: tosca.capabilities.Endpoint
+              properties:
+                protocol: tcp
+                port: *kafka_port
+                url_path: net.chrisrichardson.ftgo.orderservice.createorder.CreateOrderSaga-reply Topic receive-from
+          - endpoint:
+              type: tosca.capabilities.Endpoint
+              properties:
+                protocol: tcp
+                port: *kafka_port
+                url_path: net.chrisrichardson.ftgo.orderservice.reviseorder.ReviseOrderSaga-reply Topic send-to
+          - endpoint:
+              type: tosca.capabilities.Endpoint
+              properties:
+                protocol: tcp
+                port: *kafka_port
+                url_path: net.chrisrichardson.ftgo.orderservice.reviseorder.ReviseOrderSaga-reply Topic receive-from
+          - endpoint:
+              type: tosca.capabilities.Endpoint
+              properties:
+                protocol: tcp
+                port: *kafka_port
+                url_path: net.chrisrichardson.ftgo.orderservice.cancelorder.CancelOrderSaga-reply Topic send-to
+          - endpoint:
+              type: tosca.capabilities.Endpoint
+              properties:
+                protocol: tcp
+                port: *kafka_port
+                url_path: net.chrisrichardson.ftgo.orderservice.cancelorder.CancelOrderSaga-reply Topic receive-from

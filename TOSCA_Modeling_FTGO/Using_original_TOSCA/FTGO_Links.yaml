@@ -1,0 +1,379 @@
+tosca_definitions_version: tosca_simple_yaml_1_3
+
+description:
+  Exlicitly modeling the different Link entities that are part of the FTGO Application
+
+metadata:
+  template_name: FTGO Link Entities
+
+topology_template:
+
+  relationship_templates:
+    # Links --> But currently not assignable to the modeled Components
+    orderService_subscribes-to_Kafka-orderService-receiveFrom:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: subscribes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    orderService_subscribes-to_Kafka-Restaurant-receiveFrom:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: subscribes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    orderService_subscribes-to_Kafka-CreateOrderSaga-reply-receiveFrom:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: subscribes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    orderService_subscribes-to_Kafka-ReviseOrderSaga-reply-receiveFrom:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: subscribes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    orderService_subscribes-to_Kafka-CancelOrderSaga-reply-receiveFrom:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: subscribes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    orderService_connects-to_Zookeeper:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: connects to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    orderService_connects-to_Zipkin:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: connects to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    orderService_connects-to_MySQL-ftgoOrderService:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: connects to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+
+    restaurantService_connects-to_Zookeeper:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: connects to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    restaurantService_connects-to_MySQL-ftgoRestaurantService:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: connects to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+
+    deliveryService_subscribes-to_Kafka-Order-receiveFrom:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: subscribes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    deliveryService_subscribes-to_Kafka-Restaurant-receiveFrom:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: subscribes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    deliveryService_subscribes-to_Kafka-Ticket-receiveFrom:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: subscribes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    deliveryService_connects-to_Zookeeper:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: connects to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    deliveryService_connects-to_Zipkin:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: connects to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    deliveryService_connects-to_MySQL-ftgoDeliveryService:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: connects to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+
+    consumerService_subscribes-to_Kafka-consumerService-receiveFrom:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: subscribes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    consumerService_connects-to_Zookeeper:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: connects to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    consumerService_connects-to_MySQL-ftgoConsumerService:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: connects to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+
+    kitchenService_subscribes-to_Kafka-kitchenService-receiveFrom:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: subscribes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    kitchenService_subscribes-to_Kafka-Restaurant-receiveFrom:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: subscribes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    kitchenService_connects-to_Zookeeper:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: connects to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    kitchenService_connects-to_MySQL-ftgoKitchenService:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: connects to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+
+    accountingService_subscribes-to_Kafka-accountingService-receiveFrom:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: subscribes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    accountingService_subscribes-to_Kafka-Consumer-receiveFrom:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: subscribes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    accountingService_connects-to_Zookeeper:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: connects to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    accountingService_connects-to_MySQL-ftgoAccountingService:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: connects to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+
+    orderHistoryService_subscribes-to_Kafka-Order-receiveFrom:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: subscribes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    orderHistoryService_connects-to_Zookeeper:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: connects to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    orderHistoryService_connects-to_DynampDbLocal:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: connects to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+
+    apiGateway_routes-to_orderService-GetOrderById:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: routes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    apiGateway_routes-to_orderService-PostOrder:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: routes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    apiGateway_routes-to_orderService-PostReviseOrder:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: routes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    apiGateway_routes-to_orderService-PostCancelOrder:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: routes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    apiGateway_routes-to_deliveryService-GetDeliveriesByOrderId:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: routes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    apiGateway_routes-to_consumerService-PostConsumer:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: routes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    apiGateway_routes-to_kitchenService-GetTicketsByOrderId:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: routes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    apiGateway_routes-to_accountingService-GetChargesByOrderId:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: routes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    apiGateway_routes-to_orderHistoryService-GetOrdersFilteredByConsumderId:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: routes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+
+    cdcService_publishes-to_Kafka-orderService-sendTo:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: publishes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    cdcService_publishes-to_Kafka-consumerService-sendTo:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: publishes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    cdcService_publishes-to_Kafka-kitchenService-sendTo:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: publishes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    cdcService_publishes-to_Kafka-accountingService-sendTo:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: publishes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    cdcService_publishes-to_Kafka-Order-sendTo:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: publishes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    cdcService_publishes-to_Kafka-Restaurant-sendTo:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: publishes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    cdcService_publishes-to_Kafka-Consumer-sendTo:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: publishes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    cdcService_publishes-to_Kafka-Ticket-sendTo:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: publishes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    cdcService_publishes-to_Kafka-CreateOrderSaga-reply-sendTo:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: publishes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    cdcService_publishes-to_Kafka-ReviseOrderSaga-reply-sendTo:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: publishes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    cdcService_publishes-to_Kafka-CancelOrderSaga-reply-sendTo:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: publishes to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    cdcService_connects-to_Zookeeper:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: reads from
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    cdcService_reads-from_MySQL-ftgoOrderService:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: reads from
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    cdcService_reads-from_MySQL-ftgoRestaurantService:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: reads from
+        ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    cdcService_reads-from_MySQL-ftgoDeliveryService:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: reads from
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    cdcService_reads-from_MySQL-ftgoConsumerService:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: reads from
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    cdcService_reads-from_MySQL-ftgoKitchenService:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: reads from
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    cdcService_reads-from_MySQL-ftgoAccountingService:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: reads from
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    cdcService_reads-from_MySQL-ftgoOrderHistoryService:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: reads from
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    cdcService_connects-to_MySQL-eventuate:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: connects to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
+
+    kafka_connects-to_Zookeeper:
+      type: tosca.relationships.ConnectsTo
+      metadata:
+        type_of_relation: connects to
+      ## Missing: Possibility to model the specific Endpoint this Link connects to
