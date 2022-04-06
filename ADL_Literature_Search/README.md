@@ -50,19 +50,19 @@ Short summary of the overall procedure:
 The information gained from the reviews is used to select appropriate ADLs for the evaluation.
 
 :x: Exclusion Criteria:
-- Identified domain does not include cloud services
-- Language covers only business-related aspects and not technical ones
-- Focus lies mainly on the provider of a cloud environment instead of the user
-- Language for platform-specific models
-- Focus lies only on runtime aspects (&#8594; Quality Model considers design time)
-- Language objective focuses solely on aspects regarding, for example, service level agreement, service discovery or selection
-- Focus lies on one specific type of cloud environment/ delivery model (e.g. PaaS)
-- The language's intended users do not include application developers but focus on application user perspective
-- Application components cannot be considered when interactions between a cloud service and the cloud application are modeled
+- [ ] Identified domain does not include cloud services
+- [ ] Language covers only business-related aspects and not technical ones
+- [ ] Focus lies mainly on the provider of a cloud environment instead of the user
+- [ ] Language for platform-specific models
+- [ ] Focus lies only on runtime aspects (&#8594; Quality Model considers design time)
+- [ ] Language objective focuses solely on aspects regarding, for example, service level agreement, service discovery or selection
+- [ ] Focus lies on one specific type of cloud environment/ delivery model (e.g. PaaS)
+- [ ] The language's intended users do not include application developers but focus on application user perspective
+- [ ] Application components cannot be considered when interactions between a cloud service and the cloud application are modeled
 
 
 :heavy_check_mark: Selection Criteria:
-- Language is still relevant: publishing of new versions, further paper publications, tool support is being further developed
+- [x] Language is still relevant: publishing of new versions, further paper publications, tool support is being further developed
 
 Result:
 
@@ -91,7 +91,7 @@ The second systematic literature search was performed to find further recently p
 
 A description of the stepwise performed systematic literature search can be found here: [2_Recent_ADLs_Search](2_Recent_ADLs_Search)
 
-&#8594; The Bibtex-file that includes the final selection of relevant literature: :mag: X\
+&#8594; The Bibtex-file that includes the final selection of relevant literature: :mag: 21\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4_Final_Recent_ADL_Selection](2_Recent_ADLs_Search/S2_4_Final_Selection.bib)
 
 Short summary of the overall procedure:
@@ -108,15 +108,15 @@ Short summary of the overall procedure:
 For the selection aspects like the language's relevant and main focus/scope were considered.
 
 :x: Exclusion Criteria:
-- Too restricted on specific aspects
-- Another approach is based on it
-- Based on another language which is already being evaluated
+- [ ] Too restricted on specific aspects
+- [ ] Another approach is based on it
+- [ ] Based on another language which is already being evaluated
 
 
 :heavy_check_mark: Selection Criteria:
-- Language is still relevant: publishing of new versions, further paper publications, tool support is being further developed
-- Enough explanatory and descriptive papers or documentation for modeling language available
-- Ideally, supportive tools provided
+- [x] Language is still relevant: publishing of new versions, further paper publications, tool support is being further developed
+- [x] Enough explanatory and descriptive papers or documentation for modeling language available
+- [x] Ideally, supportive tools provided
 
 Result:
 
