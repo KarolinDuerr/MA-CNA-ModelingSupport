@@ -88,16 +88,16 @@ After completing the first filtering of the search results, the remaining librar
 Since general aspects and properties of the libraries like their relevance, popularity and license have already been considered in the steps before, the following exclusion and inclusion criteria consider the actual intention and general functionality of the respective libraries.
 
 :x: Exclusion Criteria:
-- [ ] not related to drawing general diagrams
-- [ ] too specific e.g. designed to create specific types of diagrams like bpmn
-- [ ] not for web applications
-- [ ] a drawing application not usable as library
-- [ ] only able to create or edit graphics like SVG content
+- [ ] Not related to drawing general diagrams
+- [ ] Too specific e.g. designed to create specific types of diagrams like bpmn
+- [ ] Not for web applications
+- [ ] A drawing application not usable as library
+- [ ] Only able to create or edit graphics like SVG content
 
 
 :heavy_check_mark: Selection Criteria:
-- [x] library usable for drawing content
-- [x] usable for web application
+- [x] Library usable for drawing content
+- [x] Usable for web application
 
 &#8594; Resulting repositories: :mag: 30
 
@@ -111,20 +111,20 @@ Based on the [remarks for each library](2_filtered_results_remarks.md) and the f
 This selection also considered the actual range of functions provided by the respective library.
 
 :x: Exclusion Criteria:
-- [ ] no or insufficient documentation available
-- [ ] connection modeling not per se supported
-- [ ] documentation not entirely in english
-- [ ] no custom creation of shapes provided
+- [ ] No or insufficient documentation available
+- [ ] Connection modeling not per se supported
+- [ ] Documentation not entirely in english
+- [ ] No custom creation of shapes provided
 
 :heavy_check_mark: Selection Criteria:
-- [x] occurrence during search more than once (preferably high number)
-- [x] preferably good documentation available
-- [x] provides many shapes and additional features useful for modeling
-- [x] explicitly mentioned by tool that designed for modeling applications/ tools
+- [x] Occurrence during search more than once (preferably high number)
+- [x] Preferably good documentation available
+- [x] Provides many shapes and additional features useful for modeling
+- [x] Explicitly mentioned by tool that designed for modeling applications/ tools
 
 
 | <div align="center">Modeling library</div> | <div align="center">Repository URL</div> | <div align="center">Selection Reasons</div> |
 | :----------------------------------------: | :--------------------------------------- | :------------------------------------------ |
-| [MxGraph](https://jgraph.github.io/mxgraph/) | [https://github.com/jgraph/mxgraph](https://github.com/jgraph/mxgraph) | <ul><li>highest occurrence during search: 7 times in total</li><li>used for popular modeling editor [draw.io](https://app.diagrams.net/)</li><li>extensive documentation, demos and tutorials available</li><li>provides several shapes but also customization of these as well as creating new shapes</li><li>provides explicit support for creating diagram editor</li></ul> |
+| [MxGraph](https://jgraph.github.io/mxgraph/) | Archived repository: [https://github.com/jgraph/mxgraph](https://github.com/jgraph/mxgraph)</br>Continued repository: [https://github.com/maxGraph/maxGraph](https://github.com/maxGraph/maxGraph) | <ul><li>highest occurrence during search: 7 times in total</li><li>used for popular modeling editor [draw.io](https://app.diagrams.net/)</li><li>extensive documentation, demos and tutorials available</li><li>provides several shapes but also customization of these as well as creating new shapes</li><li>provides explicit support for creating diagram editor</li></ul> |
 | [Joint.js](https://www.jointjs.com/opensource) | [https://github.com/clientIO/joint](https://github.com/clientIO/joint) | <ul><li>second highest occurrence during search: 6 times in total</li><li>extensive documentation, demos and tutorials available</li><li>explicitly designed for creating diagramming tools</li><li>provides several shapes but also customization of these as well as creating new shapes</li></ul> |
 | [Draw2d](https://freegroup.github.io/draw2d/#/examples) | [https://github.com/freegroup/draw2d](https://github.com/freegroup/draw2d) | <ul><li>occurred three times during search</li><li>extensive documentation and examples available</li><li>easily create visual languages & tools</li><li>provides several shapes but also customization of these as well as creating new shapes</li></ul> |

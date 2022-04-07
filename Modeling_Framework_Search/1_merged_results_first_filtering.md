@@ -1,24 +1,24 @@
-# Merged Search Results: First Filtering of Found Repositories 
+# Merged Search Results: First Filtering of Found Repositories
 
 The [merged results](0_merged_results.md) from the previous two searches, ([Github](Github/README.md) and [Google Search](Google/README.md)), are filtered based on the following exclusion and inclusion criteria in order to determine useful libraries for realizing the modeling application.  
 
 :x: Exclusion Criteria:
-- [ ] not related to drawing general diagrams
-- [ ] too specific e.g. designed to create specific types of diagrams like bpmn
-- [ ] not for web applications
-- [ ] a drawing application not usable as library
-- [ ] only able to create or edit graphics like SVG content
+- [ ] Not related to drawing general diagrams
+- [ ] Too specific e.g. designed to create specific types of diagrams like bpmn
+- [ ] Not for web applications
+- [ ] A drawing application not usable as library
+- [ ] Only able to create or edit graphics like SVG content
 
 
 :heavy_check_mark: Selection Criteria:
-- [x] library usable for drawing content
-- [x] usable for web application
+- [x] Library usable for drawing content
+- [x] Usable for web application
 
 
 
 <details><summary>Removal reasoning per repository</summary>
 
-The following table lists for every repository the reason(s) why it will not be further considered as an option for the later evaluation and integration into the modeling application. 
+The following table lists for every repository the reason(s) why it will not be further considered as an option for the later evaluation and integration into the modeling application.
 
 &#8594; Removed repositories :mag: 60
 
