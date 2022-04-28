@@ -10,6 +10,7 @@ topology_template:
 
   relationship_templates:
     # Links --> But currently not assignable to the modeled Components
+
     orderService_subscribes-to_Kafka-orderService-receiveFrom:
       type: tosca.relationships.ConnectsTo
       metadata:
@@ -190,7 +191,7 @@ topology_template:
         type_of_relation: connects to
       ## Missing: Possibility to model the specific Endpoint this Link connects to
 
-    orderHistoryService_connects-to_DynampDbLocal:
+    orderHistoryService_connects-to_DynamoDbLocal:
       type: tosca.relationships.ConnectsTo
       metadata:
         type_of_relation: connects to

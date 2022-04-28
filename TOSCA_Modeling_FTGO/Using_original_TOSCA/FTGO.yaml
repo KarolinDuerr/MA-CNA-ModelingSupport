@@ -6,7 +6,7 @@ description:
 
 metadata:
   template_name: FTGO Application
-  tempalte_author: Karolin Duerr
+  template_author: Karolin Duerr
 
 imports:
   - FTGO_Links.yaml
@@ -15,6 +15,10 @@ imports:
 
 # System
 topology_template:
+
+  dsl_definitions:
+    mysql_port: &mysql_port
+      port: 3306
 
   # Components
   node_templates:
@@ -96,11 +100,208 @@ topology_template:
 
     # Storage Backing Services
     dynamo_db_local_service:
+      type: tosca.nodes.Database
+      properties:
+        name: FTGO_ORDER_HISTORY_BY_ID
+        port: 3306
+      requirements:
+        - host:
+            node: dynamo_db
+            relationship: dynamoDb_host_dynamoDbLocalService
+      capabilities:
+        # Endpoint entity
+        database_endpoint:
+          type: tosca.capabilities.Endpoint.Database
+          properties:
+            protocol: http
+            port: 8000
+            url_path: /key-value
+      ## Missing: Possibility of Link assignment
+
+
+    db_ftgo_consumer_service:
+      type: tosca.nodes.Database
+      properties:
+        name: ftgo_consumer_service
+        port: 3306
+        user: ftgo_consumer_service_user
+        password: ftgo_consumer_service_password
+      requirements:
+        - host:
+            node: mysql_service
+            relationship: mySqlService_host_dbFtgoConsumerService
+      capabilities:
+        # Endpoint entity
+        database_endpoint:
+          type: tosca.capabilities.Endpoint.Database
+          properties:
+            protocol: http
+            port: *mysql_port
+            url_path: /sql
+      ## Missing: Possibility of Link assignment
+
+
+    db_ftgo_order_service:
+      type: tosca.nodes.Database
+      properties:
+        name: ftgo_order_service
+        port: 3306
+        user: ftgo_order_service_user
+        password: ftgo_order_service_password
+      requirements:
+        - host:
+            node: mysql_service
+            relationship: mySqlService_host_dbFtgoOrderService
+      capabilities:
+        # Endpoint entity
+        database_endpoint:
+          type: tosca.capabilities.Endpoint.Database
+          properties:
+            protocol: http
+            port: *mysql_port
+            url_path: /sql
+      ## Missing: Possibility of Link assignment
+
+
+    db_ftgo_kitchen_service:
+      type: tosca.nodes.Database
+      properties:
+        name: ftgo_kitchen_service
+        port: 3306
+        user: ftgo_kitchen_service_user
+        password: ftgo_kitchen_service_password
+      requirements:
+        - host:
+            node: mysql_service
+            relationship: mySqlService_host_dbFtgoKitchenService
+      capabilities:
+        # Endpoint entity
+        database_endpoint:
+          type: tosca.capabilities.Endpoint.Database
+          properties:
+            protocol: http
+            port: *mysql_port
+            url_path: /sql
+      ## Missing: Possibility of Link assignment
+
+
+    db_ftgo_restaurant_service:
+      type: tosca.nodes.Database
+      properties:
+        name: ftgo_restaurant_service
+        port: 3306
+        user: ftgo_restaurant_service_user
+        password: ftgo_restaurant_service_password
+      requirements:
+        - host:
+            node: mysql_service
+            relationship: mySqlService_host_dbFtgoRestaurantService
+      capabilities:
+        # Endpoint entity
+        database_endpoint:
+          type: tosca.capabilities.Endpoint.Database
+          properties:
+            protocol: http
+            port: *mysql_port
+            url_path: /sql
+      ## Missing: Possibility of Link assignment
+
+
+    db_ftgo_accounting_service:
+      type: tosca.nodes.Database
+      properties:
+        name: ftgo_accounting_service
+        port: 3306
+        user: ftgo_accounting_service_user
+        password: ftgo_accounting_service_password
+      requirements:
+        - host:
+            node: mysql_service
+            relationship: mySqlService_host_dbFtgoAccountingService
+      capabilities:
+        # Endpoint entity
+        database_endpoint:
+          type: tosca.capabilities.Endpoint.Database
+          properties:
+            protocol: http
+            port: *mysql_port
+            url_path: /sql
+      ## Missing: Possibility of Link assignment
+
+
+    db_ftgo_delivery_service:
+      type: tosca.nodes.Database
+      properties:
+        name: ftgo_accounting_service
+        port: 3306
+        user: ftgo_delivery_service_user
+        password: ftgo_delivery_service_password
+      requirements:
+        - host:
+            node: mysql_service
+            relationship: mySqlService_host_dbFtgoDeliveryService
+      capabilities:
+        # Endpoint entity
+        database_endpoint:
+          type: tosca.capabilities.Endpoint.Database
+          properties:
+            protocol: http
+            port: *mysql_port
+            url_path: /sql
+      ## Missing: Possibility of Link assignment
+
+
+    db_ftgoorderhistoryservice:
+      type: tosca.nodes.Database
+      properties:
+        name: ftgoorderhistoryservice
+        port: 3306
+        user: f
+        password:
+      requirements:
+        - host:
+            node: mysql_service
+            relationship: mySqlService_host_dbFtgoOrderHistoryService
+      capabilities:
+        # Endpoint entity
+        database_endpoint:
+          type: tosca.capabilities.Endpoint.Database
+          properties:
+            protocol: http
+            port: *mysql_port
+            url_path: /sql
+      ## Missing: Possibility of Link assignment
+
+
+    db_eventuate:
+      type: tosca.nodes.Database
+      properties:
+        name: eventuate
+        port: 3306
+        user: mysqluser
+        password: mysqlpw
+      requirements:
+        - host:
+            node: mysql_service
+            relationship: mySqlService_host_dbFtgoEventuate
+      capabilities:
+        # Endpoint entity
+        database_endpoint:
+          type: tosca.capabilities.Endpoint.Database
+          properties:
+            protocol: http
+            port: *mysql_port
+            url_path: /sql
+      ## Missing: Possibility of Link assignment
+
+
+    # Infrastructures
+    dynamo_db:
       type: tosca.nodes.DBMS
       requirements:
         - host:
             node: docker_host
-            relationship: dockerHost_host_dynamoDbLocalService
+            relationship: dockerHost_host_dynamoDb
 
     mysql_service:
       type: tosca.nodes.DBMS
@@ -112,7 +313,6 @@ topology_template:
             node: docker_host
             relationship: dockerHost_host_mySqlService
 
-    # Infrastructures
     docker_host:
       type: tosca.nodes.Compute
       # Missing: Possibility to define a HostedOn Relationship to another Compute Node
@@ -127,6 +327,33 @@ topology_template:
     # Links --> But currently not assignable to the modeled Components (defined in imported tosca file)
 
     # Deployment Mappings
+    dynamoDb_host_dynamoDbLocalService:
+      type: tosca.relationships.HostedOn
+
+    mySqlService_host_dbFtgoConsumerService:
+      type: tosca.relationships.HostedOn
+
+    mySqlService_host_dbFtgoOrderService:
+      type: tosca.relationships.HostedOn
+
+    mySqlService_host_dbFtgoKitchenService:
+      type: tosca.relationships.HostedOn
+
+    mySqlService_host_dbFtgoRestaurantService:
+      type: tosca.relationships.HostedOn
+
+    mySqlService_host_dbFtgoAccountingService:
+      type: tosca.relationships.HostedOn
+
+    mySqlService_host_dbFtgoDeliveryService:
+      type: tosca.relationships.HostedOn
+
+    mySqlService_host_dbFtgoOrderHistoryService:
+      type: tosca.relationships.HostedOn
+
+    mySqlService_host_dbFtgoEventuate:
+      type: tosca.relationships.HostedOn
+
     dockerHost_host_consumerService:
       type: tosca.relationships.HostedOn
 
@@ -148,7 +375,7 @@ topology_template:
     dockerHost_host_orderHistoryService:
       type: tosca.relationships.HostedOn
 
-    dockerHost_host_dynamoDbLocalService:
+    dockerHost_host_dynamoDb:
       type: tosca.relationships.HostedOn
 
     dockerHost_host_mySqlService:
