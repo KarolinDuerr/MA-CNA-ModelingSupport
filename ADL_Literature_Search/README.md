@@ -69,7 +69,7 @@ Result:
 | __Modeling Language__ | <div align="center">__Selection Reasons__</div> |
 |:----------------------------:|:-------------------|
 | TOSCA |<ul><li>Analyzed by all detailed reviews [Sun2012, Bergmayr2014, Bergmayr2018, Nawaz2019] as well as considered by the shorter/ more specific reviews [Quint2018, Bernal2019,  Kritikos2019]</li><li>[OASIS](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=tosca) standard fors life-cycle management and cloud application representation</li><li>Last version was published in 2020[^1] and is still the subject of many current papers</li></ul>|
-| CAMEL |<ul><li>Considered by the shorter/more specific reviews [Quint2018, Kritikos2019]</li><li>Also mentioned by [Bergmayr2018], however not analyzed due to its ongoing development back then</li><li>Exploits model at design- as well as run-time<\li><li>Provides Multi-Cloud potential</li><li>Last paper was published in 2019[^2]</li><li>Code still receives updates [^3]</li></ul>|
+| CAMEL |<ul><li>Considered by the shorter/more specific reviews [Quint2018, Kritikos2019]</li><li>Also mentioned by [Bergmayr2018], however not analyzed due to its ongoing development back then</li><li>Exploits model at design- as well as run-time</li><li>Provides multi-cloud potential</li><li>Last paper was published in 2019[^2]</li><li>Code still receives updates[^3]</li></ul>|
 | CloudML (with CloudMF) |<ul><li>Considered by the detailed reviews [Bergmayr2014, Bergmayr2018]</li><li>Last paper published in 2018[^5]</li><li>Also allows runtime considerations</li></ul>|
 
 [^1]: https://www.oasis-open.org/news/announcements/tosca-simple-profile-in-yaml-v1-3-oasis-standard-published/, last accessed: 2022-02-02

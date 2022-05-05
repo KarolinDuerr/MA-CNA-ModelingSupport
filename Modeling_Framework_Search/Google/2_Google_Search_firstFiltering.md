@@ -1,12 +1,12 @@
- # Google Search Results: First Filtering of Identified Libraries 
+ # Google Search Results: First Filtering of Identified Libraries
 
 The [initially identified libraries](1_Google_Search_Results_Libs.md) are filtered based on the following exclusion criteria. These ensure that the individual repository projects are relevant, comparatively up-to-date, open-source, and enjoy certain popularity.
 
 :x: Exclusion Criteria:
 
 - [ ] Repositories with last commit before 2019-01-01 despite search constraints
-- [ ] Repositories with non OSS Licenses 
-- [ ] Repositories Stars < 100
+- [ ] Repositories with non OSS Licenses
+- [ ] Repository Stars < 100
 
 
 &#8594; Resulting repositories :mag: 73

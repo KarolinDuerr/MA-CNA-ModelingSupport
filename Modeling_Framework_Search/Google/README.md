@@ -15,7 +15,7 @@ In these files, the mentioned libraries are listed for each website individually
 Afterwards, all identified libraries, minus duplicates, were summarized in the [Google_Search_Results_Libs](1_Google_Search_Results_Libs.md) file, which includes additional information based on the respective code repository.
 This resulted in :mag: 139 identified libraries.
 
-Since the websites received by the Google search can list any frameworks/libraries, their relevance, popularity, and open-source property cannot be presumed. 
+Since the websites received by the Google search can list any frameworks/libraries, their relevance, popularity, and open-source property cannot be presumed.
 For example, the identified libraries include libraries that are not open-source and instead commercially licensed or had received their last update (identified by latest commit and version) in 2013.
 Therefore, the following exclusion criteria were applied for the first filtering of the results in order to ensure that the individual repository projects are relevant, comparatively up-to-date, open-source, and enjoy certain popularity.
 With 100, a relatively small number of required repository stars was chosen since their meaning is not commonly defined, resulting in different interpretations.  
@@ -23,9 +23,9 @@ With 100, a relatively small number of required repository stars was chosen sinc
 :x: Exclusion Criteria:
 
 - [ ] Repositories with last commit before 2019-01-01 despite search constraints
-- [ ] Repositories with non OSS Licenses 
-- [ ] Repositories Stars < 100
+- [ ] Repositories with non OSS Licenses
+- [ ] Repository Stars < 100
 
 &#8594; Resulting repositories :mag: 73
 
-The remaining libraries can be found in the [Google_Search_firstFiltering](2_Google_Search_firstFiltering.md) file. 
+The remaining libraries can be found in the [Google_Search_firstFiltering](2_Google_Search_firstFiltering.md) file.

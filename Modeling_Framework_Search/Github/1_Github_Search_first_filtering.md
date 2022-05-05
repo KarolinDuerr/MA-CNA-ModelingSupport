@@ -1,4 +1,4 @@
-# Github Search Results: First Filtering of Found Repositories 
+# Github Search Results: First Filtering of Found Repositories
 
 The [original results](0_Github_Search_raw_results.md) are filtered based on the following exclusion criteria. These ensure that the individual repository projects are compliant with the previous date restriction, open-source, and enjoy certain popularity.
 
@@ -6,9 +6,9 @@ The [original results](0_Github_Search_raw_results.md) are filtered based on the
 :x: Exclusion Criteria:
 
 - [ ] Repositories with last commit before 2019-01-01 despite search constraints
-- [ ] Repositories with non OSS Licenses 
+- [ ] Repositories with non OSS Licenses
 - [ ] Empty repositories (in table identified by no last commits)
-- [ ] Repositories Stars < 100
+- [ ] Repository Stars < 100
 
 
 &#8594; Resulting repositories :mag: 27

@@ -389,7 +389,7 @@ For this, the focus lies on existing reviews of modeling languages (preferably i
    - [ ] Meta entries for conference proceedings
    - [ ] Keynotes and invited-talks
    - [ ] Surveys or Reviews not related to modeling languages, for example regarding service discovery, virtual reality or machine learning
-   - [ ] Unrelated topics, for instance regarding Natural Language Processing (NLP), security, smart home/village or artificial intelligence-related topics like neural networks,
+   - [ ] Unrelated topics, for instance regarding Natural Language Processing (NLP), security, smart home/village or artificial intelligence-related topics like neural networks
    - [ ] The terms "model" or "modeling" appear in a different and unrelated context, such as a review model, data model or trust modeling
 <!--
       - Pricing

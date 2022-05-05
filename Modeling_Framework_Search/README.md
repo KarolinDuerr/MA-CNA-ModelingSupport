@@ -29,7 +29,7 @@ javascript AND web AND (diagramming | drawing) AND (open-source OR open source O
 :calendar: Search date: 2022-03-31</br>
 &#8594; :mag: Results: 1 610 000 000
 
-However, due to the huge amount of received results, the considered search results were limited to the websites listed on the first 10 Google pages considered.
+However, due to the huge amount of received results, the considered search results were limited to the websites listed on the first 10 Google pages.
 The received results are documented in [Google_Search_Results_part1](Google/0_Google_Search_Results_part1.md) and [Google_Search_Results_part2](Google/0_Google_Search_Results_part2.md).
 In these files, the mentioned libraries are listed for each website individually.
 Afterwards, all identified libraries, minus duplicates, were summarized in the [Google_Search_Results_Libs](Google/1_Google_Search_Results_Libs.md) file, which includes additional information based on the respective code repository.
@@ -44,7 +44,7 @@ With 100, a relatively small number of required repository stars was chosen sinc
 
 - [ ] Repositories with last commit before 2019-01-01 despite search constraints
 - [ ] Repositories with non OSS Licenses
-- [ ] Repositories Stars < 100
+- [ ] Repository Stars < 100
 
 &#8594; Resulting repositories :mag: 73
 
@@ -64,7 +64,7 @@ javascript diagramming pushed:"> 2019-01-01"
 ```
 
 :calendar: Search date: 2022-04-02</br>
-&#8594; Number of considered websites :mag: 239
+&#8594; Results :mag: 239
 
 The received repositories are documented in [Github_Search_raw_results](Github/0_Github_Search_raw_results.md), which also includes additional information based on the respective code repository.
 The repositories are then further filtered with the following exclusion criteria that are almost identical to the ones applied to the Google results.
@@ -75,7 +75,7 @@ Again, to ensure that the individual repository projects are relevant, comparati
 - [ ] Repositories with last commit before 2019-01-01 despite search constraints
 - [ ] Repositories with non OSS Licenses
 - [ ] Empty repositories (in table identified by no last commits)
-- [ ] Repositories Stars < 100
+- [ ] Repository Stars < 100
 
 
 &#8594; Resulting repositories :mag: 27
