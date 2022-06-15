@@ -33,12 +33,12 @@ The following table summarizes with which extended or original TOSCA element the
 | System | Service Template (&#8594; Topology Template) |<!---->
 | Component | Node Template &#124; [Root.Component](#componentExtension) Node | <!---->
 | Service | [SoftwareComponent.Service](#serviceExtension) Node |<!---->
-| Endpoint | Node &#8594; Capability Type:<br> ([Root.Component](#componentExtension)&#8594;capabilities: endpoint) &#124;<br> ([SoftwareComponent.Service](#serviceExtension)&#8594;capabilities: endpoint) &#124;<br> ([BackingService](#backingServiceExtension)&#8594;capabilities: endpoint) &#124;<br> ([DBMS.StorageService](#storageBackingServiceExtension)&#8594;capabilities: endpoint) |<!---->
-| External Endpoint | Node &#8594; Capability Type:<br> ([Root.Component](#componentExtension)&#8594;capabilities: external_endpoint) &#124;<br> ([SoftwareComponent.Service](#serviceExtension)&#8594;capabilities: external_endpoint) &#124;<br> ([BackingService](#backingServiceExtension)&#8594;capabilities: external_endpoint) &#124;<br> ([DBMS.StorageService](#storageBackingServiceExtension)&#8594;capabilities: external_endpoint) |<!---->
+| Endpoint | Node &#8594; Capability Type:<br> ([Root.Component](#componentExtension)&#8594;capabilities: endpoint) &#124;<br> ([SoftwareComponent.Service](#serviceExtension)&#8594;capabilities: endpoint) &#124;<br> ([BackingService](#backingServiceExtension)&#8594;capabilities: endpoint) &#124;<br> ([Database.StorageService](#storageBackingServiceExtension)&#8594;capabilities: endpoint) |<!---->
+| External Endpoint | Node &#8594; Capability Type:<br> ([Root.Component](#componentExtension)&#8594;capabilities: external_endpoint) &#124;<br> ([SoftwareComponent.Service](#serviceExtension)&#8594;capabilities: external_endpoint) &#124;<br> ([BackingService](#backingServiceExtension)&#8594;capabilities: external_endpoint) &#124;<br> ([Database.StorageService](#storageBackingServiceExtension)&#8594;capabilities: external_endpoint) |<!---->
 | Backing Service | [BackingService](#backingServiceExtension) Node |<!---->
-| Storage Backing Service | [DBMS.StorageService](#storageBackingServiceExtension) Node |<!---->
-| Link | Node &#8594; Requirement Type \& Relationship Template:<br> ([Root.Component](#componentExtension)&#8594;requirements: endpoint_link) &#124;<br> ([SoftwareComponent.Service](#serviceExtension)&#8594;requirements: endpoint_link) &#124;<br> ([BackingService](#backingServiceExtension)&#8594;requirements: endpoint_link) &#124;<br> ([DBMS.StorageService](#storageBackingServiceExtension)&#8594;requirements: endpoint_link) <br> \& <br> [ConnectsTo.Link](#linkExtension) Relationship |<!---->
-| Infrastructure | [Compute.Infrastructure](#infrastructureExtension) Node |<!---->
+| Storage Backing Service | [Database.StorageService](#storageBackingServiceExtension) Node |<!---->
+| Link | Node &#8594; Requirement Type \& Relationship Template:<br> ([Root.Component](#componentExtension)&#8594;requirements: endpoint_link) &#124;<br> ([SoftwareComponent.Service](#serviceExtension)&#8594;requirements: endpoint_link) &#124;<br> ([BackingService](#backingServiceExtension)&#8594;requirements: endpoint_link) &#124;<br> ([Database.StorageService](#storageBackingServiceExtension)&#8594;requirements: endpoint_link) <br> \& <br> [ConnectsTo.Link](#linkExtension) Relationship |<!---->
+| Infrastructure | [Compute.Infrastructure](#infrastructureExtension) Node &#124; [DBMS.Infrastructure](#infrastructureExtension) |<!---->
 | Deployment Mapping | HostedOn Relationship |<!---->
 | Request Trace | [RequestTrace](#requestTraceExtension) Node | <!---->
 | Data Aggregate | [DataAggregate](#dataAggregateExtension) Node | <!---->
@@ -56,6 +56,7 @@ Therefore, the following extensions are based on some specific normative TOSCA T
 The __Root.Component__ Node represents a generic _Component_ entity.
 Therefore , it should be used to model a Component that is neither a _Service_, _Backing Service_, nor a _Storage Backing Service_ entity.
 As an extension to the original TOSCA _Root_ Node, this Node allows modeling _Endpoints_, _Links_ to other Component entities and a _Deployment Mapping_ to an _Infrastructure Entity_ if desired.
+The Node also allows modeling the persistence of a specific _Data Aggregate_ entity.
 
 File references:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [TOSCA-File](Nodes/Root_Component.tosca)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Individual Node Definition](Nodes/Root_Component.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Example](Nodes/Root_Component.md#4-example)
 
@@ -124,6 +125,11 @@ cna.qualityModel.entities.Root.Component:
     external_endpoint:
       type: tosca.capabilities.Endpoint.Public
       occurrences: [0, UNBOUNDED]
+    # Needed so that Data Aggregates can be stored
+    persist_data:
+      type: cna.qualityModel.capabilities.DataStorage
+      valid_source_types: [cna.qualityModel.entities.DataAggregate]
+      occurrences: [0, UNBOUNDED]
 ```
 
 ### 2.2 Service Entity TOSCA Representation
@@ -133,6 +139,7 @@ cna.qualityModel.entities.Root.Component:
 The __SoftwareComponent.Service__ Node represents a _Service_ entity.
 It extends the original TOSCA _SoftwareComponent_ Node in order to allow the modeling of _Endpoints_ as well as _Links_ to other Component entities.
 Additionally, modeled _Backing Data_ and _Data Aggregate_ entities can be referenced.
+The Node also allows modeling the persistence of a specific _Data Aggregate_ entity.
 
 File references:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [TOSCA-File](Nodes/SoftwareComponent_Service.tosca)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Individual Node Definition](Nodes/SoftwareComponent_Service.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Example](Nodes/SoftwareComponent_Service.md#4-example)
 
@@ -196,14 +203,19 @@ cna.qualityModel.entities.SoftwareComponent.Service:
     external_endpoint:
       type: tosca.capabilities.Endpoint.Public
       occurrences: [0, UNBOUNDED]
+    # Needed so that Data Aggregates can be stored
+    persist_data:
+      type: cna.qualityModel.capabilities.DataStorage
+      valid_source_types: [cna.qualityModel.entities.DataAggregate]
+      occurrences: [0, UNBOUNDED]
 ```
 
 ### 2.3 Storage Backing Service Entity TOSCA Representation
 
-#### 2.3.1 <a name="storageBackingServiceExtension">cna.qualityModel.entities.DBMS.StorageService</a>
+#### 2.3.1 <a name="storageBackingServiceExtension">cna.qualityModel.entities.Database.StorageService</a>
 
-The __DBMS.StorageService__ Node represents a _Storage Backing Service_ entity.
-It extends the original TOSCA _DBMS_ Node in order to allow the modeling of _Endpoints_ as well as _Links_ to other Component entities.
+The __Database.StorageService__ Node represents a _Storage Backing Service_ entity.
+It extends the original TOSCA _Database_ Node in order to allow the modeling of _External Endpoints_ as well as _Links_ to other Component entities.
 Additionally, modeled _Backing Data_ and _Data Aggregate_ entities can be referenced.
 The Node also allows modeling the persistence of a specific _Data Aggregate_ entity.
 
@@ -212,15 +224,15 @@ File references:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [TOSCA-File](Nodes/DBMS_StorageSe
 <table>
     <tr>
         <td bgcolor="grey"><b>Shorthand Name</b></td>
-        <td>DBMS.StorageService</td>
+        <td>Database.StorageService</td>
     </tr>
     <tr>
         <td bgcolor="grey"><b>Type Qualified Name</b></td>
-        <td>qualityModel:DBMS.StorageService</td> <!--TODO keep?-->
+        <td>qualityModel:Database.StorageService</td> <!--TODO keep?-->
     </tr>
     <tr>
         <td bgcolor="grey"><b>Type URI</b></td>
-        <td>cna.qualityModel.entities.DBMS.StorageService</td>
+        <td>cna.qualityModel.entities.Database.StorageService</td>
     </tr>
 </table>
 
@@ -239,8 +251,8 @@ File references:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [TOSCA-File](Nodes/DBMS_StorageSe
 ##### c) Definition
 
 ```yaml
-cna.qualityModel.entities.DBMS.StorageService:
-  derived_from: tosca.nodes.DBMS
+cna.qualityModel.entities.Database.StorageService:
+  derived_from: tosca.nodes.Database
   description: Node Type to model Storage Backing Service entities
   requirements:
     # Allow the definition of Links between Components
@@ -261,10 +273,7 @@ cna.qualityModel.entities.DBMS.StorageService:
         relationship: cna.qualityModel.relationships.AttachesTo.Data
         occurrences: [0, UNBOUNDED]
   capabilities:
-    # Allow assigning Endpoint entities
-    endpoint:
-      type: tosca.capabilities.Endpoint
-      occurrences: [0, UNBOUNDED]
+    # Endpoint can already be assigned using the database_endpoint capability
     # Allow assigning External Endpoint entities
     external_endpoint:
       type: tosca.capabilities.Endpoint.Public
@@ -384,6 +393,55 @@ cna.qualityModel.entities.Compute.Infrastructure:
         occurrences: [0, UNBOUNDED]
 ```
 
+#### 2.5.2 <a name="infrastructureExtension">cna.qualityModel.entities.DBMS.Infrastructure</a>
+
+The __DBMS.Infrastructure__ Node represents an _Infrastructure_ entity, which is able to host Database.StorageService Nodes.
+It extends the original TOSCA _DBMS_ Node in order to allow _Backing Data_ entities to be referenced.
+
+File references:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [TOSCA-File](Nodes/Compute_Infrastructure.tosca)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Individual Node Definition](Nodes/Compute_Infrastructure.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Example](Nodes/Compute_Infrastructure.md#4-example)
+
+<table>
+    <tr>
+        <td bgcolor="grey"><b>Shorthand Name</b></td>
+        <td>DBMS.Infrastructure</td>
+    </tr>
+    <tr>
+        <td bgcolor="grey"><b>Type Qualified Name</b></td>
+        <td>qualityModel:DBMS.Infrastructure</td> <!-- TODO keep -->
+    </tr>
+    <tr>
+        <td bgcolor="grey"><b>Type URI</b></td>
+        <td>cna.qualityModel.entities.DBMS.Infrastructure</td>
+    </tr>
+</table>
+
+##### a) Properties
+
+| Name | Required | Type | Constraints | <div align="center">__Description__</div> |
+|:----:|:--------:|:----:|:-----------:|:-----------:|
+| N/A | N/A | N/A | N/A | N/A |
+
+##### b) Attributes
+
+| Name | Required | Type | Constraints | <div align="center">__Description__</div> |
+|:----:|:--------:|:----:|:-----------:|:-----------:|
+| N/A | N/A | N/A | N/A | N/A |
+
+##### c) Definition
+
+```yaml
+cna.qualityModel.entities.DBMS.Infrastructure:
+  derived_from: tosca.nodes.DBMS
+  description: Node Type to model Infrastructure entities
+  requirements:
+    # Allow the definition of Backing Data usage
+    - uses_backing_data:
+        capability: tosca.capabilities.Attachment
+        node: cna.qualityModel.entities.BackingData
+        relationship: cna.qualityModel.relationships.AttachesTo.Data
+        occurrences: [0, UNBOUNDED]
+```
+
 ## 3. Adding New Types
 
 In contrast to the previous section, this section introduces the proposed extensions for entities for which no equivalent concepts could be identified within the TOSCA standard.
@@ -396,6 +454,7 @@ Therefore, the following extensions are solely based on the respective topmost _
 The __BackingService__ Node represents a _Backing Service_ entity.
 It allows the modeling of _Endpoints_ as well as _Links_ to other Component entities.
 Additionally, modeled _Backing Data_ and _Data Aggregate_ entities can be referenced.
+The Node also allows modeling the persistence of a specific _Data Aggregate_ entity.
 
 File references:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [TOSCA-File](Nodes/BackingService.tosca)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Individual Node Definition](Nodes/BackingService.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Example](Nodes/BackingService.md#4-example)
 
@@ -437,6 +496,11 @@ cna.qualityModel.entities.BackingService:
       type: string
       required: false
   requirements:
+    # Require deployment on an Infrastructure entity
+    - host:
+        capability: tosca.capabilities.Compute
+        relationship: tosca.relationships.HostedOn
+        occurrences: [1, 1]
     # Allow the definition of Links between Components
     - endpoint_link:
         capability: tosca.capabilities.Endpoint
@@ -462,6 +526,11 @@ cna.qualityModel.entities.BackingService:
     # Allow assigning External Endpoint entities
     external_endpoint:
       type: tosca.capabilities.Endpoint.Public
+      occurrences: [0, UNBOUNDED]
+    # Needed so that Data Aggregates can be stored
+    persist_data:
+      type: cna.qualityModel.capabilities.DataStorage
+      valid_source_types: [cna.qualityModel.entities.DataAggregate]
       occurrences: [0, UNBOUNDED]
 ```
 
@@ -578,7 +647,6 @@ cna.qualityModel.entities.DataAggregate:
     # Allows Data Aggregate to be persisted by Storage Backing Service entity
     - persistence:
         capability: cna.qualityModel.capabilities.DataStorage
-        node: cna.qualityModel.entities.DBMS.StorageService
         relationship: cna.qualityModel.relationships.AttachesTo.Data
         occurrences: [1, UNBOUNDED]
   capabilities:
@@ -589,7 +657,7 @@ cna.qualityModel.entities.DataAggregate:
         - cna.qualityModel.entities.Root.Component
         - cna.qualityModel.entities.SoftwareComponent.Service
         - cna.qualityModel.entities.BackingService
-        - cna.qualityModel.entities.DBMS.StorageService
+        - cna.qualityModel.entities.Database.StorageService
       occurrences: [1, 1]
 ```
 
@@ -651,8 +719,9 @@ cna.qualityModel.entities.BackingData:
           - cna.qualityModel.entities.Root.Component
           - cna.qualityModel.entities.SoftwareComponent.Service
           - cna.qualityModel.entities.BackingService
-          - cna.qualityModel.entities.DBMS.StorageService
+          - cna.qualityModel.entities.Database.StorageService
           - cna.qualityModel.entities.Compute.Infrastructure
+          - cna.qualityModel.entities.DBMS.Infrastructure
         occurrences: [1, 1]
 ```
 

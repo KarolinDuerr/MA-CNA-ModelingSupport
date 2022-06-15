@@ -3,6 +3,7 @@
 The __BackingService__ Node represents a _Backing Service_ entity.
 It allows the modeling of _Endpoints_ as well as _Links_ to other Component entities.
 Additionally, modeled _Backing Data_ and _Data Aggregate_ entities can be referenced.
+The Node also allows modeling the persistence of a specific _Data Aggregate_ entity.
 
 File references:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [TOSCA-File](BackingService.tosca)
 
@@ -44,6 +45,11 @@ cna.qualityModel.entities.BackingService:
       type: string
       required: false
   requirements:
+    # Require deployment on an Infrastructure entity
+    - host:
+        capability: tosca.capabilities.Compute
+        relationship: tosca.relationships.HostedOn
+        occurrences: [1, 1]
     # Allow the definition of Links between Components
     - endpoint_link:
         capability: tosca.capabilities.Endpoint
@@ -69,6 +75,11 @@ cna.qualityModel.entities.BackingService:
     # Allow assigning External Endpoint entities
     external_endpoint:
       type: tosca.capabilities.Endpoint.Public
+      occurrences: [0, UNBOUNDED]
+    # Needed so that Data Aggregates can be stored
+    persist_data:
+      type: cna.qualityModel.capabilities.DataStorage
+      valid_source_types: [cna.qualityModel.entities.DataAggregate]
       occurrences: [0, UNBOUNDED]
 ```
 

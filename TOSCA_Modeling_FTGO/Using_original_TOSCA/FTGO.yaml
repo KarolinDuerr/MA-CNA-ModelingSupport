@@ -116,7 +116,7 @@ topology_template:
             protocol: http
             port: 8000
             url_path: /key-value
-      ## Missing: Possibility of Link assignment
+        ## Missing: Possibility of External Endpoint and Link assignment
 
 
     db_ftgo_consumer_service:
@@ -138,7 +138,7 @@ topology_template:
             protocol: http
             port: *mysql_port
             url_path: /sql
-      ## Missing: Possibility of Link assignment
+        ## Missing: Possibility of External Endpoint and Link assignment
 
 
     db_ftgo_order_service:
@@ -160,7 +160,7 @@ topology_template:
             protocol: http
             port: *mysql_port
             url_path: /sql
-      ## Missing: Possibility of Link assignment
+        ## Missing: Possibility of External Endpoint and Link assignment
 
 
     db_ftgo_kitchen_service:
@@ -182,7 +182,7 @@ topology_template:
             protocol: http
             port: *mysql_port
             url_path: /sql
-      ## Missing: Possibility of Link assignment
+        ## Missing: Possibility of External Endpoint and Link assignment
 
 
     db_ftgo_restaurant_service:
@@ -204,7 +204,7 @@ topology_template:
             protocol: http
             port: *mysql_port
             url_path: /sql
-      ## Missing: Possibility of Link assignment
+        ## Missing: Possibility of External Endpoint and Link assignment
 
 
     db_ftgo_accounting_service:
@@ -226,7 +226,7 @@ topology_template:
             protocol: http
             port: *mysql_port
             url_path: /sql
-      ## Missing: Possibility of Link assignment
+        ## Missing: Possibility of External Endpoint and Link assignment
 
 
     db_ftgo_delivery_service:
@@ -248,7 +248,7 @@ topology_template:
             protocol: http
             port: *mysql_port
             url_path: /sql
-      ## Missing: Possibility of Link assignment
+        ## Missing: Possibility of External Endpoint and Link assignment
 
 
     db_ftgoorderhistoryservice:
@@ -270,7 +270,7 @@ topology_template:
             protocol: http
             port: *mysql_port
             url_path: /sql
-      ## Missing: Possibility of Link assignment
+        ## Missing: Possibility of External Endpoint and Link assignment
 
 
     db_eventuate:
@@ -292,7 +292,7 @@ topology_template:
             protocol: http
             port: *mysql_port
             url_path: /sql
-      ## Missing: Possibility of Link assignment
+        ## Missing: Possibility of External Endpoint and Link assignment
 
 
     # Infrastructures
