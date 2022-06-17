@@ -1,0 +1,499 @@
+tosca_definitions_version: tosca_simple_yaml_1_3
+
+description:
+  Exlicitly modeling the different Link entities that are part of the FTGO Application
+
+metadata:
+  template_name: FTGO Link Entities
+
+topology_template:
+
+  relationship_templates:
+
+    orderService_subscribes-to_Kafka-orderService-receiveFrom:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: subscribes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: orderService Topic receive-from
+
+    orderService_subscribes-to_Kafka-Restaurant-receiveFrom:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: subscribes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: Restaurant Topic receive-from
+
+    orderService_subscribes-to_Kafka-CreateOrderSaga-reply-receiveFrom:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: subscribes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: CreateOrderSaga-reply Topic receive-from
+
+    orderService_subscribes-to_Kafka-ReviseOrderSaga-reply-receiveFrom:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: subscribes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: ReviseOrderSaga-reply Topic receive-from
+
+    orderService_subscribes-to_Kafka-CancelOrderSaga-reply-receiveFrom:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: subscribes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: CancelOrderSaga-reply Topic receive-from
+
+    orderService_connects-to_Zookeeper:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: connects to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: /connect
+
+    orderService_connects-to_Zipkin:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: connects to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: /connect
+
+    orderService_connects-to_MySQL-ftgoOrderService:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: connects to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: /sql
+
+
+    restaurantService_connects-to_Zookeeper:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: connects to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: /connect
+
+    restaurantService_connects-to_MySQL-ftgoRestaurantService:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: connects to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: /sql
+
+
+    deliveryService_subscribes-to_Kafka-Order-receiveFrom:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: subscribes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: Order Topic receive-from
+
+    deliveryService_subscribes-to_Kafka-Restaurant-receiveFrom:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: subscribes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: Restaurant Topic receive-from
+
+    deliveryService_subscribes-to_Kafka-Ticket-receiveFrom:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: subscribes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: Ticket Topic receive-from
+
+    deliveryService_connects-to_Zookeeper:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: connects to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: /connect
+
+    deliveryService_connects-to_Zipkin:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: connects to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: /connect
+
+    deliveryService_connects-to_MySQL-ftgoDeliveryService:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: connects to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint:  /sql
+
+
+    consumerService_subscribes-to_Kafka-consumerService-receiveFrom:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: subscribes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: consumerService Topic receive-from
+
+    consumerService_connects-to_Zookeeper:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: connects to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: /connect
+
+    consumerService_connects-to_MySQL-ftgoConsumerService:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: connects to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: /sql
+
+
+    kitchenService_subscribes-to_Kafka-kitchenService-receiveFrom:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: subscribes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: kitchenService Topic receive-from
+
+    kitchenService_subscribes-to_Kafka-Restaurant-receiveFrom:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: subscribes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: Restaurant Topic receive-from
+
+    kitchenService_connects-to_Zookeeper:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: connects to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: /connect
+
+    kitchenService_connects-to_MySQL-ftgoKitchenService:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: connects to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: /sql
+
+
+    accountingService_subscribes-to_Kafka-accountingService-receiveFrom:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: subscribes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: accountingService Topic receive-from
+
+    accountingService_subscribes-to_Kafka-Consumer-receiveFrom:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: subscribes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: Consumer Topic receive-from
+
+    accountingService_connects-to_Zookeeper:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: connects to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: /connect
+
+    accountingService_connects-to_MySQL-ftgoAccountingService:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: connects to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: /sql
+
+
+    orderHistoryService_subscribes-to_Kafka-Order-receiveFrom:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: subscribes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: Order Topic receive-from
+
+    orderHistoryService_connects-to_Zookeeper:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: connects to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: /connect
+
+    orderHistoryService_connects-to_DynamoDbLocal:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: connects to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: /key-value
+
+
+    apiGateway_routes-to_orderService-GetOrderById:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: routes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: GET/orders/{orderId}
+
+    apiGateway_routes-to_orderService-PostOrder:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: routes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: POST /orders
+
+    apiGateway_routes-to_orderService-PostReviseOrder:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: routes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: POST /orders/{orderId}/revise
+
+    apiGateway_routes-to_orderService-PostCancelOrder:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: routes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: POST /orders/{orderId}/cancel
+
+    apiGateway_routes-to_deliveryService-GetDeliveriesByOrderId:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: routes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: GET /deliveries?orderId={orderId}
+
+    apiGateway_routes-to_consumerService-PostConsumer:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: routes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: POST /consumers
+
+    apiGateway_routes-to_kitchenService-GetTicketsByOrderId:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: routes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: GET /tickets?orderId={orderId}
+
+    apiGateway_routes-to_accountingService-GetChargesByOrderId:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: routes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: GET /charges?orderId={orderId}
+
+    apiGateway_routes-to_orderHistoryService-GetOrdersFilteredByConsumderId:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: routes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: GET /orders?consumerId={consumerId}
+
+
+    cdcService_publishes-to_Kafka-orderService-sendTo:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: publishes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: orderService Topic send-to
+
+    cdcService_publishes-to_Kafka-consumerService-sendTo:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: publishes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: consumerService Topic send-to
+
+    cdcService_publishes-to_Kafka-kitchenService-sendTo:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: publishes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: kitchenService Topic send-to
+
+    cdcService_publishes-to_Kafka-accountingService-sendTo:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: publishes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: accountingService Topic send-to
+
+    cdcService_publishes-to_Kafka-Order-sendTo:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: publishes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: Order Topic send-to
+
+    cdcService_publishes-to_Kafka-Restaurant-sendTo:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: publishes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: Restaurant Topic send-to
+
+    cdcService_publishes-to_Kafka-Consumer-sendTo:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: publishes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: Consumer Topic send-to
+
+    cdcService_publishes-to_Kafka-Ticket-sendTo:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: publishes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: Ticket Topic send-to
+
+    cdcService_publishes-to_Kafka-CreateOrderSaga-reply-sendTo:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: publishes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: CreateOrderSaga-reply Topic send-to
+
+    cdcService_publishes-to_Kafka-ReviseOrderSaga-reply-sendTo:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: publishes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: ReviseOrderSaga-reply Topic send-to
+
+    cdcService_publishes-to_Kafka-CancelOrderSaga-reply-sendTo:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: publishes to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: CancelOrderSaga-reply Topic send-to
+
+    cdcService_connects-to_Zookeeper:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: reads from
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: /connect
+
+    cdcService_reads-from_MySQL-ftgoOrderService:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: reads from
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: /sql
+
+    cdcService_reads-from_MySQL-ftgoRestaurantService:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: reads from
+        properties:
+        # Point to specific Endpoint
+        target_endpoint: /sql
+
+    cdcService_reads-from_MySQL-ftgoDeliveryService:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: reads from
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: /sql
+
+    cdcService_reads-from_MySQL-ftgoConsumerService:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: reads from
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: /sql
+
+    cdcService_reads-from_MySQL-ftgoKitchenService:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: reads from
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: /sql
+
+    cdcService_reads-from_MySQL-ftgoAccountingService:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: reads from
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: /sql
+
+    cdcService_reads-from_MySQL-ftgoOrderHistoryService:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: reads from
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: /sql
+
+    cdcService_connects-to_MySQL-eventuate:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: connects to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: /sql
+
+    kafka_connects-to_Zookeeper:
+      type: cna.qualityModel.entities.ConnectsTo.Link
+      metadata:
+        type_of_relation: connects to
+      properties:
+        # Point to specific Endpoint
+        target_endpoint: /connect

@@ -1,0 +1,1342 @@
+tosca_definitions_version: tosca_simple_yaml_1_3
+
+description:
+  Modeling the FTGO Application based on the proposed entities of the Qualtiy Model
+  introduced by Lichtenthaeler (https://github.com/r0light/cna-quality-model) with
+  the proposed Extension for TOSCA.
+
+metadata:
+  template_name: FTGO Application
+  template_author: Karolin Duerr
+
+imports:
+  - FTGO_Links.yaml
+  - # TODO Type imports
+
+# System
+topology_template: #TODO BackingData
+
+  dsl_definitions:
+    mysql_port: &mysql_port
+      port: 3306
+    order_service_port: &order_service_port
+      port: 8082
+    restaurant_service_port: &restaurant_service_port
+      port: 8084
+    delivery_service_port: &delivery_service_port
+      port: 8089
+    consumer_service_port: &consumer_service_port
+      port: 8081
+    kitchen_service_port: &kitchen_service_port
+      port: 8083
+    accounting_service_port: &accounting_service_port
+      port: 8085
+    order_history_service_port: &order_history_service_port
+      port: 8086
+    api_gateway_port: &api_gateway_port
+      port: 8087
+    kafka_port: &kafka_port
+      port: 9092
+
+  # Components
+  node_templates:
+
+    # Services
+    consumer_service:
+      type: cna.qualityModel.entities.SoftwareComponent.SoftwareComponent.Service
+      requirements:
+        - host:
+            node: docker_host
+            relationship: dockerHost_host_consumerService
+        # Model Links between Components
+        - endpoint_link:
+            node: kafka
+            relationship: consumerService_subscribes-to_Kafka-consumerService-receiveFrom
+        - endpoint_link:
+            node: zookeeper
+            relationship: consumerService_connects-to_Zookeeper
+        - endpoint_link:
+            node: mysql_service
+            relationship: consumerService_connects-to_MySQL-ftgoConsumerService
+        # Reference to Data Aggregate
+        - uses_data: consumer
+        # Reference to Backing Data
+        - uses_backing_data: kafka_server
+        - uses_backing_data:
+      capabilities:
+        # Add Endpoint entities
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: post_consumers
+            properties:
+              protocol: http
+              port: *consumer_service_port
+              url_path: POST /consumers
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: get_consumer_by_id
+            properties:
+              protocol: http
+              port: *consumer_service_port
+              url_path: GET /consumers/{consumerId}
+
+
+    restaurant_service:
+      type: cna.qualityModel.entities.SoftwareComponent.SoftwareComponent.Service
+      requirements:
+        - host:
+            node: docker_host
+            relationship: dockerHost_host_restaurantService
+        # Model Links between Components
+        - endpoint_link:
+            node: zookeeper
+            relationship: restaurantService_connects-to_Zookeeper
+        - endpoint_link:
+            node: mysql_service
+            relationship: restaurantService_connects-to_MySQL-ftgoRestaurantService
+        # Reference to Data Aggregate
+        - uses_data: restaurant
+        # Reference to Backing Data
+        - uses_backing_data: kafka_server
+        - uses_backing_data:
+      capabilities:
+        # Add Endpoint entities
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: post_restaurant
+            properties:
+              protocol: http
+              port: *restaurant_service_port
+              url_path: POST /restaurants
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: get_restaurants
+            properties:
+              protocol: http
+              port: *restaurant_service_port
+              url_path: GET /restaurants/{restaurantId}
+
+
+    order_service:
+      type: cna.qualityModel.entities.SoftwareComponent.SoftwareComponent.Service
+      requirements:
+        - host:
+            node: docker_host
+            relationship: dockerHost_host_orderService
+        # Model Links between Components
+        - endpoint_link:
+            node: kafka
+            relationship: orderService_subscribes-to_Kafka-orderService-receiveFrom
+        - endpoint_link:
+            node: kafka
+            relationship: orderService_subscribes-to_Kafka-Restaurant-receiveFrom
+        - endpoint_link:
+            node: kafka
+            relationship: orderService_subscribes-to_Kafka-CreateOrderSaga-reply-receiveFrom
+        - endpoint_link:
+            node: kafka
+            relationship: orderService_subscribes-to_Kafka-ReviseOrderSaga-reply-receiveFrom
+        - endpoint_link:
+            node: kafka
+            relationship: orderService_subscribes-to_Kafka-CancelOrderSaga-reply-receiveFrom
+        - endpoint_link:
+            node: zookeeper
+            relationship: orderService_connects-to_Zookeeper
+        - endpoint_link:
+            node: zipkin
+            relationship: orderService_connects-to_Zipkin
+        - endpoint_link:
+            node: mysql_service
+            relationship: orderService_connects-to_MySQL-ftgoOrderService
+        # Reference to Data Aggregate
+        - uses_data: order
+        - uses_data: restaurant
+        # Reference to Backing Data
+        - uses_backing_data: kafka_server
+        - uses_backing_data:
+      capabilities:
+        # Add Endpoint entities
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: post_order
+            properties:
+              protocol: http
+              port: *order_service_port
+              url_path: POST /orders
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: post_orderCancel
+            properties:
+              protocol: http
+              port: *order_service_port
+              url_path: POST /orders/{orderId}/cancel
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: post_orderRevise
+            properties:
+              protocol: http
+              port: *order_service_port
+              url_path: POST /orders/{orderId}/revise
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: get_order_by_id
+            properties:
+              protocol: http
+              port: *order_service_port
+              url_path: GET /orders/{orderId}
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: get_restaurant_by_id
+            properties:
+              protocol: http
+              port: *order_service_port
+              url_path: GET /restaurants/{restaurantId}
+
+
+    kitchen_service:
+      type: cna.qualityModel.entities.SoftwareComponent.SoftwareComponent.Service
+      requirements:
+        - host:
+            node: docker_host
+            relationship: dockerHost_host_kitchenService
+        # Model Links between Components
+        - endpoint_link:
+            node: kafka
+            relationship: kitchenService_subscribes-to_Kafka-kitchenService-receiveFrom
+        - endpoint_link:
+            node: kafka
+            relationship: kitchenService_subscribes-to_Kafka-Restaurant-receiveFrom
+        - endpoint_link:
+            node: zookeeper
+            relationship: kitchenService_connects-to_Zookeeper
+        - endpoint_link:
+            node: mysql_service
+            relationship: kitchenService_connects-to_MySQL-ftgoKitchenService
+        # Reference to Data Aggregate
+        - uses_data: restaurant
+        - uses_data: ticket
+        # Reference to Backing Data
+        - uses_backing_data: kafka_server
+        - uses_backing_data:
+      capabilities:
+        # Add Endpoint entities
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: post_ticketAccept
+            properties:
+              protocol: http
+              port: *kitchen_service_port
+              url_path: POST /tickets/{ticketId}/accept
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: get_restaurant_by_id
+            properties:
+              protocol: http
+              port: *kitchen_service_port
+              url_path: GET /restaurants/{restaurantId}
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: get_tickets_by_orderId
+            properties:
+              protocol: http
+              port: *kitchen_service_port
+              url_path: GET /tickets?orderId={orderId}
+
+
+    accounting_service:
+      type: cna.qualityModel.entities.SoftwareComponent.SoftwareComponent.Service
+      requirements:
+        - host:
+            node: docker_host
+            relationship: dockerHost_host_accountingService
+      # Model Links between Components
+        - endpoint_link:
+            node: kafka
+            relationship: accountingService_subscribes-to_Kafka-accountingService-receiveFrom
+        - endpoint_link:
+            node: kafka
+            relationship: accountingService_subscribes-to_Kafka-Consumer-receiveFrom
+        - endpoint_link:
+            node: zookeeper
+            relationship: accountingService_connects-to_Zookeeper
+        - endpoint_link:
+            node: mysql_service
+            relationship: accountingService_connects-to_MySQL-ftgoAccountingService
+        # Reference to Data Aggregate
+        - uses_data: account
+        # Reference to Backing Data
+        - uses_backing_data: kafka_server
+        - uses_backing_data:
+      capabilities:
+        # Add Endpoint entities
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: get_account_by_id
+            properties:
+              protocol: http
+              port: *accounting_service_port
+              url_path: GET /accounts/{accountId}
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: get_charges_by_orderId
+            properties:
+              protocol: http
+              port: *accounting_service_port
+              url_path: GET /charges?orderId={orderId}
+
+
+    delivery_service:
+      type: cna.qualityModel.entities.SoftwareComponent.SoftwareComponent.Service
+      requirements:
+        - host:
+            node: docker_host
+            relationship: dockerHost_host_deliveryService
+        # Model Links between Components
+        - endpoint_link:
+            node: kafka
+            relationship: deliveryService_subscribes-to_Kafka-Order-receiveFrom
+        - endpoint_link:
+            node: kafka
+            relationship: deliveryService_subscribes-to_Kafka-Restaurant-receiveFrom
+        - endpoint_link:
+            node: kafka
+            relationship: deliveryService_subscribes-to_Kafka-Ticket-receiveFrom
+        - endpoint_link:
+            node: zookeeper
+            relationship: deliveryService_connects-to_Zookeeper
+        - endpoint_link:
+            node: zipkin
+            relationship: deliveryService_connects-to_Zipkin
+        - endpoint_link:
+            node: mysql_service
+            relationship: deliveryService_connects-to_MySQL-ftgoDeliveryService
+        # Reference to Data Aggregate
+        - uses_data: #TODO
+        # Reference to Backing Data
+        - uses_backing_data: kafka_server
+        - uses_backing_data:
+      capabilities:
+        # Add Endpoint entities
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: post_courierAvailability
+            properties:
+              protocol: http
+              port: *delivery_service_port
+              url_path: POST /couriers/{courierId}/availability
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: get_delivery_by_id
+            properties:
+              protocol: http
+              port: *delivery_service_port
+              url_path: GET /deliveries/{deliveryId}
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: get_deliveries_by_orderId
+            properties:
+              protocol: http
+              port: *delivery_service_port
+              url_path: GET /deliveries?orderId={orderId}
+
+
+    order_history_service:
+      type: cna.qualityModel.entities.SoftwareComponent.SoftwareComponent.Service
+      requirements:
+        - host:
+            node: docker_host
+            relationship: dockerHost_host_orderHistoryService
+        # Model Links between Components
+        - endpoint_link:
+            node: kafka
+            relationship: orderHistoryService_subscribes-to_Kafka-Order-receiveFrom
+        - endpoint_link:
+            node: zookeeper
+            relationship: orderHistoryService_connects-to_Zookeeper
+        - endpoint_link:
+            node: dynamo_db_local_service
+            relationship: orderHistoryService_connects-to_DynamoDbLocal
+        # Reference to Data Aggregate
+        - uses_data: #TODO
+        # Reference to Backing Data
+        - uses_backing_data: kafka_server
+        - uses_backing_data:
+      capabilities:
+        # Add Endpoint entities
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: get_orders_by_customerId
+            properties:
+              protocol: http
+              port: *order_history_service_port
+              url_path: GET /orders?consumerId={consumerId}
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            metadata:
+              function: get_order_by_id
+            properties:
+              protocol: http
+              port: *order_history_service_port
+              url_path: Get /orders/{orderId}
+
+
+    ##############################################################################
+    ############################## Backing Services ##############################
+    api_gateway:
+      type: cna.qualityModel.entities.SoftwareComponent.BackingService
+      requirements:
+        - host:
+            node: docker_host
+            relationship: dockerHost_host_apiGateway
+        # Model Links between Components
+        - endpoint_link:
+            node: order_service
+            relationship: apiGateway_routes-to_orderService-GetOrderById
+        - endpoint_link:
+            node: order_service
+            relationship: apiGateway_routes-to_orderService-PostOrder
+        - endpoint_link:
+            node: order_service
+            relationship: apiGateway_routes-to_orderService-PostReviseOrder
+        - endpoint_link:
+            node: order_service
+            relationship: apiGateway_routes-to_orderService-PostCancelOrder
+        - endpoint_link:
+            node: delivery_service
+            relationship: apiGateway_routes-to_deliveryService-GetDeliveriesByOrderId
+        - endpoint_link:
+            node: consumer_service
+            relationship: apiGateway_routes-to_consumerService-PostConsumer
+        - endpoint_link:
+            node: kitchen_service
+            relationship: apiGateway_routes-to_kitchenService-GetTicketsByOrderId
+        - endpoint_link:
+            node: accounting_service
+            relationship: apiGateway_routes-to_accountingService-GetChargesByOrderId
+        - endpoint_link:
+            node: order_history_service
+            relationship: apiGateway_routes-to_orderHistoryService-GetOrdersFilteredByConsumderId
+        # Reference to Data Aggregate
+        - uses_data: #TODO
+        # Reference to Backing Data
+        - uses_backing_data:
+      capabilities:
+        # Add Endpoint entities
+        - external_endpoint:
+            type: tosca.capabilities.Endpoint.Public
+            metadata:
+              function: get_orders
+            properties:
+              protocol: http
+              port: *api_gateway_port
+              url_path: GET /orders?consumerId={consumerId}
+        - external_endpoint:
+            type: tosca.capabilities.Endpoint.Public
+            metadata:
+              function: get_order_by_id
+            properties:
+              protocol: http
+              port: *api_gateway_port
+              url_path: GET /orders/{orderId}
+        - external_endpoint:
+            type: tosca.capabilities.Endpoint.Public
+            metadata:
+              function: post_order
+            properties:
+              protocol: http
+              port: *api_gateway_port
+              url_path: POST /orders
+        - external_endpoint:
+            type: tosca.capabilities.Endpoint.Public
+            metadata:
+              function: post_orderCancel
+            properties:
+              protocol: http
+              port: *api_gateway_port
+              url_path: POST /orders/{orderId}/cancel
+        - external_endpoint:
+            type: tosca.capabilities.Endpoint.Public
+            metadata:
+              function: post_orderRevise
+            properties:
+              protocol: http
+              port: *api_gateway_port
+              url_path: POST /orders/{orderId}/revise
+        - external_endpoint:
+            type: tosca.capabilities.Endpoint.Public
+            metadata:
+              function: post_consumer
+            properties:
+              protocol: http
+              port: *api_gateway_port
+              url_path: POST /consumers
+
+
+    zookeeper:
+      type: cna.qualityModel.entities.SoftwareComponent.BackingService
+      requirements:
+        - host:
+            node: docker_host
+            relationship: dockerHost_host_zookeeper
+        # Reference to Backing Data
+        - uses_backing_data:
+      capabilities:
+        # Add Endpoint entity
+        endpoint:
+          type: tosca.capabilities.Endpoint
+          properties:
+            protocol: http
+            port: 2181
+            url_path: /connect
+
+
+    kafka:
+      type: cna.qualityModel.entities.SoftwareComponent.BackingService
+      requirements:
+        - host:
+            node: docker_host
+            relationship: dockerHost_host_kafka
+        # Model Links between Components
+        - endpoint_link:
+            node: zookeeper
+            relationship: kafka_connects-to_Zookeeper
+      capabilities:
+        # Add Endpoint entities
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            properties:
+              protocol: tcp
+              port: *kafka_port
+              url_path: orderService Topic send-to
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            properties:
+              protocol: tcp
+              port: *kafka_port
+              url_path: orderService Topic receive-from
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            properties:
+              protocol: tcp
+              port: *kafka_port
+              url_path: consumerService Topic send-to
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            properties:
+              protocol: tcp
+              port: *kafka_port
+              url_path: consumerService Topic receive-from
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            properties:
+              protocol: tcp
+              port: *kafka_port
+              url_path: kitchenService Topic send-to
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            properties:
+              protocol: tcp
+              port: *kafka_port
+              url_path: kitchenService Topic receive-from
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            properties:
+              protocol: tcp
+              port: *kafka_port
+              url_path: accountingService Topic send-to
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            properties:
+              protocol: tcp
+              port: *kafka_port
+              url_path: accountingService Topic receive-from
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            properties:
+              protocol: tcp
+              port: *kafka_port
+              url_path: net.chrisrichardson.ftgo.orderservice.domain.Order Topic send-to
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            properties:
+              protocol: tcp
+              port: *kafka_port
+              url_path: net.chrisrichardson.ftgo.orderservice.domain.Order Topic receive-from
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            properties:
+              protocol: tcp
+              port: *kafka_port
+              url_path: net.chrisrichardson.ftgo.restaurantservice.domain.Restaurant Topic send-to
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            properties:
+              protocol: tcp
+              port: *kafka_port
+              url_path: net.chrisrichardson.ftgo.restaurantservice.domain.Restaurant Topic receive-from
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            properties:
+              protocol: tcp
+              port: *kafka_port
+              url_path: net.chrisrichardson.ftgo.consumerservice.domain.Consumer Topic send-to
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            properties:
+              protocol: tcp
+              port: *kafka_port
+              url_path: net.chrisrichardson.ftgo.consumerservice.domain.Consumer Topic receive-from
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            properties:
+              protocol: tcp
+              port: *kafka_port
+              url_path: net.chrisrichardson.ftgo.kitchenservice.domain.Ticket Topic send-to
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            properties:
+              protocol: tcp
+              port: *kafka_port
+              url_path: net.chrisrichardson.ftgo.kitchenservice.domain.Ticket Topic receive-from
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            properties:
+              protocol: tcp
+              port: *kafka_port
+              url_path: net.chrisrichardson.ftgo.orderservice.createorder.CreateOrderSaga-reply Topic send-to
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            properties:
+              protocol: tcp
+              port: *kafka_port
+              url_path: net.chrisrichardson.ftgo.orderservice.createorder.CreateOrderSaga-reply Topic receive-from
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            properties:
+              protocol: tcp
+              port: *kafka_port
+              url_path: net.chrisrichardson.ftgo.orderservice.reviseorder.ReviseOrderSaga-reply Topic send-to
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            properties:
+              protocol: tcp
+              port: *kafka_port
+              url_path: net.chrisrichardson.ftgo.orderservice.reviseorder.ReviseOrderSaga-reply Topic receive-from
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            properties:
+              protocol: tcp
+              port: *kafka_port
+              url_path: net.chrisrichardson.ftgo.orderservice.cancelorder.CancelOrderSaga-reply Topic send-to
+        - endpoint:
+            type: tosca.capabilities.Endpoint
+            properties:
+              protocol: tcp
+              port: *kafka_port
+              url_path: net.chrisrichardson.ftgo.orderservice.cancelorder.CancelOrderSaga-reply Topic receive-from
+        # Reference to Backing Data
+        - uses_backing_data:
+
+
+    cdc_service:
+      type: cna.qualityModel.entities.SoftwareComponent.BackingService
+      requirements:
+        - host:
+            node: docker_host
+            relationship: dockerHost_host_cdcService
+        # Model Links between Components
+        - endpoint_link:
+            node: kafka
+            relationship: cdcService_publishes-to_Kafka-orderService-sendTo
+        - endpoint_link:
+            node: kafka
+            relationship: cdcService_publishes-to_Kafka-consumerService-sendTo
+        - endpoint_link:
+            node: kafka
+            relationship: cdcService_publishes-to_Kafka-kitchenService-sendTo
+        - endpoint_link:
+            node: kafka
+            relationship: cdcService_publishes-to_Kafka-accountingService-sendTo
+        - endpoint_link:
+            node: kafka
+            relationship: cdcService_publishes-to_Kafka-Order-sendTo
+        - endpoint_link:
+            node: kafka
+            relationship: cdcService_publishes-to_Kafka-Restaurant-sendTo
+        - endpoint_link:
+            node: kafka
+            relationship: cdcService_publishes-to_Kafka-Consumer-sendTo
+        - endpoint_link:
+            node: kafka
+            relationship: cdcService_publishes-to_Kafka-Ticket-sendTo
+        - endpoint_link:
+            node: kafka
+            relationship: cdcService_publishes-to_Kafka-CreateOrderSaga-reply-sendTo
+        - endpoint_link:
+            node: kafka
+            relationship: cdcService_publishes-to_Kafka-ReviseOrderSaga-reply-sendTo
+        - endpoint_link:
+            node: kafka
+            relationship: cdcService_publishes-to_Kafka-CancelOrderSaga-reply-sendTo
+        - endpoint_link:
+            node: zookeeper
+            relationship: cdcService_connects-to_Zookeeper
+        - endpoint_link:
+            node: mysql_service
+            relationship: cdcService_reads-from_MySQL-ftgoOrderService
+        - endpoint_link:
+            node: mysql_service
+            relationship: cdcService_reads-from_MySQL-ftgoRestaurantService
+        - endpoint_link:
+            node: mysql_service
+            relationship: cdcService_reads-from_MySQL-ftgoDeliveryService
+        - endpoint_link:
+            node: mysql_service
+            relationship: cdcService_reads-from_MySQL-ftgoConsumerService
+        - endpoint_link:
+            node: mysql_service
+            relationship: cdcService_reads-from_MySQL-ftgoKitchenService
+        - endpoint_link:
+            node: mysql_service
+            relationship: cdcService_reads-from_MySQL-ftgoAccountingService
+        - endpoint_link:
+            node: mysql_service
+            relationship: cdcService_reads-from_MySQL-ftgoOrderHistoryService
+        - endpoint_link:
+            node: mysql_service
+            relationship: cdcService_connects-to_MySQL-eventuate
+        # Reference to Backing Data
+        - uses_backing_data: kafka_server
+      capabilities:
+        # Add Endpoint entities
+        endpoint:
+          type: tosca.capabilities.Endpoint
+          properties:
+            protocol: http
+            port: 8099
+            url_path: /connect
+
+
+    zipkin:
+      type: cna.qualityModel.entities.SoftwareComponent.BackingService
+      requirements:
+        - host:
+            node: docker_host
+            relationship: dockerHost_host_zipkin
+        # Reference to Backing Data
+        - uses_backing_data:
+      capabilities:
+        # Add Endpoint entity
+        endpoint:
+          type: tosca.capabilities.Endpoint
+          properties:
+            protocol: http
+            port: 9411
+            url_path: /connect
+
+
+    ##############################################################################
+    ######################### Storage Backing Services ###########################
+    dynamo_db_local_service:
+      type: cna.qualityModel.entities.Database.StorageService
+      properties:
+        name: FTGO_ORDER_HISTORY_BY_ID
+        port: 3306
+      requirements:
+        - host:
+            node: dynamo_db
+            relationship: dynamoDb_host_dynamoDbLocalService
+        # Reference to Backing Data
+        - uses_backing_data: #TODO
+      capabilities:
+        # Endpoint entity
+        database_endpoint:
+          type: tosca.capabilities.Endpoint.Database
+          properties:
+            protocol: http
+            port: 8000
+            url_path: /key-value
+        # Ability to store Data Aggregates entities
+        persist_data:
+          type: cna.qualityModel.capabilities.DataStorage
+
+
+    db_ftgo_consumer_service:
+      type: cna.qualityModel.entities.Database.StorageService
+      properties:
+        name: ftgo_consumer_service
+        port: 3306
+        user: ftgo_consumer_service_user
+        password: ftgo_consumer_service_password
+      requirements:
+        - host:
+            node: mysql_service
+            relationship: mySqlService_host_dbFtgoConsumerService
+        # Reference to Backing Data
+        - uses_backing_data: #TODO
+      capabilities:
+        # Endpoint entity
+        database_endpoint:
+          type: tosca.capabilities.Endpoint.Database
+          properties:
+            protocol: http
+            port: *mysql_port
+            url_path: /sql
+        # Ability to store Data Aggregates entities
+        persist_data:
+          type: cna.qualityModel.capabilities.DataStorage
+
+
+    db_ftgo_order_service:
+      type: cna.qualityModel.entities.Database.StorageService
+      properties:
+        name: ftgo_order_service
+        port: 3306
+        user: ftgo_order_service_user
+        password: ftgo_order_service_password
+      requirements:
+        - host:
+            node: mysql_service
+            relationship: mySqlService_host_dbFtgoOrderService
+        # Reference to Backing Data
+        - uses_backing_data: #TODO
+      capabilities:
+        # Endpoint entity
+        database_endpoint:
+          type: tosca.capabilities.Endpoint.Database
+          properties:
+            protocol: http
+            port: *mysql_port
+            url_path: /sql
+        # Ability to store Data Aggregates entities
+        persist_data:
+          type: cna.qualityModel.capabilities.DataStorage
+
+
+    db_ftgo_kitchen_service:
+      type: cna.qualityModel.entities.Database.StorageService
+      properties:
+        name: ftgo_kitchen_service
+        port: 3306
+        user: ftgo_kitchen_service_user
+        password: ftgo_kitchen_service_password
+      requirements:
+        - host:
+            node: mysql_service
+            relationship: mySqlService_host_dbFtgoKitchenService
+        # Reference to Backing Data
+        - uses_backing_data: #TODO
+      capabilities:
+        # Endpoint entity
+        database_endpoint:
+          type: tosca.capabilities.Endpoint.Database
+          properties:
+            protocol: http
+            port: *mysql_port
+            url_path: /sql
+        # Ability to store Data Aggregates entities
+        persist_data:
+          type: cna.qualityModel.capabilities.DataStorage
+
+
+    db_ftgo_restaurant_service:
+      type: cna.qualityModel.entities.Database.StorageService
+      properties:
+        name: ftgo_restaurant_service
+        port: 3306
+        user: ftgo_restaurant_service_user
+        password: ftgo_restaurant_service_password
+      requirements:
+        - host:
+            node: mysql_service
+            relationship: mySqlService_host_dbFtgoRestaurantService
+        # Reference to Backing Data
+        - uses_backing_data: #TODO
+      capabilities:
+        # Endpoint entity
+        database_endpoint:
+          type: tosca.capabilities.Endpoint.Database
+          properties:
+            protocol: http
+            port: *mysql_port
+            url_path: /sql
+        # Ability to store Data Aggregates entities
+        persist_data:
+          type: cna.qualityModel.capabilities.DataStorage
+
+
+    db_ftgo_accounting_service:
+      type: cna.qualityModel.entities.Database.StorageService
+      properties:
+        name: ftgo_accounting_service
+        port: 3306
+        user: ftgo_accounting_service_user
+        password: ftgo_accounting_service_password
+      requirements:
+        - host:
+            node: mysql_service
+            relationship: mySqlService_host_dbFtgoAccountingService
+        # Reference to Backing Data
+        - uses_backing_data: #TODO
+      capabilities:
+        # Endpoint entity
+        database_endpoint:
+          type: tosca.capabilities.Endpoint.Database
+          properties:
+            protocol: http
+            port: *mysql_port
+            url_path: /sql
+        # Ability to store Data Aggregates entities
+        persist_data:
+          type: cna.qualityModel.capabilities.DataStorage
+
+
+    db_ftgo_delivery_service:
+      type: cna.qualityModel.entities.Database.StorageService
+      properties:
+        name: ftgo_accounting_service
+        port: 3306
+        user: ftgo_delivery_service_user
+        password: ftgo_delivery_service_password
+      requirements:
+        - host:
+            node: mysql_service
+            relationship: mySqlService_host_dbFtgoDeliveryService
+        # Reference to Backing Data
+        - uses_backing_data: #TODO
+      capabilities:
+        # Endpoint entity
+        database_endpoint:
+          type: tosca.capabilities.Endpoint.Database
+          properties:
+            protocol: http
+            port: *mysql_port
+            url_path: /sql
+        # Ability to store Data Aggregates entities
+        persist_data:
+          type: cna.qualityModel.capabilities.DataStorage
+
+
+    db_ftgoorderhistoryservice:
+      type: cna.qualityModel.entities.Database.StorageService
+      properties:
+        name: ftgoorderhistoryservice
+        port: 3306
+        user: f
+        password:
+      requirements:
+        - host:
+            node: mysql_service
+            relationship: mySqlService_host_dbFtgoOrderHistoryService
+        # Reference to Backing Data
+        - uses_backing_data: #TODO
+      capabilities:
+        # Endpoint entity
+        database_endpoint:
+          type: tosca.capabilities.Endpoint.Database
+          properties:
+            protocol: http
+            port: *mysql_port
+            url_path: /sql
+        # Ability to store Data Aggregates entities
+        persist_data:
+          type: cna.qualityModel.capabilities.DataStorage
+
+
+    db_eventuate:
+      type: cna.qualityModel.entities.Database.StorageService
+      properties:
+        name: eventuate
+        port: 3306
+        user: mysqluser
+        password: mysqlpw
+      requirements:
+        - host:
+            node: mysql_service
+            relationship: mySqlService_host_dbFtgoEventuate
+        # Reference to Backing Data
+        - uses_backing_data: #TODO
+      capabilities:
+        # Endpoint entity
+        database_endpoint:
+          type: tosca.capabilities.Endpoint.Database
+          properties:
+            protocol: http
+            port: *mysql_port
+            url_path: /sql
+        # Ability to store Data Aggregates entities
+        persist_data:
+          type: cna.qualityModel.capabilities.DataStorage
+
+
+    ##############################################################################
+    ############################### Infrastructures ##############################
+    dynamo_db:
+      type: tosca.nodes.DBMS.Infrastructure
+      requirements:
+        - host:
+            node: docker_host
+            relationship: dockerHost_host_dynamoDb
+        # Reference to Backing Data
+        - uses_backing_data: #TODO
+
+    mysql_service:
+      type: tosca.nodes.DBMS.Infrastructure
+      properties:
+        root_password: rootpassword
+        port: 3306
+      requirements:
+        - host:
+            node: docker_host
+            relationship: dockerHost_host_mySqlService
+        # Reference to Backing Data
+        - uses_backing_data: #TODO
+
+    docker_host:
+      type: cna.qualityModel.entities.SoftwareComponent.Compute.Infrastructure
+      requirements:
+        - host:
+            node: local_computer
+            relationship: localComputer_host_dockerHost
+
+    local_computer:
+      type: cna.qualityModel.entities.SoftwareComponent.Compute.Infrastructure
+
+
+    ##############################################################################
+    ############################### Data Aggregate ###############################
+    order:
+      type: cna.qualityModel.entities.DataAggregate
+      properties:
+      requirements:
+        - persistence: mysql_service #TODO fix me
+      capabilities:
+        provided_data:
+          type: tosca.capabilities.Attachment
+
+    restaurant:
+      type: cna.qualityModel.entities.DataAggregate
+      properties:
+      requirements:
+        - persistence: mysql_service #TODO fix me
+      capabilities:
+        provided_data:
+          type: tosca.capabilities.Attachment
+
+    consumer:
+      type: cna.qualityModel.entities.DataAggregate
+      properties:
+      requirements:
+        - persistence: mysql_service #TODO fix me
+      capabilities:
+        provided_data:
+          type: tosca.capabilities.Attachment
+
+    ticket:
+      type: cna.qualityModel.entities.DataAggregate
+      properties:
+      requirements:
+        - persistence: mysql_service #TODO fix me
+      capabilities:
+        provided_data:
+          type: tosca.capabilities.Attachment
+
+    account:
+      type: cna.qualityModel.entities.DataAggregate
+      properties:
+      requirements:
+        - persistence: mysql_service #TODO fix me
+      capabilities:
+        provided_data:
+          type: tosca.capabilities.Attachment
+
+
+    ##############################################################################
+    ################################ Backing Data ################################
+    kafka_server:
+      type: cna.qualityModel.entities.BackingData
+      properties:
+        included_data:
+          EVENTUATELOCAL_KAFKA_BOOTSTRAP_SERVERS: "kafka:29092"
+      capabilities:
+        provided_data:
+          type: tosca.capabilities.Attachment
+
+    datasource_configuration_mysql_service:
+      type: cna.qualityModel.entities.BackingData
+      properties:
+        included_data:
+          MYSQL_ROOT_PASSWORD: rootpassword
+          MYSQL_USER: mysqluser
+          MYSQL_PASSWORD: mysqlpw
+          DockerImage: "mysql:5.7.13"
+      capabilities:
+        provided_data:
+          type: tosca.capabilities.Attachment
+
+    datasource_configuration_dynamodbLocal_service:
+      type: cna.qualityModel.entities.BackingData
+      properties:
+        included_data:
+          Port: 8000
+          AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:-id_key}
+          AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:-access_key}
+          AWS_REGION: ${AWS_REGION:-us-west-2}
+          DockerImage: "amazon/dynamodb-local:1.11.477"
+      capabilities:
+        provided_data:
+          type: tosca.capabilities.Attachment
+
+
+    ##############################################################################
+    ############################## Request Traces ################################
+    RT_get_orders:
+      type: cna.qualityModel.entities.RequestTrace
+      properties:
+        endpoint: GET /orders?consumerId={consumerId}
+        nodes:
+          - api_gateway
+          - order_history_service
+          - dynamo_db_local_service
+        links:
+          - apiGateway_routes-to_orderHistoryService-GetOrdersFilteredByConsumderId
+          - orderHistoryService_connects-to_DynamoDbLocal
+      requirements:
+        - external_endpoint: api_gateway
+
+
+    RT_get_order_by_id:
+      type: cna.qualityModel.entities.RequestTrace
+      properties:
+        endpoint: GET /orders/{orderId}
+        nodes:
+          - api_gateway
+          - order_service
+          - consumer_service
+          - kitchen_service
+          - accounting_service
+          - cdc_service
+          - delivery_service
+          - order_history_service
+          - ftgo_order_service
+          - ftgo_consumer_service
+          - ftgo_kitchen_service
+          - ftgo_accounting_service
+        links:
+          - apiGateway_routes-to_orderService-GetOrderById
+          - orderService_connects-to_MySQL-ftgoOrderService
+          - apiGateway_routes-to_kitchenService-GetTicketsByOrderId
+          - kitchenService_connects-to_MySQL-ftgoKitchenService
+          - apiGateway_routes-to_deliveryService-GetDeliveriesByOrderId
+          - deliveryService_connects-to_MySQL-ftgoDeliveryService
+          - apiGateway_routes-to_accountingService-GetChargesByOrderId
+          - accountingService_connects-to_MySQL-ftgoAccountingService
+      requirements:
+        - external_endpoint: api_gateway
+
+
+    RT_post_order:
+      type: cna.qualityModel.entities.RequestTrace
+      properties:
+        endpoint: POST /orders
+        nodes:
+          - api_gateway
+          - order_service
+          - consumer_service
+          - kitchen_service
+          - accounting_service
+          - cdc_service
+          - delivery_service
+          - order_history_service
+          - ftgo_order_service
+          - ftgo_consumer_service
+          - ftgo_kitchen_service
+          - ftgo_accounting_service
+          - kafka
+        links:
+          - apiGateway_routes-to_orderService-PostOrder
+          - orderService_connects-to_MySQL-ftgoOrderService
+          - cdcService_reads-from_MySQL-ftgoOrderService
+          - cdcService_publishes-to_Kafka-orderService-sendTo
+          - orderService_subscribes-to_Kafka-orderService-receiveFrom
+          - cdcService_publishes-to_Kafka-ReviseOrderSaga-reply-sendTo
+          - orderService_subscribes-to_Kafka-ReviseOrderSaga-reply-receiveFrom
+          - cdcService_publishes-to_Kafka-kitchenService-sendTo
+          - kitchenService_subscribes-to_Kafka-kitchenService-receiveFrom
+          - kitchenService_connects-to_MySQL-ftgoKitchenService
+          - cdcService_reads-from_MySQL-ftgoKitchenService
+          - cdcService_publishes-to_Kafka-accountingService-sendTo
+          - accountingService_subscribes-to_Kafka-accountingService-receiveFrom
+          - accountingService_connects-to_MySQL-ftgoAccountingService
+          - cdcService_reads-from_MySQL-ftgoAccountingService
+          - cdcService_publishes-to_Kafka-Ticket-sendTo
+          - cdcService_publishes-to_Kafka-Order-sendTo
+      requirements:
+        - external_endpoint: api_gateway
+
+
+    RT_post_orderCancel:
+      type: cna.qualityModel.entities.RequestTrace
+      properties:
+        endpoint: POST /orders/{orderId}/cancel
+        nodes:
+          - api_gateway
+          - order_service
+          - kitchen_service
+          - accounting_service
+          - cdc_service
+          - kafka
+          - ftgo_order_service
+          - ftgo_kitchen_service
+          - ftgo_accounting_service
+        links:
+          - apiGateway_routes-to_orderService-PostCancelOrder
+          - orderService_connects-to_MySQL-ftgoOrderService
+          - cdcService_reads-from_MySQL-ftgoOrderService
+          - cdcService_publishes-to_Kafka-orderService-sendTo
+          - orderService_subscribes-to_Kafka-orderService-receiveFrom
+          - cdcService_publishes-to_Kafka-CancelOrderSaga-reply-sendTo
+          - orderService_subscribes-to_Kafka-CancelOrderSaga-reply-receiveFrom
+          - cdcService_publishes-to_Kafka-kitchenService-sendTo
+          - kitchenService_subscribes-to_Kafka-kitchenService-receiveFrom
+          - kitchenService_connects-to_MySQL-ftgoKitchenService
+          - cdcService_reads-from_MySQL-ftgoKitchenService
+          - cdcService_publishes-to_Kafka-accountingService-sendTo
+          - accountingService_subscribes-to_Kafka-accountingService-receiveFrom
+          - accountingService_connects-to_MySQL-ftgoAccountingService
+          - cdcService_reads-from_MySQL-ftgoAccountingService
+          - cdcService_publishes-to_Kafka-Ticket-sendTo
+          - cdcService_publishes-to_Kafka-Order-sendTo
+          - deliveryService_subscribes-to_Kafka-Ticket-receiveFrom
+          - orderHistoryService_subscribes-to_Kafka-Order-receiveFrom
+      requirements:
+        - external_endpoint: api_gateway
+
+
+    RT_post_orderRevise:
+      type: cna.qualityModel.entities.RequestTrace
+      properties:
+        endpoint: POST /orders/{orderId}/revise
+        nodes:
+          - api_gateway
+          - order_service
+          - kitchen_service
+          - accounting_service
+          - cdc_service
+          - kafka
+          - ftgo_order_service
+          - ftgo_kitchen_service
+          - ftgo_accounting_service
+        links:
+          - apiGateway_routes-to_orderService-PostReviseOrder
+          - orderService_connects-to_MySQL-ftgoOrderService
+          - cdcService_reads-from_MySQL-ftgoOrderService
+          - cdcService_publishes-to_Kafka-orderService-sendTo
+          - orderService_subscribes-to_Kafka-orderService-receiveFrom
+          - cdcService_publishes-to_Kafka-ReviseOrderSaga-reply-sendTo
+          - orderService_subscribes-to_Kafka-ReviseOrderSaga-reply-receiveFrom
+          - cdcService_publishes-to_Kafka-kitchenService-sendTo
+          - kitchenService_subscribes-to_Kafka-kitchenService-receiveFrom
+          - kitchenService_connects-to_MySQL-ftgoKitchenService
+          - cdcService_reads-from_MySQL-ftgoKitchenService
+          - cdcService_publishes-to_Kafka-accountingService-sendTo
+          - accountingService_subscribes-to_Kafka-accountingService-receiveFrom
+          - accountingService_connects-to_MySQL-ftgoAccountingService
+          - cdcService_reads-from_MySQL-ftgoAccountingService
+          - cdcService_publishes-to_Kafka-Ticket-sendTo
+          - cdcService_publishes-to_Kafka-Order-sendTo
+      requirements:
+        - external_endpoint: api_gateway
+
+
+    RT_post_consumer:
+      type: cna.qualityModel.entities.RequestTrace
+      properties:
+        endpoint: POST /consumers
+        nodes:
+          - api_gateway
+          - consumer_service
+          - accounting_service
+          - cdc_service
+          - kafka
+          - ftgo_consumer_service
+        links:
+          - apiGateway_routes-to_consumerService-PostConsumer
+          - consumerService_connects-to_MySQL-ftgoConsumerService
+          - cdcService_reads-from_MySQL-ftgoConsumerService
+          - cdcService_publishes-to_Kafka-Consumer-sendTo
+          - accountingService_subscribes-to_Kafka-Consumer-receiveFrom
+      requirements:
+        - external_endpoint: api_gateway
+
+
+  relationship_templates:
+    # Links imported
+
+    # Deployment Mappings
+    dockerHost_host_consumerService:
+      type: tosca.relationships.HostedOn
+
+    dockerHost_host_restaurantService:
+      type: tosca.relationships.HostedOn
+
+    dockerHost_host_orderService:
+      type: tosca.relationships.HostedOn
+
+    dockerHost_host_kitchenService:
+      type: tosca.relationships.HostedOn
+
+    dockerHost_host_accountingService:
+      type: tosca.relationships.HostedOn
+
+    dockerHost_host_deliveryService:
+      type: tosca.relationships.HostedOn
+
+    dockerHost_host_orderHistoryService:
+      type: tosca.relationships.HostedOn
+
+    dockerHost_host_dynamoDbLocalService:
+      type: tosca.relationships.HostedOn
+
+    dockerHost_host_mySqlService:
+      type: tosca.relationships.HostedOn
+
+    dockerHost_host_apiGateway:
+      type: tosca.relationships.HostedOn
+
+    dockerHost_host_zookeeper:
+      type: tosca.relationships.HostedOn
+
+    dockerHost_host_kafka:
+      type: tosca.relationships.HostedOn
+
+    dockerHost_host_cdcService:
+      type: tosca.relationships.HostedOn
+
+    dockerHost_host_zipkin:
+      type: tosca.relationships.HostedOn
+
+    localComputer_host_dockerHost:
+      type: tosca.relationships.HostedOn
+
+
+
+
