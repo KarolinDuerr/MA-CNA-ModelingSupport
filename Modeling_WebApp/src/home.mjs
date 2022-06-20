@@ -11,14 +11,9 @@ class Homepage {
             <p>TODO</p>
         </div>
     </div>
-    <div class="container-fluid h-100" style="border-style: solid; border-color: yellow;">
+    <div class="container-fluid h-100">
     <div>`;
     }
 }
-
-// export const renderPageInto = (parentElement, existingHomepage) => {
-//     const homePage = existingHomepage || new Homepage();
-//     parentElement.insertAdjacentHTML("beforeend", homePage.getHomepageCreatedTemplate());
-// }
 
 export default Homepage;
