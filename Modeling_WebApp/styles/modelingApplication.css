@@ -1,0 +1,169 @@
+:root {
+    --toolbar-line-colour: rgba(52, 58, 64, 0.5);
+    --button-focus-colour: rgba(52, 58, 64, 0.5);
+    --menu-background-colour: #343a40;
+    --app-frame: 5px solid var(--menu-background-colour);
+}
+
+/* Configuring overlay items*/
+.init-overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Very high Z-Index due to high Bootstrap Z-Index values for sticky tops etc. */
+    z-index: 1080;
+    justify-content: center;
+}
+
+.init-overlay-content {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    color: white;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+.init-overlay-content p {
+    margin-top: 2em;
+}
+
+#startModelingForm {
+    display: none;
+}
+
+#createNewDiagramBtn,
+#startModelingBtnArea {
+    margin-top: 4em;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    font-weight: bold;
+}
+
+#startModelingBtn {
+    background-color: #3591c2;
+    font-weight: bold;
+    margin-top: 3em;
+    position: inherit;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+.validationError {
+    color: #f8a1a1;
+}
+
+.startModelingBtnArea {
+    margin-top: 6em;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    font-weight: bold;
+}
+
+.submitEditApplicationNameBtnGroup {
+    display: none;
+}
+
+/* Modal Dialog */
+.modalTitleIcon {
+    margin-right: 10px;
+}
+
+i[data-type=normal] {
+    color: black;
+}
+
+i[data-type=warning] {
+    color: darkgoldenrod;
+}
+
+i[data-type=error] {
+    color: red;
+}
+
+.modalInputLabel {
+    margin-left: 8px;
+}
+
+.rangeBoxCurrentValue {
+    opacity: 70%;
+}
+
+/* General application frame */
+#app {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* box-sizing: border-box; */
+    margin: 0;
+    padding: 0;
+    /* Allows child divs to fill parent */
+    display: table;
+    border-bottom: var(--app-frame);
+}
+
+.app-body {
+    position: relative;
+    height: 100%;
+    box-sizing: content-box;
+    /* Allows included divs to fill parent when parent display: table */
+    display: table-row;
+}
+
+.entityShapes-sidebar-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    /* TODO prefer 250px? */
+    /* width: 13%; */
+    width: 250px;
+    height: 100%;
+    border-top: var(--app-frame);
+    border-right: var(--app-frame);
+    box-sizing: border-box;
+    /* TODO choose suitable colour */
+    /* background-color: rgb(61, 180, 244, 0.4); */
+    background-color: rgba(48, 122, 162, 0.4);
+    /* background-color: rgba(34, 110, 151, 0.4); */
+    /* background-color: rgba(22, 107, 153, 0.4); */
+    overflow: auto;
+}
+
+.details-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    /* TODO prefer 250px? */
+    /* width: 15%; */
+    width: 260px;
+    height: 100%;
+    border-top: var(--app-frame);
+    border-left: var(--app-frame);
+    /* Keep:? */
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+.visible-modeling-area {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    /* left: 13%;
+    right: 15%; */
+    left: 250px;
+    right: 260px;
+    border-top: var(--app-frame);
+}

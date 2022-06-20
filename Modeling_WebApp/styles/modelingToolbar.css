@@ -1,0 +1,218 @@
+/* Configuring modeling app toolbar */
+
+:root {
+    --toolbar-line-colour: rgba(52, 58, 64, 0.5);
+    --button-focus-colour: rgba(52, 58, 64, 0.5);
+    --menu-background-colour: #343a40;
+    --test: 5px solid var(--menu-background-colour);
+}
+
+.app-header {
+    /* position: relative; */
+    /* display: flex; */
+    width: 100%;
+    /* border-bottom: 2px solid var(--toolbar-line-colour); */
+    /* TODO necessary to fill parent?: */
+    /* display:table-row; */
+}
+
+.app-header-first-row {
+    display: flex;
+    width: 100%;
+    box-shadow: inset 0 -2px 0 var(--toolbar-line-colour);
+}
+
+.app-header-second-row {
+    display: flex;
+    width: auto;
+    position: relative;
+}
+
+.toolbar-container {
+    width: 100%;
+    /* box-shadow: inset 0 -2px 0 var(--toolbar-line-colour); */
+}
+
+/* Configuring System title items (toolbar left) */
+.app-title {
+    width: auto;
+    max-width: 30%;
+    min-width: 20%;
+    box-sizing: border-box;
+}
+
+.app-toolbar {
+    align-items: center;
+    width: auto;
+    display: flex;
+}
+
+/* Toolbar Button elements */
+.app-toolbar-tools {
+    display: flex;
+    /* align-items: center;
+    flex-shrink: 1000 */
+}
+
+.button-group {
+    /* box-shadow: inset 0 -4px 0 darkgray;
+    margin-bottom: 2px; */
+    display: flex;
+}
+
+.button-group[data-group=first-row-config-button] {
+    display: flex;
+    float: right;
+    margin-left: auto;
+}
+
+.group-divider {
+    margin-left: 6px;
+    margin-right: 4px;
+    position: relative;
+}
+
+.group-divider:after {
+    content: '';
+    width: 2px;
+
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    background-color: var(--toolbar-line-colour);
+    top: 20%;
+    height: 60%;
+}
+
+.toolbarDropdownButtonItem:hover,
+.toolbarDropdownButton:hover,
+.toolbarButton:hover {
+    color: #fff;
+    background-color: #343a40;
+    /* border-color: #343a40; */
+}
+
+.toolbarDropdownButtonItem:focus,
+.toolbarDropdownButton:focus,
+.toolbarButton:focus,
+.toolbarButton.focus {
+    box-shadow: 0 0 0 0.2rem var(--button-focus-colour);
+}
+
+/* Entity Checkboxes */
+.entity-tools {
+    display: flex;
+    width: auto;
+    width: 100%;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 10px;
+    /* padding-right: 10px; */
+    position: relative;
+}
+
+.entity-overall-group {
+    display: flex;
+    position: relative;
+    width: auto;
+    width: 100%;
+    /* distribute included elements evenly */
+    justify-content: space-evenly;
+    /* multiple lines if not enough space */
+    flex-wrap: wrap;
+}
+
+.entity-group {
+    align-items: center;
+}
+
+.entityCheckBox:checked {
+    /* accent-color: #720c01; */
+    /* Colour of active menu item: */
+    /* accent-color: #3db4f4; */
+    /* accent-color: #00466b; */
+    accent-color: #343a40;
+}
+
+.entityCheckBoxLabel {
+    font-size: 10px;
+    font-size: 0.9em;
+    /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
+}
+
+@keyframes addingEntity {
+    0% {
+        background-color: #343a40;
+        opacity: 0.4;
+    }
+    25% {
+        background-color: #06b83e;
+        opacity: 1;
+    }
+    100% {
+        background-color: #343a40;
+        opacity: 0.4;
+    }
+}
+
+@keyframes removingEntity {
+    0% {
+        background-color: #343a40;
+        opacity: 0.4;
+    }
+    25% {
+        background-color: #b8060c;
+        opacity: 1;
+    }
+    100% {
+        background-color: #343a40;
+        opacity: 0.4;
+    }
+}
+
+.numberOfEntities {
+    margin-left: 5px;
+    background-color: #343a40;
+    opacity: 0.4;
+}
+
+.numberOfEntities.addingEntity {
+    opacity: 0.4;
+    animation-name: addingEntity;
+    animation-duration: 2s;
+}
+
+.numberOfEntities.removingEntity {
+    opacity: 0.4;
+    animation-name: removingEntity;
+    animation-duration: 2s;
+}
+
+
+.second-row-tools[data-group=second-row-config-tools] {
+    display: flex;
+    float: right;
+    margin-left: auto;
+    align-self: center;
+}
+
+.group-divider[data-group=second-row-config-button] {
+    margin-right: 4px;
+    position: relative;
+    align-self: auto;
+}
+
+/* :focus:not(:focus-visible) {
+    outline: 0;
+    box-shadow: none;
+} */
+
+.exitRequestTraceView {
+    background-color: rgb(220, 20, 60);
+}
+
+.exitRequestTraceView:hover {
+    background-color: rgb(139, 0, 0, 0.8);
+    border-color: rgb(139, 0, 0, 0.8);
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="CNA Modeling Web App"
+        content="CNA Modeling is a web application that allows modeling cloud-native application architectures for evaluation purposes based on the quality model entities proposed by Lichtenthäler and Wirtz">
+    <title>CNA Modeling: Modeling Application</title>
+
+    <link rel="icon" type="image/svg+xml" href="icon/cube-solid.svg" />
+
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" />
+    <!-- For debugging purposes use normal version instead of minified version -->
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jointjs/3.5.5/joint.css" /> -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jointjs/3.5.5/joint.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+
+
+    <!-- Application stylesheets -->
+    <link rel="stylesheet" type="text/css" href="styles/menu.css" />
+    <link rel="stylesheet" ref="styles/modelingApplicationPrint.css" media="print" />
+    <link rel="stylesheet" type="text/css" href="styles/modelingToolbar.css" />
+    <link rel="stylesheet" type="text/css" href="styles/sidebar.css" />
+    <link rel="stylesheet" type="text/css" href="styles/modelingApplication.css" />
+    <link rel="stylesheet" type="text/css" href="styles/modelingArea.css" />
+</head>
+
+<body class="h-100">
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-expand navbar-light bg-dark text-white">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="navbar-header">
+                    <a class="navbar-brand text-muted"><i class="fa-solid fa-cube"></i> CNA Modeling</a>
+                </div>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a id="homeMenuItem" class="nav-link text-white" href="index.html"
+                            data-entry-module="src/home" data-menu-index="1"><i class="fa fa-fw fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="modelingApplicationMenuItem" class="nav-link text-white" href="index.html"
+                            data-entry-module="ModelingApp/modelingApp" data-menu-index="2"><i class="fa-solid fa-pencil"></i> Modeling
+                            Application</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Content -->
+    <main role="main" class="flex-grow-1">
+        <!-- The content to load goes here -->
+    </main>
+
+    <!-- JointJS dependencies -->
+    <!-- For debugging purposes use normal version instead of minified version -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.4.0/backbone.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jointjs/3.5.5/joint.js"></script> -->
+
+    <!-- For debugging purposes use normal version instead of minified version -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jointjs/3.5.5/joint.min.js"></script> -->
+    <!-- Bootstrap dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+        crossorigin="anonymous"></script>
+
+    <!-- Application code -->
+    <script type="module" src="src/index.mjs"></script>
+</body>
+
+</html>

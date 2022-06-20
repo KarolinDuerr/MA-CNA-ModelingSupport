@@ -1,0 +1,19 @@
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    /* #jointPaper,
+    #jointPaper * { */
+    .system-container-modeling-area
+    .system-container-modeling-area * {
+        visibility: visible;
+    }
+
+    /* #jointPaper { */
+    .system-container-modeling-area {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+}

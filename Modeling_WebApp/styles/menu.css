@@ -1,0 +1,61 @@
+:root {
+    --menu-item-active-colour: #3db4f4;;
+}
+
+html {
+    height: 100vh;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    /* overflow: auto; */
+}
+
+.navbar-header {
+    padding-left: 0.8em;
+}
+
+.navbar {
+    padding: 0;
+  }
+
+.navbar .navbar-nav .nav-link {
+    padding: 1em;
+  }
+
+.nav-item:hover {
+    background-color: #57596B;
+}
+
+.navbar-nav > li {
+    float: left;
+    position: relative;
+}
+
+/* .navbar-light .navbar-nav .nav-item.active > a.nav-link.text-white {
+    color: #3db4f4; --> problem text-white
+} */
+
+.nav-item.active > a.nav-link > i {
+    color: var(--menu-item-active-colour);
+}
+
+.navbar-light .navbar-nav .nav-item.active > .nav-item {
+    color: var(--menu-item-active-colour);
+}
+
+.navbar-light .navbar-nav .active::after {
+    height: 4px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    content: " ";
+    border-bottom: 5px solid var(--menu-item-active-colour);
+}

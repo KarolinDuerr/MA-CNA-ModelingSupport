@@ -1,0 +1,72 @@
+:root {
+    --toolbar-line-colour: rgba(52, 58, 64, 0.5);
+    --button-focus-colour: rgba(52, 58, 64, 0.5);
+    --menu-background-colour: #343a40;
+    --app-frame: 5px solid var(--menu-background-colour);
+    --paper-background-colour: rgba(192, 192, 192, 0.3);
+}
+
+
+.system-container {
+    position: relative;
+    overflow: scroll;
+    /* box-sizing: border-box;     */
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+}
+
+.system-container>.system-container-modeling-area {
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    display: inline-block;
+    /* vertical-align: top; */
+    background: var(--paper-background-colour);
+    box-shadow: 3px 0px 3px 3px rgba(52, 58, 64, 0.3); 
+    /* border: 2px solid yellow; */
+}
+
+/* .joint-paper-scroller .joint-paper { */
+.system-container .paperArea {
+    margin: 0;
+    /* position: absolute; */
+    display: inline-block;
+}
+
+/* .joint-paper-scroller .joint-paper > svg { */
+.paperArea .joint-paper>svg {
+    display: block;
+}
+
+.joint-paper {
+    box-shadow: 0px 5px 0px 1px rgba(52, 58, 64, 0.24);
+}
+
+/* .joint-paper-scroller[data-cursor=grab] { */
+.system-container[data-cursor=grab] {
+    /* cursor: all-scroll; */
+    /* cursor: -webkit-grab; */
+    /* cursor: -moz-grab; */
+    /* cursor: grab */
+}
+
+/* .joint-paper-scroller[data-cursor=grab].is-panning { */
+.system-container.is-paper-dragging {
+    /* cursor: -webkit-grabbing; */
+    /* cursor: -moz-grabbing; */
+    cursor: grabbing
+}
+
+/* Entity Tools */
+/* TODO */
+.entityTool:hover {
+    cursor: pointer;
+    filter: invert(62%) sepia(43%) saturate(6433%) hue-rotate(21deg) brightness(96%) contrast(91%);
+    -webkit-filter: invert(62%) sepia(43%) saturate(6433%) hue-rotate(21deg) brightness(96%) contrast(91%);
+}
+
+.available-cell > * {
+    /* stroke: forestgreen;  */
+    stroke: limegreen; 
+}
