@@ -16,7 +16,9 @@ class ModelingApplicationFrame {
             <div class="init-overlay-content">
                 <h2 class="user-select-none text-center">Welcome to the CNA Modeling Application!</h2>
                 <div id="init-firstInformation">
-                    <p class="user-select-none">// TODO</p>
+                    <p class="user-select-none">The modeling application allows you to model cloud-native application (CNA) architectures using thirteen different entities. It is based on the CNA quality model 
+                    as introduced here: https://github.com/r0light/cna-quality-model/tree/9058f6236e8e0b1cceee9abf67a96e927140d0fa. In addition, the application supports exporting the graphical model into an 
+                    extended version of the TOSCA architecture description language. The extended TOSCA version is being introduced here: https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/TOSCA_Extension.</p>
                     <button id="createNewDiagramBtn" type="button" class="btn btn-outline-dark btn-light"><i
                             class="fa-solid fa-pencil"></i> Create new
                         diagram</button>
