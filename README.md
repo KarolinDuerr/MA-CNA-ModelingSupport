@@ -5,7 +5,7 @@ __This repository is currently still under development, while the thesis is stil
 
 ## Table of Contents
 
-1. [Quality Model For Cloud-Native Applications: Product Factor to Entity Mapping](#1-quality-model-for-cloud-native-aApplications:-product-factor-to-entity-mapping)
+1. [Quality Model For Cloud-Native Applications: Product Factor to Entity Mapping](#product-factor-to-entity-mapping)
 2. [ADL Search & Selection](#2-adl-search-&-selection)
 3. [TOSCA](#3-tosca)
     1. [TOSCA: FTGO Modeling](#tosca-ftgo-modeling)
@@ -18,7 +18,7 @@ __This repository is currently still under development, while the thesis is stil
 
 All the following topics focus in some way on the cloud-native quality model as introduced in the paper [“Towards a Quality Model for Cloud-native applications”](https://doi.org/10.1007/978-3-031-04718-3_7) and the [CNA Quality Model Repository](https://github.com/r0light/cna-quality-model/tree/0.1).
 
-## 1. Quality Model For Cloud-Native Applications: Product Factor to Entity Mapping
+## <a name="product-factor-to-entity-mapping">1. Quality Model For Cloud-Native Applications: Product Factor to Entity Mapping</a>
 
 The concrete mapping of each product factor to the individual entities can be found here: [Product Factor - Entity Mapping](CNA_QualityModel_Entities/ProductFactor_Entity_Mapping.md)
 
