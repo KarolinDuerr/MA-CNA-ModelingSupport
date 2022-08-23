@@ -40,7 +40,7 @@ The mapping of FTGO elements to the quality model entities, as well as the model
 - [modeling with original version](TOSCA_Modeling_FTGO/Using_original_TOSCA)
 - [modeling with extended version](TOSCA_Modeling_FTGO/Using_extended_TOSCA)
 
-## 3.2 <a name="tosca-extension-proposal">TOSCA: Extension Proposal</a>
+### 3.2 <a name="tosca-extension-proposal">TOSCA: Extension Proposal</a>
 
 The detailed definition of the proposed extension for TOSCA can be found here: [TOSCA Extension](TOSCA_Extension/README.md)
 
