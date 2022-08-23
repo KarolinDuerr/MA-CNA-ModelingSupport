@@ -1,5 +1,5 @@
 # MA-CNA-ModelingSupport
-Accompanying repository to the master thesis “Providing Tooling Support for Modeling Cloud-Native Application Architectures”
+Accompanying repository to the master thesis “Providing Tooling Support for Modeling Cloud-Native Application Architectures”.
 
 __This repository is currently still under development, while the thesis is still in progress.__
 
@@ -16,7 +16,7 @@ __This repository is currently still under development, while the thesis is stil
 
 ---------------------------------------------------------
 
-All the following topics focus in some way on the cloud-native quality model as introduced in the paper [“Towards a Quality Model for Cloud-native applications”](https://doi.org/10.1007/978-3-031-04718-3_7) and the [CNA Quality Model Repository](https://github.com/r0light/cna-quality-model/tree/0.1).
+All the following topics focus in some way on the cloud-native quality model as introduced in the paper [“Towards a Quality Model for Cloud-native Applications”](https://doi.org/10.1007/978-3-031-04718-3_7) and the [CNA Quality Model Repository](https://github.com/r0light/cna-quality-model/tree/0.1).
 
 ## <a name="product-factor-to-entity-mapping">1. Quality Model For Cloud-Native Applications: Product Factor to Entity Mapping</a>
 
