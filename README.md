@@ -8,8 +8,8 @@ __This repository is currently still under development, while the thesis is stil
 1. [Quality Model For Cloud-Native Applications: Product Factor to Entity Mapping](#1-quality-model-for-cloud-native-aApplications:-product-factor-to-entity-mapping)
 2. [ADL Search & Selection](#2-adl-search-&-selection)
 3. [TOSCA](#3-tosca)
-    1. [TOSCA: FTGO Modeling](#31-tosca:-ftgo-modeling)
-    2. [TOSCA: Extension Proposal](#32-tosca:-extension-proposal)
+    1. [TOSCA: FTGO Modeling](#tosca-ftgo-modeling)
+    2. [TOSCA: Extension Proposal](#tosca-extension-proposal)
 4. [Web-based Tooling Support](#4-web-based-tooling-support)
     1. [JS Modeling Library Search & Selection](#41-js-modeling-library-search-&-selection)
     2. [Web-Based Modeling Application](#42-web-based-modeling-application)
@@ -32,7 +32,7 @@ The process for the systematic literature search that led to the selection of th
 
 A detailed review of the five ADLs - TOSCA, CloudML, CAMEL, LEMMA and Context Mapper - led to the selection of TOSCA to model architectures for the quality model. However, an extension is required such that all proposed entities of the quality model can be represented. Therefore, besides providing the proposed extension, Richardson’s [FTGO Application]( https://github.com/microservices-patterns/ftgo-application) was modeled using the original as well as the extended TOSCA version to identify further requirements.   
 
-### 3.1 TOSCA: FTGO Modeling
+### 3.1 <a name="tosca-ftgo-modeling">TOSCA: FTGO Modeling</a>
 
 The mapping of FTGO elements to the quality model entities, as well as the modeling itself, can be found here: [TOSCA - FTGO Modeling](TOSCA_Modeling_FTGO)
 
@@ -40,7 +40,7 @@ The mapping of FTGO elements to the quality model entities, as well as the model
 - [modeling with original version](TOSCA_Modeling_FTGO/Using_original_TOSCA)
 - [modeling with extended version](TOSCA_Modeling_FTGO/Using_extended_TOSCA)
 
-## 3.2 TOSCA: Extension Proposal
+## 3.2 <a name="tosca-extension-proposal">TOSCA: Extension Proposal</a>
 
 The detailed definition of the proposed extension for TOSCA can be found here: [TOSCA Extension](TOSCA_Extension/README.md)
 
