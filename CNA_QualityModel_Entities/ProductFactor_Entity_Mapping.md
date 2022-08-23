@@ -1,8 +1,8 @@
 # Mapping of Product Factors to Entities
 
-Results retrieved from [CNA Quality Model Repository](https://github.com/r0light/cna-quality-model)[^1].    
+Results retrieved from [CNA Quality Model Repository](https://github.com/r0light/cna-quality-model/tree/0.1)[^1].    
 
-[^1]: exact mapping taken from https://github.com/r0light/cna-quality-model/blob/main/E4_final_quality_model.md, last accessed: 2022-02-07
+[^1]: exact mapping taken from [https://github.com/r0light/cna-quality-model/blob/0.1/E4_final_quality_model.md](https://github.com/r0light/cna-quality-model/blob/0.1/E4_final_quality_model.md), last accessed: 2022-02-07
 
 <table>
     <tr>
