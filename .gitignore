@@ -16,3 +16,7 @@
 
 # Kile
 *.backup
+
+# Github pages Mkdocs
+/site
+/aux

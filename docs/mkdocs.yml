@@ -1,0 +1,154 @@
+# Page Information
+site_name: Cloud-Native Modeling Support
+site_author: Karolin Dürr
+
+# Repository
+repo_url: https://github.com/KarolinDuerr/MA-CNA-ModelingSupport
+repo_name: KarolinDuerr/MA-CNA-ModelingSupport
+
+theme:
+    name: material
+#    custom_dir: overrides
+    palette:
+      - primary: teal
+      - media: "(prefers-color-scheme: light)"
+        scheme: default
+        toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+      - media: "(prefers-color-scheme: dark)"
+        scheme: slate
+        toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+    icon:
+      repo: fontawesome/brands/github
+      logo: material/alpha-s-circle-outline      
+
+    features:
+        - navigation.tabs
+        - navigation.tabs.sticky
+        - navigation.indexes
+        - navigation.top
+        # Test
+        - search.suggest
+        - search.share
+
+extra:
+    version: 1.0
+    social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/KarolinDuerr
+      name: Karolin Dürr      
+    - icon: fontawesome/brands/github
+      link: https://github.com/r0light
+      name: Robin Lichtenthäler
+      
+extra_css:
+  - stylesheets/extra.css
+
+nav:
+    - Home:
+        - Home: index.md
+        - License: LICENSE.md
+    - CNA Mapping:
+        - CNA_Mapping/index.md
+    - ADL Literature Search & Review:
+        - Literature Search:
+            - ADL_Search/index.md
+            - Review Search: ADL_Search/1_Review_Search.md
+            - Recent ADLs Search: ADL_Search/2_Recent_ADLs_Search.md
+        - Review Criteria:
+            - ReviewCriteria/index.md
+            - Language Characteristics: ReviewCriteria/LanguageCharacteristics.md
+            - Cloud Modeling Capabilities: ReviewCriteria/CloudModelingCapabilities.md
+            - Representation of Proposed Entities: ReviewCriteria/RepresentationOfProposedEntities.md
+            - Architectural Evaluations: ReviewCriteria/ArchitecturalEvaluations.md
+            - Tooling Support: ReviewCriteria/ToolingSupport.md
+        - Review Results:
+            - ADLReviewSummary/index.md
+            - Language Characteristics: ADLReviewSummary/LanguageCharacteristicsSummary.md
+            - Cloud Modeling Capabilities: ADLReviewSummary/CloudModelingCapabilitiesSummary.md
+            - Representation of Proposed Entities: ADLReviewSummary/RepresentationOfProposedEntitiesSummary.md
+            - Architectural Evaluations: ADLReviewSummary/ArchitecturalEvaluationsSummary.md
+            - Tooling Support: ADLReviewSummary/ToolingSupportSummary.md
+    - Modeling Libraries Search:
+        - Modeling_Framework_Search/index.md
+        - Google Search Overview:
+            - Modeling_Framework_Search/Google/index.md
+            - Google Search Results - 1: Modeling_Framework_Search/Google/0_Google_Search_Results_part1.md
+            - Google Search Results - 2: Modeling_Framework_Search/Google/0_Google_Search_Results_part2.md
+            - Google Search Results - Libs: Modeling_Framework_Search/Google/1_Google_Search_Results_Libs.md
+            - Google First Filtering: Modeling_Framework_Search/Google/2_Google_Search_firstFiltering.md
+        - Github Search Overview:
+            - Modeling_Framework_Search/Github/index.md
+            - Github Search Results: Modeling_Framework_Search/Github/0_Github_Search_raw_results.md
+            - Github First Filtering: Modeling_Framework_Search/Github/1_Github_Search_first_filtering.md
+        - Merged Results: Modeling_Framework_Search/0_merged_results.md
+        - First Filtering: Modeling_Framework_Search/1_merged_results_first_filtering.md
+        - Filtered with Remarks: Modeling_Framework_Search/2_filtered_results_remarks.md
+    - TOSCA Modeling:
+        - ToscaModeling/index.md
+        - Original TOSCA: ToscaModeling/OriginalTosca/index.md
+        - Extended TOSCA: ToscaModeling/ExtendedTosca/index.md
+    - TOSCA Extension:
+        - Extension/index.md
+        - Component Entity: Extension/Nodes/Root_Component.md
+        - Service Entity: Extension/Nodes/SoftwareComponent_Service.md
+        - Storage Backing Service Entity: Extension/Nodes/Database_StorageBackingService.md
+        - Link Entity: Extension/Relationships/ConnectsTo_Link.md
+        - Infrastructure Entity: 
+            - General: Extension/Nodes/Compute_Infrastructure.md
+            - Hosting Storage Backing Service: Extension/Nodes/DBMS_Infrastructure.md
+        - Backing Service Entity: Extension/Nodes/BackingService.md
+        - Request Trace Entity: Extension/Nodes/RequestTrace.md
+        - Data Aggregate Entity: 
+            - General: Extension/Nodes/DataAggregate.md
+            - DataStorage Capability: Extension/Capabilities/DataStorage.md
+            - AttachesTo.Data Relationship: Extension/Relationships/AttachesTo_Data.md
+        - Backing Data Entity: Extension/Nodes/BackingData.md
+        
+
+# Extensions
+markdown_extensions:
+    - markdown.extensions.footnotes
+    - markdown.extensions.tables
+    - markdown.extensions.toc
+    - markdown.extensions.wikilinks
+    - markdown.extensions.attr_list
+    - pymdownx.superfences
+    - pymdownx.inlinehilite:
+        custom_inline:
+          - name: math
+            class: arithmatex
+            format: !!python/object/apply:pymdownx.arithmatex.arithmatex_inline_format {kwds: {mode: generic}}
+    - pymdownx.highlight
+    - pymdownx.tasklist:
+        custom_checkbox: true
+        clickable_checkbox: false
+    - pymdownx.extra
+    - pymdownx.tabbed:
+        alternate_style: true 
+    - pymdownx.details
+    - pymdownx.snippets
+    - pymdownx.critic
+    - pymdownx.caret
+    - pymdownx.emoji:
+        emoji_index: !!python/name:materialx.emoji.twemoji
+        emoji_generator: !!python/name:materialx.emoji.to_svg
+    - admonition
+    - meta
+    - tables
+    - def_list
+    - md_in_html # only keep if blocks work
+    - toc:
+        permalink: true
+
+# Plugins
+plugins:
+  - git-revision-date
+  - search
+
+edit_uri: ""
+
+copyright: Copyright &copy; 2022 <a href="https://github.com/KarolinDuerr"  target="_blank" rel="noopener">Karolin Dürr</a> – <a href="https://github.com/r0light"  target="_blank" rel="noopener">Robin Lichtenthäler</a>

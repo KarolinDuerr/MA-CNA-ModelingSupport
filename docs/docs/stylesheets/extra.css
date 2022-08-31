@@ -1,0 +1,56 @@
+:root {
+  --md-admonition-icon--file-removal: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.12 22.54 19 20.41l-2.12 2.13-1.41-1.42L17.59 19l-2.12-2.12 1.41-1.41L19 17.59l2.12-2.12 1.42 1.41L20.41 19l2.13 2.12-1.42 1.42M14 2H6c-1.11 0-2 .89-2 2v16c0 1.11.89 2 2 2h7.81c-.53-.91-.81-1.95-.81-3 0-3.31 2.69-6 6-6 .34 0 .67.03 1 .08V8l-6-6m-1 7V3.5L18.5 9H13Z"/></svg>')
+}
+.md-typeset .admonition.file-removal,
+.md-typeset details.file-removal {
+  border-color: rgb(204, 102, 0);
+}
+.md-typeset .file-removal > .admonition-title,
+.md-typeset .file-removal > summary {
+  background-color: rgba(204, 102, 0, 0.1);
+  border-color: rgb(204, 102, 0);
+}
+.md-typeset .file-removal > .admonition-title::before,
+.md-typeset .file-removal > summary::before {
+  background-color: rgb(204, 102, 0);
+  -webkit-mask-image: var(--md-admonition-icon--file-removal);
+          mask-image: var(--md-admonition-icon--file-removal);
+}
+
+:root {
+  --md-admonition-icon--additional-files: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 17.5c0-3.6 2.9-6.5 6.5-6.5.9 0 1.7.2 2.5.5V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h6.8c-1.1-1.2-1.8-2.8-1.8-4.5m2-14L18.5 9H13V3.5m4 8.5v1.5c2.2 0 4 1.8 4 4 0 .8-.2 1.6-.7 2.2l-1.1-1.1c.2-.3.3-.7.3-1.1 0-1.4-1.1-2.5-2.5-2.5v1.5l-2.2-2.2L17 12m0 11v-1.5c-2.2 0-4-1.8-4-4 0-.8.2-1.6.7-2.2l1.1 1.1c-.2.3-.3.7-.3 1.1 0 1.4 1.1 2.5 2.5 2.5v-1.5l2.2 2.2L17 23Z"/></svg>')
+}
+.md-typeset .admonition.additional-files,
+.md-typeset details.additional-files {
+  border-color: rgb(0, 102, 102);
+}
+.md-typeset .additional-files > .admonition-title,
+.md-typeset .additional-files > summary {
+  background-color: rgba(0, 102, 102, 0.1);
+  border-color: rgb(0, 102, 102);
+}
+.md-typeset .additional-files > .admonition-title::before,
+.md-typeset .additional-files > summary::before {
+  background-color: rgb(0, 102, 102);
+  -webkit-mask-image: var(--md-admonition-icon--additional-files);
+          mask-image: var(--md-admonition-icon--additional-files);
+}
+
+:root {
+  --md-admonition-icon--additional-info: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99h144v-144C192 62.32 206.33 48 224 48s32 14.32 32 32.01v144h144c17.7-.01 32 14.29 32 31.99z"/></svg>')
+}
+.md-typeset .admonition.additional-info,
+.md-typeset details.additional-info {
+  border-color: rgb(0, 102, 102);
+}
+.md-typeset .additional-info > .admonition-title,
+.md-typeset .additional-info > summary {
+  background-color: rgba(0, 102, 102, 0.1);
+  border-color: rgb(0, 102, 102);
+}
+.md-typeset .additional-info > .admonition-title::before,
+.md-typeset .additional-info > summary::before {
+  background-color: rgb(0, 102, 102);
+  -webkit-mask-image: var(--md-admonition-icon--additional-info);
+          mask-image: var(--md-admonition-icon--additional-info);
+}
