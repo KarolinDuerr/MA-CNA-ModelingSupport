@@ -1,0 +1,3382 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Karolin Dürr">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.11">
+    
+    
+      
+        <title>TOSCA Extension - Cloud-Native Modeling Support</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.50e68009.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#proposed-tosca-extension" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        <aside class="md-banner md-banner--warning">
+          
+        </aside>
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Cloud-Native Modeling Support" class="md-header__button md-logo" aria-label="Cloud-Native Modeling Support" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 7h4v2h-4v2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H9v-2h4v-2h-2a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2m1-5a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2m0 2a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-8-8z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cloud-Native Modeling Support
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              TOSCA Extension
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent=""  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-hidden="true"  type="radio" name="__palette" id="__palette_2">
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-hidden="true"  type="radio" name="__palette" id="__palette_3">
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    KarolinDuerr/MA-CNA-ModelingSupport
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../CNA_Mapping/" class="md-tabs__link">
+        CNA Mapping
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../ADL_Search/" class="md-tabs__link">
+        ADL Literature Search & Review
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Modeling_Framework_Search/" class="md-tabs__link">
+        Modeling Libraries Search
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../ToscaModeling/" class="md-tabs__link">
+        TOSCA Modeling
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
+        TOSCA Extension
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Cloud-Native Modeling Support" class="md-nav__button md-logo" aria-label="Cloud-Native Modeling Support" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 7h4v2h-4v2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H9v-2h4v-2h-2a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2m1-5a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2m0 2a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-8-8z"/></svg>
+
+    </a>
+    Cloud-Native Modeling Support
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    KarolinDuerr/MA-CNA-ModelingSupport
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="..">Home</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LICENSE/" class="md-nav__link">
+        License
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../CNA_Mapping/">CNA Mapping</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="CNA Mapping" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          CNA Mapping
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          ADL Literature Search & Review
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ADL Literature Search & Review" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          ADL Literature Search & Review
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../ADL_Search/">Literature Search</a>
+          
+            <label for="__nav_3_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Literature Search" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Literature Search
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADL_Search/1_Review_Search/" class="md-nav__link">
+        Review Search
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADL_Search/2_Recent_ADLs_Search/" class="md-nav__link">
+        Recent ADLs Search
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../ReviewCriteria/">Review Criteria</a>
+          
+            <label for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Review Criteria" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Review Criteria
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ReviewCriteria/LanguageCharacteristics/" class="md-nav__link">
+        Language Characteristics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ReviewCriteria/CloudModelingCapabilities/" class="md-nav__link">
+        Cloud Modeling Capabilities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ReviewCriteria/RepresentationOfProposedEntities/" class="md-nav__link">
+        Representation of Proposed Entities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ReviewCriteria/ArchitecturalEvaluations/" class="md-nav__link">
+        Architectural Evaluations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ReviewCriteria/ToolingSupport/" class="md-nav__link">
+        Tooling Support
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../ADLReviewSummary/">Review Results</a>
+          
+            <label for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Review Results" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Review Results
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADLReviewSummary/LanguageCharacteristicsSummary/" class="md-nav__link">
+        Language Characteristics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADLReviewSummary/CloudModelingCapabilitiesSummary/" class="md-nav__link">
+        Cloud Modeling Capabilities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADLReviewSummary/RepresentationOfProposedEntitiesSummary/" class="md-nav__link">
+        Representation of Proposed Entities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADLReviewSummary/ArchitecturalEvaluationsSummary/" class="md-nav__link">
+        Architectural Evaluations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADLReviewSummary/ToolingSupportSummary/" class="md-nav__link">
+        Tooling Support
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../Modeling_Framework_Search/">Modeling Libraries Search</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Modeling Libraries Search" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Modeling Libraries Search
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../Modeling_Framework_Search/Google/">Google Search Overview</a>
+          
+            <label for="__nav_4_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Google Search Overview" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Google Search Overview
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Modeling_Framework_Search/Google/0_Google_Search_Results_part1/" class="md-nav__link">
+        Google Search Results - 1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Modeling_Framework_Search/Google/0_Google_Search_Results_part2/" class="md-nav__link">
+        Google Search Results - 2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Modeling_Framework_Search/Google/1_Google_Search_Results_Libs/" class="md-nav__link">
+        Google Search Results - Libs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Modeling_Framework_Search/Google/2_Google_Search_firstFiltering/" class="md-nav__link">
+        Google First Filtering
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../Modeling_Framework_Search/Github/">Github Search Overview</a>
+          
+            <label for="__nav_4_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Github Search Overview" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Github Search Overview
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Modeling_Framework_Search/Github/0_Github_Search_raw_results/" class="md-nav__link">
+        Github Search Results
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Modeling_Framework_Search/Github/1_Github_Search_first_filtering/" class="md-nav__link">
+        Github First Filtering
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Modeling_Framework_Search/0_merged_results/" class="md-nav__link">
+        Merged Results
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Modeling_Framework_Search/1_merged_results_first_filtering/" class="md-nav__link">
+        First Filtering
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Modeling_Framework_Search/2_filtered_results_remarks/" class="md-nav__link">
+        Filtered with Remarks
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../ToscaModeling/">TOSCA Modeling</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="TOSCA Modeling" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          TOSCA Modeling
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ToscaModeling/OriginalTosca/" class="md-nav__link">
+        Original TOSCA
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ToscaModeling/ExtendedTosca/" class="md-nav__link">
+        Extended TOSCA
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index md-nav__link--active">
+          <a href="./">TOSCA Extension</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="TOSCA Extension" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          TOSCA Extension
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Nodes/Root_Component/" class="md-nav__link">
+        Component Entity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Nodes/SoftwareComponent_Service/" class="md-nav__link">
+        Service Entity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Nodes/Database_StorageBackingService/" class="md-nav__link">
+        Storage Backing Service Entity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Relationships/ConnectsTo_Link/" class="md-nav__link">
+        Link Entity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_6" type="checkbox" id="__nav_6_6" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6_6">
+          Infrastructure Entity
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Infrastructure Entity" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_6">
+          <span class="md-nav__icon md-icon"></span>
+          Infrastructure Entity
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Nodes/Compute_Infrastructure/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Nodes/DBMS_Infrastructure/" class="md-nav__link">
+        Hosting Storage Backing Service
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Nodes/BackingService/" class="md-nav__link">
+        Backing Service Entity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Nodes/RequestTrace/" class="md-nav__link">
+        Request Trace Entity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_9" type="checkbox" id="__nav_6_9" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6_9">
+          Data Aggregate Entity
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data Aggregate Entity" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_9">
+          <span class="md-nav__icon md-icon"></span>
+          Data Aggregate Entity
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Nodes/DataAggregate/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Capabilities/DataStorage/" class="md-nav__link">
+        DataStorage Capability
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Relationships/AttachesTo_Data/" class="md-nav__link">
+        AttachesTo.Data Relationship
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Nodes/BackingData/" class="md-nav__link">
+        Backing Data Entity
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-overview-used-tosca-representations-for-modeling-entities" class="md-nav__link">
+    1. Overview: Used TOSCA Representations for Modeling Entities
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-extending-toscas-existing-normative-types" class="md-nav__link">
+    2. Extending TOSCA's Existing Normative Types
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Extending TOSCA's Existing Normative Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-component-entity-tosca-representation" class="md-nav__link">
+    2.1 Component Entity TOSCA Representation
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 Component Entity TOSCA Representation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#211-cnaqualitymodelentitiesrootcomponent" class="md-nav__link">
+    2.1.1 cna.qualityModel.entities.Root.Component
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1.1 cna.qualityModel.entities.Root.Component">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-properties" class="md-nav__link">
+    a) Properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-attributes" class="md-nav__link">
+    b) Attributes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-definition" class="md-nav__link">
+    c) Definition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-service-entity-tosca-representation" class="md-nav__link">
+    2.2 Service Entity TOSCA Representation
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 Service Entity TOSCA Representation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#221-cnaqualitymodelentitiessoftwarecomponentservice" class="md-nav__link">
+    2.2.1 cna.qualityModel.entities.SoftwareComponent.Service
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2.1 cna.qualityModel.entities.SoftwareComponent.Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-properties_1" class="md-nav__link">
+    a) Properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-attributes_1" class="md-nav__link">
+    b) Attributes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-definition_1" class="md-nav__link">
+    c) Definition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-storage-backing-service-entity-tosca-representation" class="md-nav__link">
+    2.3 Storage Backing Service Entity TOSCA Representation
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 Storage Backing Service Entity TOSCA Representation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#231-cnaqualitymodelentitiesdatabasestoragebackingservice" class="md-nav__link">
+    2.3.1 cna.qualityModel.entities.Database.StorageBackingService
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3.1 cna.qualityModel.entities.Database.StorageBackingService">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-properties_2" class="md-nav__link">
+    a) Properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-attributes_2" class="md-nav__link">
+    b) Attributes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-definition_2" class="md-nav__link">
+    c) Definition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-link-entity-tosca-representation" class="md-nav__link">
+    2.4 Link Entity TOSCA Representation
+  </a>
+  
+    <nav class="md-nav" aria-label="2.4 Link Entity TOSCA Representation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#241-cnaqualitymodelentitiesconnectstolink" class="md-nav__link">
+    2.4.1 cna.qualityModel.entities.ConnectsTo.Link
+  </a>
+  
+    <nav class="md-nav" aria-label="2.4.1 cna.qualityModel.entities.ConnectsTo.Link">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-properties_3" class="md-nav__link">
+    a) Properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-attributes_3" class="md-nav__link">
+    b) Attributes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-definition_3" class="md-nav__link">
+    c) Definition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-infrastructure-entity-tosca-representation" class="md-nav__link">
+    2.5 Infrastructure Entity TOSCA Representation
+  </a>
+  
+    <nav class="md-nav" aria-label="2.5 Infrastructure Entity TOSCA Representation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#251-cnaqualitymodelentitiescomputeinfrastructure" class="md-nav__link">
+    2.5.1 cna.qualityModel.entities.Compute.Infrastructure
+  </a>
+  
+    <nav class="md-nav" aria-label="2.5.1 cna.qualityModel.entities.Compute.Infrastructure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-properties_4" class="md-nav__link">
+    a) Properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-attributes_4" class="md-nav__link">
+    b) Attributes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-definition_4" class="md-nav__link">
+    c) Definition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#252-cnaqualitymodelentitiesdbmsinfrastructure" class="md-nav__link">
+    2.5.2 cna.qualityModel.entities.DBMS.Infrastructure
+  </a>
+  
+    <nav class="md-nav" aria-label="2.5.2 cna.qualityModel.entities.DBMS.Infrastructure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-properties_5" class="md-nav__link">
+    a) Properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-attributes_5" class="md-nav__link">
+    b) Attributes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-definition_5" class="md-nav__link">
+    c) Definition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-adding-new-types" class="md-nav__link">
+    3. Adding New Types
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Adding New Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-backing-service-entity-representation" class="md-nav__link">
+    3.1 Backing Service Entity Representation
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 Backing Service Entity Representation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311-cnaqualitymodelentitiesbackingservice" class="md-nav__link">
+    3.1.1 cna.qualityModel.entities.BackingService
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1.1 cna.qualityModel.entities.BackingService">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-properties_6" class="md-nav__link">
+    a) Properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-attributes_6" class="md-nav__link">
+    b) Attributes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-definition_6" class="md-nav__link">
+    c) Definition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-request-trace-entity-representation" class="md-nav__link">
+    3.2 Request Trace Entity Representation
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Request Trace Entity Representation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-cnaqualitymodelentitiesrequesttrace" class="md-nav__link">
+    3.2.1 cna.qualityModel.entities.RequestTrace
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2.1 cna.qualityModel.entities.RequestTrace">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-properties_7" class="md-nav__link">
+    a) Properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-attributes_7" class="md-nav__link">
+    b) Attributes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-definition_7" class="md-nav__link">
+    c) Definition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-data-aggregate-entity-representation" class="md-nav__link">
+    3.3 Data Aggregate Entity Representation
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 Data Aggregate Entity Representation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#331-cnaqualitymodelentitiesdataaggregate" class="md-nav__link">
+    3.3.1 cna.qualityModel.entities.DataAggregate
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3.1 cna.qualityModel.entities.DataAggregate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-properties_8" class="md-nav__link">
+    a) Properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-attributes_8" class="md-nav__link">
+    b) Attributes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-definition_8" class="md-nav__link">
+    c) Definition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-backing-data-entity-representation" class="md-nav__link">
+    3.4 Backing Data Entity Representation
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 Backing Data Entity Representation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#341-cnaqualitymodelentitiesbackingdata" class="md-nav__link">
+    3.4.1 cna.qualityModel.entities.BackingData
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4.1 cna.qualityModel.entities.BackingData">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-properties_9" class="md-nav__link">
+    a) Properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-attributes_9" class="md-nav__link">
+    b) Attributes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-definition_9" class="md-nav__link">
+    c) Definition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-additionally-required-type-definitions" class="md-nav__link">
+    3.5 Additionally Required Type Definitions
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5 Additionally Required Type Definitions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#351-cnaqualitymodelcapabilitiesdatastorage" class="md-nav__link">
+    3.5.1 cna.qualityModel.capabilities.DataStorage
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5.1 cna.qualityModel.capabilities.DataStorage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-properties_10" class="md-nav__link">
+    a) Properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-attributes_10" class="md-nav__link">
+    b) Attributes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-definition_10" class="md-nav__link">
+    c) Definition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#352-cnaqualitymodelrelationshipsattachestodata" class="md-nav__link">
+    3.5.2 cna.qualityModel.relationships.AttachesTo.Data
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5.2 cna.qualityModel.relationships.AttachesTo.Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-properties_11" class="md-nav__link">
+    a) Properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-attributes_11" class="md-nav__link">
+    b) Attributes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-definition_11" class="md-nav__link">
+    c) Definition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+<h1 id="proposed-tosca-extension">Proposed TOSCA Extension</h1>
+<p>The following Type definitions are proposed to model the entities of the mentioned <a href="https://github.com/r0light/cna-quality-model/tree/0.1">CNA quality model</a><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.
+The extensions consider the different additional requirements identified while modeling the architecture of the <a href="https://github.com/microservices-patterns/ftgo-application/tree/cac2b209fa91c9908b38cef408c9efb38614a253">FTGO Application</a><sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.
+The modeling was realized with <a href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=tosca">TOSCA (v1.3)</a><sup id="fnref3:1"><a class="footnote-ref" href="#fn:1">1</a></sup> while considering the quality model and its entities.</p>
+<hr />
+<h2 id="1-overview-used-tosca-representations-for-modeling-entities">1. Overview: Used TOSCA Representations for Modeling Entities</h2>
+<p>The proposed extensions allow modeling all of the quality model’s proposed entities. In total, eight new Node Types, one new Capability Type and two new Relationship Types have been introduced to represent the thirteen different entities. Although this seems a lot at first, the majority of the Type definitions are based on TOSCA’s existing normative types. In fact, without the modeling of Backing Data and Data Aggregate entities, all definitions would solely consist of a combination of the existing normative types, with a few additional Node or Relationship properties. Therefore, despite the seemingly large number of additions, the extension was able to mainly rely on the concepts provided by the TOSCA standard to represent the entities. The following table summarizes which representations should now be used to model the respective entities as a result of the proposed extensions. The proposed extensions are highlighted in darkblue.</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>Proposed Entity</strong></th>
+<th align="left"><div align="center"><strong>Used Extended TOSCA Representation</strong></div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">System</td>
+<td align="left">Service Template document (&#8594;Topology Template)</td>
+</tr>
+<tr>
+<td align="center">Component</td>
+<td align="left"><a href="#componentExtension"><span style="color: darkblue;">Root.Component</span> <span style="color: black;">Node</span></a></td>
+</tr>
+<tr>
+<td align="center">Service</td>
+<td align="left"><a href="#serviceExtension"><span style="color: darkblue;">SoftwareComponent.Service</span> <span style="color: black;">Node</span></a></td>
+</tr>
+<tr>
+<td align="center">Backing Service</td>
+<td align="left"><a href="#backingServiceExtension"><span style="color: darkblue;">BackingService</span> <span style="color: black;">Node</span></a></td>
+</tr>
+<tr>
+<td align="center">Storage Backing Service</td>
+<td align="left"><a href="#storageBackingServiceExtension"><span style="color: darkblue;">Database.StorageBackingService</span> <span style="color: black;">Node</span></a></td>
+</tr>
+<tr>
+<td align="center">Endpoint</td>
+<td align="left"><a href="#26-endpoint-entity"><span style="color: black;">{Component Types}&#8594;Endpoint Capability</span></a></td>
+</tr>
+<tr>
+<td align="center">External Endpoint</td>
+<td align="left"><a href="#27-external-endpoint-entity"><span style="color: black;">{Component Types}&#8594;Endpoint.Public Capability</span></a></td>
+</tr>
+<tr>
+<td align="center">Link</td>
+<td align="left"><a href="#linkExtension"><span style="color: black;">{Component Types}&#8594;</span><span style="color: darkblue;">Endpoint_link</span> <span style="color: black;">Requirement &amp;</span> <span style="color: darkblue;">ConnectsTo.Link</span> <span style="color: black;">Relationship Template</span></a></td>
+</tr>
+<tr>
+<td align="center">Infrastructure</td>
+<td align="left"><a href="#infrastructureExtension"><span style="color: darkblue;">Compute.Infrastructure</span></a> <span style="color: black;">&#124;</span> <a href="#infrastructureDBMSExtension"><span style="color: darkblue;">DBMS.Infrastructure</span> <span style="color: black;">Node</span></a></td>
+</tr>
+<tr>
+<td align="center">Deployment Mapping</td>
+<td align="left"><a href="#210-deployment-mapping-entity"><span style="color: black;">HostedOn Relationship</span></a></td>
+</tr>
+<tr>
+<td align="center">Request Trace</td>
+<td align="left"><a href="#requestTraceExtension"><span style="color: darkblue;">RequestTrace</span> <span style="color: black;">Node</span></a></td>
+</tr>
+<tr>
+<td align="center">Data Aggregate</td>
+<td align="left"><a href="#dataAggregateExtension"><span style="color: darkblue;">DataAggregate</span> <span style="color: black;">Node</span></a></td>
+</tr>
+<tr>
+<td align="center">Backing Data</td>
+<td align="left"><a href="#backingDataExtension"><span style="color: darkblue;">BackingData</span> <span style="color: black;">Node</span></a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-extending-toscas-existing-normative-types">2. <a name="extending-existing-normative-types">Extending TOSCA's Existing Normative Types</a></h2>
+<p>The following section introduces the proposed extensions for entities for which equivalent concepts could be identified within the TOSCA standard.
+Therefore, the following extensions are based on some specific normative TOSCA Types.</p>
+<h3 id="21-component-entity-tosca-representation">2.1 Component Entity TOSCA Representation</h3>
+<h4 id="211-cnaqualitymodelentitiesrootcomponent">2.1.1 <a name="componentExtension">cna.qualityModel.entities.Root.Component</a></h4>
+<p>The <strong>Root.Component</strong> Node represents a generic <em>Component</em> entity.
+Therefore , it should be used to model a Component that is neither a <em>Service</em>, <em>Backing Service</em>, nor a <em>Storage Backing Service</em> entity.
+As an extension to the original TOSCA <em>Root</em> Node, this Node allows modeling <em>Endpoints</em>, <em>Links</em> to other Component entities and a <em>Deployment Mapping</em> to an <em>Infrastructure Entity</em> if desired.
+The Node also allows modeling the persistence of a specific <em>Data Aggregate</em> entity.</p>
+<p>File references:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/TOSCA_Extension/Nodes/Root_Component.tosca">TOSCA-File</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="Nodes/Root_Component/">Individual Node Definition</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="Nodes/Root_Component/#4-example">Example</a></p>
+<table>
+    <tr>
+        <td bgcolor="grey"><b>Shorthand Name</b></td>
+        <td>Root.Component</td>
+    </tr>
+    <tr>
+        <td bgcolor="grey"><b>Type Qualified Name</b></td>
+        <td>qualityModel:Root.Component</td> <!--TODO keep?-->
+    </tr>
+    <tr>
+        <td bgcolor="grey"><b>Type URI</b></td>
+        <td>cna.qualityModel.entities.Root.Component</td>
+    </tr>
+</table>
+
+<h5 id="a-properties">a) Properties</h5>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Required</th>
+<th align="center">Type</th>
+<th align="center">Constraints</th>
+<th align="center"><div align="center"><strong>Description</strong></div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+</tr>
+</tbody>
+</table>
+<h5 id="b-attributes">b) Attributes</h5>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Required</th>
+<th align="center">Type</th>
+<th align="center">Constraints</th>
+<th align="center"><div align="center"><strong>Description</strong></div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+</tr>
+</tbody>
+</table>
+<h5 id="c-definition">c) Definition</h5>
+<div class="highlight"><pre><span></span><code><span class="nt">cna.qualityModel.entities.Root.Component</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">derived_from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.nodes.Root</span><span class="w"></span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Node Type to model Component entities</span><span class="w"></span>
+<span class="w">  </span><span class="nt">requirements</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Require deployment on an Infrastructure entity</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">host</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">capability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.capabilities.Compute</span><span class="w"></span>
+<span class="w">        </span><span class="nt">relationship</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.relationships.HostedOn</span><span class="w"></span>
+<span class="w">        </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Allow the definition of Links between Components</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoint_link</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">capability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.capabilities.Endpoint</span><span class="w"></span>
+<span class="w">        </span><span class="nt">relationship</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.relationships.ConnectsTo.Link</span><span class="w"></span>
+<span class="w">        </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">UNBOUNDED</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Allow the definition of Data Aggregate usage</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses_data</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">capability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.capabilities.Attachment</span><span class="w"></span>
+<span class="w">        </span><span class="nt">node</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.entities.DataAggregate</span><span class="w"></span>
+<span class="w">        </span><span class="nt">relationship</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.relationships.AttachesTo.Data</span><span class="w"></span>
+<span class="w">        </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">UNBOUNDED</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Allow the definition of Backing Data usage</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses_backing_data</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">capability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.capabilities.Attachment</span><span class="w"></span>
+<span class="w">        </span><span class="nt">node</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.entities.BackingData</span><span class="w"></span>
+<span class="w">        </span><span class="nt">relationship</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.relationships.AttachesTo.Data</span><span class="w"></span>
+<span class="w">        </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">UNBOUNDED</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">  </span><span class="nt">capabilities</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Allow assigning Endpoint entities</span><span class="w"></span>
+<span class="w">    </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.capabilities.Endpoint</span><span class="w"></span>
+<span class="w">      </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">UNBOUNDED</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Allow assigning External Endpoint entities</span><span class="w"></span>
+<span class="w">    </span><span class="nt">external_endpoint</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.capabilities.Endpoint.Public</span><span class="w"></span>
+<span class="w">      </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">UNBOUNDED</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Needed so that Data Aggregates can be stored</span><span class="w"></span>
+<span class="w">    </span><span class="nt">persist_data</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.capabilities.DataStorage</span><span class="w"></span>
+<span class="w">      </span><span class="nt">valid_source_types</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">cna.qualityModel.entities.DataAggregate</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">      </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">UNBOUNDED</span><span class="p p-Indicator">]</span><span class="w"></span>
+</code></pre></div>
+<h3 id="22-service-entity-tosca-representation">2.2 Service Entity TOSCA Representation</h3>
+<h4 id="221-cnaqualitymodelentitiessoftwarecomponentservice">2.2.1 <a name="serviceExtension">cna.qualityModel.entities.SoftwareComponent.Service</a></h4>
+<p>The <strong>SoftwareComponent.Service</strong> Node represents a <em>Service</em> entity.
+It extends the original TOSCA <em>SoftwareComponent</em> Node in order to allow the modeling of <em>Endpoints</em> as well as <em>Links</em> to other Component entities.
+Additionally, modeled <em>Backing Data</em> and <em>Data Aggregate</em> entities can be referenced.
+The Node also allows modeling the persistence of a specific <em>Data Aggregate</em> entity.</p>
+<p>File references:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/TOSCA_Extension/Nodes/SoftwareComponent_Service.tosca">TOSCA-File</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="Nodes/SoftwareComponent_Service/">Individual Node Definition</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="Nodes/SoftwareComponent_Service/#4-example">Example</a></p>
+<table>
+    <tr>
+        <td bgcolor="grey"><b>Shorthand Name</b></td>
+        <td>SoftwareComponent.Service</td>
+    </tr>
+    <tr>
+        <td bgcolor="grey"><b>Type Qualified Name</b></td>
+        <td>qualityModel:SoftwareComponent.Service</td> <!--TODO keep?-->
+    </tr>
+    <tr>
+        <td bgcolor="grey"><b>Type URI</b></td>
+        <td>cna.qualityModel.entities.SoftwareComponent.Service</td>
+    </tr>
+</table>
+
+<h5 id="a-properties_1">a) Properties</h5>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Required</th>
+<th align="center">Type</th>
+<th align="center">Constraints</th>
+<th align="center"><div align="center"><strong>Description</strong></div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+</tr>
+</tbody>
+</table>
+<h5 id="b-attributes_1">b) Attributes</h5>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Required</th>
+<th align="center">Type</th>
+<th align="center">Constraints</th>
+<th align="center"><div align="center"><strong>Description</strong></div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+</tr>
+</tbody>
+</table>
+<h5 id="c-definition_1">c) Definition</h5>
+<div class="highlight"><pre><span></span><code><span class="nt">cna.qualityModel.entities.SoftwareComponent.Service</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">derived_from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.nodes.SoftwareComponent</span><span class="w"></span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Node Type to model Service entities</span><span class="w"></span>
+<span class="w">  </span><span class="nt">requirements</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Allow the definition of Links between Components</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoint_link</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">capability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.capabilities.Endpoint</span><span class="w"></span>
+<span class="w">        </span><span class="nt">relationship</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.relationships.ConnectsTo.Link</span><span class="w"></span>
+<span class="w">        </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">UNBOUNDED</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Allow the definition of Data Aggregate usage</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses_data</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">capability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.capabilities.Attachment</span><span class="w"></span>
+<span class="w">        </span><span class="nt">node</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.entities.DataAggregate</span><span class="w"></span>
+<span class="w">        </span><span class="nt">relationship</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.relationships.AttachesTo.Data</span><span class="w"></span>
+<span class="w">        </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">UNBOUNDED</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Allow the definition of Backing Data usage</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses_backing_data</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">capability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.capabilities.Attachment</span><span class="w"></span>
+<span class="w">        </span><span class="nt">node</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.entities.BackingData</span><span class="w"></span>
+<span class="w">        </span><span class="nt">relationship</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.relationships.AttachesTo.Data</span><span class="w"></span>
+<span class="w">        </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">UNBOUNDED</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">  </span><span class="nt">capabilities</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Allow assigning Endpoint entities</span><span class="w"></span>
+<span class="w">    </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.capabilities.Endpoint</span><span class="w"></span>
+<span class="w">      </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">UNBOUNDED</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Allow assigning External Endpoint entities</span><span class="w"></span>
+<span class="w">    </span><span class="nt">external_endpoint</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.capabilities.Endpoint.Public</span><span class="w"></span>
+<span class="w">      </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">UNBOUNDED</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Needed so that Data Aggregates can be stored</span><span class="w"></span>
+<span class="w">    </span><span class="nt">persist_data</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.capabilities.DataStorage</span><span class="w"></span>
+<span class="w">      </span><span class="nt">valid_source_types</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">cna.qualityModel.entities.DataAggregate</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">      </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">UNBOUNDED</span><span class="p p-Indicator">]</span><span class="w"></span>
+</code></pre></div>
+<h3 id="23-storage-backing-service-entity-tosca-representation">2.3 Storage Backing Service Entity TOSCA Representation</h3>
+<h4 id="231-cnaqualitymodelentitiesdatabasestoragebackingservice">2.3.1 <a name="storageBackingServiceExtension">cna.qualityModel.entities.Database.StorageBackingService</a></h4>
+<p>The <strong>Database.StorageService</strong> Node represents a <em>Storage Backing Service</em> entity.
+It extends the original TOSCA <em>Database</em> Node in order to allow the modeling of <em>External Endpoints</em> as well as <em>Links</em> to other Component entities.
+Additionally, modeled <em>Backing Data</em> and <em>Data Aggregate</em> entities can be referenced.
+The Node also allows modeling the persistence of a specific <em>Data Aggregate</em> entity.</p>
+<p>File references:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/TOSCA_Extension/Nodes/Database_StorageBackingService.tosca">TOSCA-File</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="Nodes/Database_StorageBackingService/">Individual Node Definition</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="Nodes/Database_StorageBackingService/#4-example">Example</a></p>
+<table>
+    <tr>
+        <td bgcolor="grey"><b>Shorthand Name</b></td>
+        <td>Database.StorageBackingService</td>
+    </tr>
+    <tr>
+        <td bgcolor="grey"><b>Type Qualified Name</b></td>
+        <td>qualityModel:Database.StorageBackingService</td> <!--TODO keep?-->
+    </tr>
+    <tr>
+        <td bgcolor="grey"><b>Type URI</b></td>
+        <td>cna.qualityModel.entities.Database.StorageBackingService</td>
+    </tr>
+</table>
+
+<h5 id="a-properties_2">a) Properties</h5>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Required</th>
+<th align="center">Type</th>
+<th align="center">Constraints</th>
+<th align="center"><div align="center"><strong>Description</strong></div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+</tr>
+</tbody>
+</table>
+<h5 id="b-attributes_2">b) Attributes</h5>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Required</th>
+<th align="center">Type</th>
+<th align="center">Constraints</th>
+<th align="center"><div align="center"><strong>Description</strong></div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+</tr>
+</tbody>
+</table>
+<h5 id="c-definition_2">c) Definition</h5>
+<div class="highlight"><pre><span></span><code><span class="nt">cna.qualityModel.entities.Database.StorageBackingService</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">derived_from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.nodes.Database</span><span class="w"></span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Node Type to model Storage Backing Service entities</span><span class="w"></span>
+<span class="w">  </span><span class="nt">requirements</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Allow the definition of Links between Components</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoint_link</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">capability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.capabilities.Endpoint</span><span class="w"></span>
+<span class="w">        </span><span class="nt">relationship</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.relationships.ConnectsTo.Link</span><span class="w"></span>
+<span class="w">        </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">UNBOUNDED</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Allow the definition of Data Aggregate usage</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses_data</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">capability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.capabilities.Attachment</span><span class="w"></span>
+<span class="w">        </span><span class="nt">node</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.entities.DataAggregate</span><span class="w"></span>
+<span class="w">        </span><span class="nt">relationship</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.relationships.AttachesTo.Data</span><span class="w"></span>
+<span class="w">        </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">UNBOUNDED</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Allow the definition of Backing Data usage</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses_backing_data</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">capability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.capabilities.Attachment</span><span class="w"></span>
+<span class="w">        </span><span class="nt">node</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.entities.BackingData</span><span class="w"></span>
+<span class="w">        </span><span class="nt">relationship</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.relationships.AttachesTo.Data</span><span class="w"></span>
+<span class="w">        </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">UNBOUNDED</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">  </span><span class="nt">capabilities</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Endpoint can already be assigned using the database_endpoint capability</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Allow assigning External Endpoint entities</span><span class="w"></span>
+<span class="w">    </span><span class="nt">external_endpoint</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.capabilities.Endpoint.Public</span><span class="w"></span>
+<span class="w">      </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">UNBOUNDED</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Needed so that Data Aggregates can be stored</span><span class="w"></span>
+<span class="w">    </span><span class="nt">persist_data</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.capabilities.DataStorage</span><span class="w"></span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The ability to persist Data Aggregates like Business Objects</span><span class="w"></span>
+<span class="w">      </span><span class="nt">valid_source_types</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">cna.qualityModel.entities.DataAggregate</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">      </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">UNBOUNDED</span><span class="p p-Indicator">]</span><span class="w"></span>
+</code></pre></div>
+<h3 id="24-link-entity-tosca-representation">2.4 Link Entity TOSCA Representation</h3>
+<h4 id="241-cnaqualitymodelentitiesconnectstolink">2.4.1 <a name="linkExtension">cna.qualityModel.entities.ConnectsTo.Link</a></h4>
+<p>The <strong>ConnectsTo.Link</strong> Node represents a <em>Link</em> entity.
+It extends the original TOSCA <em>ConnectsTo</em> Relationship in order to allow the assignment of the targeted <em>Endpoint</em>.</p>
+<p>File references:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/TOSCA_Extension/Relationships/ConnectsTo_Link.tosca">TOSCA-File</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="Relationships/ConnectsTo_Link/">Individual Node Definition</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="Relationships/ConnectsTo_Link/#4-example">Example</a></p>
+<table>
+    <tr>
+        <td bgcolor="grey"><b>Shorthand Name</b></td>
+        <td>ConnectsTo.Link</td>
+    </tr>
+    <tr>
+        <td bgcolor="grey"><b>Type Qualified Name</b></td>
+        <td>qualityModel:ConnectsTo.Link</td> <!-- TODO keep? -->
+    </tr>
+    <tr>
+        <td bgcolor="grey"><b>Type URI</b></td>
+        <td>cna.qualityModel.entities.ConnectsTo.Link</td>
+    </tr>
+</table>
+
+<h5 id="a-properties_3">a) Properties</h5>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Required</th>
+<th align="center">Type</th>
+<th align="center">Constraints</th>
+<th align="left"><div align="center"><strong>Description</strong></div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">target_endpoint</td>
+<td align="center">true</td>
+<td align="center">string</td>
+<td align="center">N/A</td>
+<td align="left">The endpoint, the connecting Component links to.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="b-attributes_3">b) Attributes</h5>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Required</th>
+<th align="center">Type</th>
+<th align="center">Constraints</th>
+<th align="center"><div align="center"><strong>Description</strong></div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+</tr>
+</tbody>
+</table>
+<h5 id="c-definition_3">c) Definition</h5>
+<div class="highlight"><pre><span></span><code><span class="nt">cna.qualityModel.entities.ConnectsTo.Link</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">derived_from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.relationships.ConnectsTo</span><span class="w"></span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Relationship Type to model Link entities</span><span class="w"></span>
+<span class="w">  </span><span class="nt">properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Allows modeling the specific Endpoint the Link addresses, which represents the connection between the Components</span><span class="w"></span>
+<span class="w">    </span><span class="nt">target_endpoint</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">      </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The Endpoint to which the linked Component connects.</span><span class="w"></span>
+</code></pre></div>
+<h3 id="25-infrastructure-entity-tosca-representation">2.5 Infrastructure Entity TOSCA Representation</h3>
+<h4 id="251-cnaqualitymodelentitiescomputeinfrastructure">2.5.1 <a name="infrastructureExtension">cna.qualityModel.entities.Compute.Infrastructure</a></h4>
+<p>The <strong>Compute.Infrastructure</strong> Node represents an <em>Infrastructure</em> entity.
+It extends the original TOSCA <em>Compute</em> Node in order to allow a Compute Node to be hosted by another one, which allows representing Infrastructure entities to be hosted by other Infrastructure entities.
+Additionally, modeled <em>Backing Data</em> can be referenced.</p>
+<p>File references:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/TOSCA_Extension/Nodes/Compute_Infrastructure.tosca">TOSCA-File</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="Nodes/Compute_Infrastructure/">Individual Node Definition</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="Nodes/Compute_Infrastructure/#4-example">Example</a></p>
+<table>
+    <tr>
+        <td bgcolor="grey"><b>Shorthand Name</b></td>
+        <td>Compute.Infrastructure</td>
+    </tr>
+    <tr>
+        <td bgcolor="grey"><b>Type Qualified Name</b></td>
+        <td>qualityModel:Compute.Infrastructure</td> <!-- TODO keep -->
+    </tr>
+    <tr>
+        <td bgcolor="grey"><b>Type URI</b></td>
+        <td>cna.qualityModel.entities.Compute.Infrastructure</td>
+    </tr>
+</table>
+
+<h5 id="a-properties_4">a) Properties</h5>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Required</th>
+<th align="center">Type</th>
+<th align="center">Constraints</th>
+<th align="center"><div align="center"><strong>Description</strong></div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+</tr>
+</tbody>
+</table>
+<h5 id="b-attributes_4">b) Attributes</h5>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Required</th>
+<th align="center">Type</th>
+<th align="center">Constraints</th>
+<th align="center"><div align="center"><strong>Description</strong></div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+</tr>
+</tbody>
+</table>
+<h5 id="c-definition_4">c) Definition</h5>
+<div class="highlight"><pre><span></span><code><span class="nt">cna.qualityModel.entities.Compute.Infrastructure</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">derived_from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.nodes.Compute</span><span class="w"></span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Node Type to model Infrastructure entities</span><span class="w"></span>
+<span class="w">  </span><span class="nt">requirements</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Allow the deployment on another Infrastructure entity</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">host</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">capability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.capabilities.Compute</span><span class="w"></span>
+<span class="w">        </span><span class="nt">relationship</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.relationships.HostedOn</span><span class="w"></span>
+<span class="w">        </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Allow the definition of Backing Data usage</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses_backing_data</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">capability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.capabilities.Attachment</span><span class="w"></span>
+<span class="w">        </span><span class="nt">node</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.entities.BackingData</span><span class="w"></span>
+<span class="w">        </span><span class="nt">relationship</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.relationships.AttachesTo.Data</span><span class="w"></span>
+<span class="w">        </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">UNBOUNDED</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">  </span><span class="nt">capabilities</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Allow deployment of any Node Type</span><span class="w"></span>
+<span class="w">    </span><span class="nt">host</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.capabilities.Compute</span><span class="w"></span>
+<span class="w">      </span><span class="nt">valid_source_types</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">tosca.nodes.Root</span><span class="p p-Indicator">]</span><span class="w">  </span>
+</code></pre></div>
+<h4 id="252-cnaqualitymodelentitiesdbmsinfrastructure">2.5.2 <a name="infrastructureDBMSExtension">cna.qualityModel.entities.DBMS.Infrastructure</a></h4>
+<p>The <strong>DBMS.Infrastructure</strong> Node represents an <em>Infrastructure</em> entity, which is able to host Database.StorageService Nodes.
+It extends the original TOSCA <em>DBMS</em> Node in order to allow <em>Backing Data</em> entities to be referenced.</p>
+<p>File references:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/TOSCA_Extension/Nodes/DBMS_Infrastructure.tosca">TOSCA-File</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="Nodes/DBMS_Infrastructure/">Individual Node Definition</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="Nodes/DBMS_Infrastructure/#4-example">Example</a></p>
+<table>
+    <tr>
+        <td bgcolor="grey"><b>Shorthand Name</b></td>
+        <td>DBMS.Infrastructure</td>
+    </tr>
+    <tr>
+        <td bgcolor="grey"><b>Type Qualified Name</b></td>
+        <td>qualityModel:DBMS.Infrastructure</td> <!-- TODO keep -->
+    </tr>
+    <tr>
+        <td bgcolor="grey"><b>Type URI</b></td>
+        <td>cna.qualityModel.entities.DBMS.Infrastructure</td>
+    </tr>
+</table>
+
+<h5 id="a-properties_5">a) Properties</h5>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Required</th>
+<th align="center">Type</th>
+<th align="center">Constraints</th>
+<th align="center"><div align="center"><strong>Description</strong></div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+</tr>
+</tbody>
+</table>
+<h5 id="b-attributes_5">b) Attributes</h5>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Required</th>
+<th align="center">Type</th>
+<th align="center">Constraints</th>
+<th align="center"><div align="center"><strong>Description</strong></div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+</tr>
+</tbody>
+</table>
+<h5 id="c-definition_5">c) Definition</h5>
+<div class="highlight"><pre><span></span><code><span class="nt">cna.qualityModel.entities.DBMS.Infrastructure</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">derived_from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.nodes.DBMS</span><span class="w"></span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Node Type to model Infrastructure entities</span><span class="w"></span>
+<span class="w">  </span><span class="nt">requirements</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Allow the definition of Backing Data usage</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses_backing_data</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">capability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.capabilities.Attachment</span><span class="w"></span>
+<span class="w">        </span><span class="nt">node</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.entities.BackingData</span><span class="w"></span>
+<span class="w">        </span><span class="nt">relationship</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.relationships.AttachesTo.Data</span><span class="w"></span>
+<span class="w">        </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">UNBOUNDED</span><span class="p p-Indicator">]</span><span class="w"></span>
+</code></pre></div>
+<h2 id="3-adding-new-types">3. Adding New Types</h2>
+<p>In contrast to the previous section, this section introduces the proposed extensions for entities for which no equivalent concepts could be identified within the TOSCA standard.
+Therefore, the following extensions are solely based on the respective topmost <em>Root</em> normative TOSCA Type.</p>
+<h3 id="31-backing-service-entity-representation">3.1 Backing Service Entity Representation</h3>
+<h4 id="311-cnaqualitymodelentitiesbackingservice">3.1.1 <a name="backingServiceExtension">cna.qualityModel.entities.BackingService</a></h4>
+<p>The <strong>BackingService</strong> Node represents a <em>Backing Service</em> entity.
+It allows the modeling of <em>Endpoints</em> as well as <em>Links</em> to other Component entities.
+Additionally, modeled <em>Backing Data</em> and <em>Data Aggregate</em> entities can be referenced.
+The Node also allows modeling the persistence of a specific <em>Data Aggregate</em> entity.</p>
+<p>File references:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/TOSCA_Extension/Nodes/BackingService.tosca">TOSCA-File</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="Nodes/BackingService/">Individual Node Definition</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="Nodes/BackingService/#4-example">Example</a></p>
+<table>
+    <tr>
+        <td bgcolor="grey"><b>Shorthand Name</b></td>
+        <td>BackingService</td>
+    </tr>
+    <tr>
+        <td bgcolor="grey"><b>Type Qualified Name</b></td>
+        <td>qualityModel:BackingService</td> <!-- TODO keep? -->
+    </tr>
+    <tr>
+        <td bgcolor="grey"><b>Type URI</b></td>
+        <td>cna.qualityModel.entities.BackingService</td>
+    </tr>
+</table>
+
+<h5 id="a-properties_6">a) Properties</h5>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Required</th>
+<th align="center">Type</th>
+<th align="center">Constraints</th>
+<th align="left"><div align="center"><strong>Description</strong></div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">provided_functionality</td>
+<td align="center">false</td>
+<td align="center">string</td>
+<td align="center">N/A</td>
+<td align="left">The general functionality the Backing Service provides</td>
+</tr>
+</tbody>
+</table>
+<h5 id="b-attributes_6">b) Attributes</h5>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Required</th>
+<th align="center">Type</th>
+<th align="center">Constraints</th>
+<th align="center"><div align="center"><strong>Description</strong></div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+</tr>
+</tbody>
+</table>
+<h5 id="c-definition_6">c) Definition</h5>
+<div class="highlight"><pre><span></span><code><span class="nt">cna.qualityModel.entities.BackingService</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">derived_from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.nodes.Root</span><span class="w"></span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Node Type to model Backing Service entities</span><span class="w"></span>
+<span class="w">  </span><span class="nt">properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">provided_functionality</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">      </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">  </span><span class="nt">requirements</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Require deployment on an Infrastructure entity</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">host</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">capability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.capabilities.Compute</span><span class="w"></span>
+<span class="w">        </span><span class="nt">relationship</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.relationships.HostedOn</span><span class="w"></span>
+<span class="w">        </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Allow the definition of Links between Components</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoint_link</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">capability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.capabilities.Endpoint</span><span class="w"></span>
+<span class="w">        </span><span class="nt">relationship</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.relationships.ConnectsTo.Link</span><span class="w"></span>
+<span class="w">        </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">UNBOUNDED</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Allow the definition of Data Aggregate usage</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses_data</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">capability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.capabilities.Attachment</span><span class="w"></span>
+<span class="w">        </span><span class="nt">node</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.entities.DataAggregate</span><span class="w"></span>
+<span class="w">        </span><span class="nt">relationship</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.relationships.AttachesTo.Data</span><span class="w"></span>
+<span class="w">        </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">UNBOUNDED</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Allow the definition of Backing Data usage</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses_backing_data</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">capability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.capabilities.Attachment</span><span class="w"></span>
+<span class="w">        </span><span class="nt">node</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.entities.BackingData</span><span class="w"></span>
+<span class="w">        </span><span class="nt">relationship</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.relationships.AttachesTo.Data</span><span class="w"></span>
+<span class="w">        </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">UNBOUNDED</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">  </span><span class="nt">capabilities</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Allow assigning Endpoint entities</span><span class="w"></span>
+<span class="w">    </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.capabilities.Endpoint</span><span class="w"></span>
+<span class="w">      </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">UNBOUNDED</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Allow assigning External Endpoint entities</span><span class="w"></span>
+<span class="w">    </span><span class="nt">external_endpoint</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.capabilities.Endpoint.Public</span><span class="w"></span>
+<span class="w">      </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">UNBOUNDED</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Needed so that Data Aggregates can be stored</span><span class="w"></span>
+<span class="w">    </span><span class="nt">persist_data</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.capabilities.DataStorage</span><span class="w"></span>
+<span class="w">      </span><span class="nt">valid_source_types</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">cna.qualityModel.entities.DataAggregate</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">      </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">UNBOUNDED</span><span class="p p-Indicator">]</span><span class="w"></span>
+</code></pre></div>
+<h3 id="32-request-trace-entity-representation">3.2 Request Trace Entity Representation</h3>
+<h4 id="321-cnaqualitymodelentitiesrequesttrace">3.2.1 <a name="requestTraceExtension">cna.qualityModel.entities.RequestTrace</a></h4>
+<p>The <strong>RequestTrace</strong> Node models a <em>Request Trace</em> entity.
+It allows the inclusion of the various <em>Component, Service, Backing Service</em> and <em>Storage Backing Service</em> entities as well as <em>Link</em> entities that are part of the Request Trace.</p>
+<p>File references:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/TOSCA_Extension/Nodes/RequestTrace.tosca">TOSCA-File</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="Nodes/RequestTrace/">Individual Node Definition</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="Nodes/RequestTrace/#4-example">Example</a></p>
+<table>
+    <tr>
+        <td bgcolor="grey"><b>Shorthand Name</b></td>
+        <td>RequestTrace</td>
+    </tr>
+    <tr>
+        <td bgcolor="grey"><b>Type Qualified Name</b></td>
+        <td>qualityModel:RequestTrace</td> <!-- TODO keep?-->
+    </tr>
+    <tr>
+        <td bgcolor="grey"><b>Type URI</b></td>
+        <td>cna.qualityModel.entities.RequestTrace</td>
+    </tr>
+</table>
+
+<h5 id="a-properties_7">a) Properties</h5>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Required</th>
+<th align="center">Type</th>
+<th align="center">Constraints</th>
+<th align="left"><div align="center"><strong>Description</strong></div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">endpoint</td>
+<td align="center">true</td>
+<td align="center">string</td>
+<td align="center">N/A</td>
+<td align="left">The specific External Endpoint for which the Request Trace entity is defined.</td>
+</tr>
+<tr>
+<td align="center">nodes</td>
+<td align="center">false</td>
+<td align="center">list</td>
+<td align="center">N/A</td>
+<td align="left">The existing Component, Service, Backing Service or Storage Backing Service entities which are part of this Request Trace entity.</td>
+</tr>
+<tr>
+<td align="center">links</td>
+<td align="center">true</td>
+<td align="center">list</td>
+<td align="center">N/A</td>
+<td align="left">The existing Link entities which are part of this Request Trace entity.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="b-attributes_7">b) Attributes</h5>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Required</th>
+<th align="center">Type</th>
+<th align="center">Constraints</th>
+<th align="center"><div align="center"><strong>Description</strong></div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+</tr>
+</tbody>
+</table>
+<h5 id="c-definition_7">c) Definition</h5>
+<div class="highlight"><pre><span></span><code><span class="nt">cna.qualityModel.entities.RequestTrace</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">derived_from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.nodes.Root</span><span class="w"></span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Node Type to model Request Trace entities</span><span class="w"></span>
+<span class="w">  </span><span class="nt">properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">      </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">    </span><span class="nt">nodes</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">list</span><span class="w"></span>
+<span class="w">      </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">      </span><span class="nt">entry_schema</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">An existing Component, Service, Backing Service or Storage Backing Service entity which is part of this Request Trace entity</span><span class="w"></span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">    </span><span class="nt">links</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">list</span><span class="w"></span>
+<span class="w">      </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">      </span><span class="nt">entry_schema</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">An existing Link entity which is part of this Request Trace entity</span><span class="w"></span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">  </span><span class="nt">requirements</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Reference to External Endpoint for which the Request Trace is defined</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">external_endpoint</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">capability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.capabilities.Endpoint.Public</span><span class="w"></span>
+<span class="w">        </span><span class="nt">relationship</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.relationships.ConnectsTo</span><span class="w"></span>
+<span class="w">        </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">]</span><span class="w"></span>
+</code></pre></div>
+<h3 id="33-data-aggregate-entity-representation">3.3 Data Aggregate Entity Representation</h3>
+<h4 id="331-cnaqualitymodelentitiesdataaggregate">3.3.1 <a name="dataAggregateExtension">cna.qualityModel.entities.DataAggregate</a></h4>
+<p>The <strong>DataAggregate</strong> Node can model a <em>Data Aggregate</em> entity.</p>
+<p>File references:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/TOSCA_Extension/Nodes/DataAggregate.tosca">TOSCA-File</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="Nodes/DataAggregate/">Individual Node Definition</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="Nodes/DataAggregate/#4-example">Example</a></p>
+<table>
+    <tr>
+        <td bgcolor="grey"><b>Shorthand Name</b></td>
+        <td>DataAggregate</td>
+    </tr>
+    <tr>
+        <td bgcolor="grey"><b>Type Qualified Name</b></td>
+        <td>qualityModel:DataAggregate</td> <!-- TODO keep? -->
+    </tr>
+    <tr>
+        <td bgcolor="grey"><b>Type URI</b></td>
+        <td>cna.qualityModel.entities.DataAggregate</td>
+    </tr>
+</table>
+
+<h5 id="a-properties_8">a) Properties</h5>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Required</th>
+<th align="center">Type</th>
+<th align="center">Constraints</th>
+<th align="center"><div align="center"><strong>Description</strong></div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+</tr>
+</tbody>
+</table>
+<h5 id="b-attributes_8">b) Attributes</h5>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Required</th>
+<th align="center">Type</th>
+<th align="center">Constraints</th>
+<th align="center"><div align="center"><strong>Description</strong></div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+</tr>
+</tbody>
+</table>
+<h5 id="c-definition_8">c) Definition</h5>
+<div class="highlight"><pre><span></span><code><span class="nt">cna.qualityModel.entities.DataAggregate</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">derived_from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.nodes.Root</span><span class="w"></span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Node Type to model Data Aggregate entities</span><span class="w"></span>
+<span class="w">  </span><span class="nt">requirements</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Allows Data Aggregate to be persisted by Storage Backing Service entity</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">persistence</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">capability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.capabilities.DataStorage</span><span class="w"></span>
+<span class="w">        </span><span class="nt">relationship</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.relationships.AttachesTo.Data</span><span class="w"></span>
+<span class="w">        </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">UNBOUNDED</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">  </span><span class="nt">capabilities</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Allows Data Aggregate to be used by other entities</span><span class="w"></span>
+<span class="w">    </span><span class="nt">provided_data</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.capabilities.Attachment</span><span class="w"></span>
+<span class="w">      </span><span class="nt">valid_source_types</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.entities.Root.Component</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.entities.SoftwareComponent.Service</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.entities.BackingService</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.entities.Database.StorageService</span><span class="w"></span>
+<span class="w">      </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">]</span><span class="w"></span>
+</code></pre></div>
+<h3 id="34-backing-data-entity-representation">3.4 Backing Data Entity Representation</h3>
+<h4 id="341-cnaqualitymodelentitiesbackingdata">3.4.1 <a name="backingDataExtension">cna.qualityModel.entities.BackingData</a></h4>
+<p>The <strong>BackingData</strong> Node can model a <em>Backing Data</em> entity.</p>
+<p>File references:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/TOSCA_Extension/Nodes/BackingData.tosca">TOSCA-File</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="Nodes/BackingData/">Individual Node Definition</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="Nodes/BackingData/#4-example">Example</a></p>
+<table>
+    <tr>
+        <td bgcolor="grey"><b>Shorthand Name</b></td>
+        <td>BackingData</td>
+    </tr>
+    <tr>
+        <td bgcolor="grey"><b>Type Qualified Name</b></td>
+        <td>qualityModel:BackingData</td> <!-- TODO keep? -->
+    </tr>
+    <tr>
+        <td bgcolor="grey"><b>Type URI</b></td>
+        <td>cna.qualityModel.entities.BackingData</td>
+    </tr>
+</table>
+
+<h5 id="a-properties_9">a) Properties</h5>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Required</th>
+<th align="center">Type</th>
+<th align="center">Constraints</th>
+<th align="left"><div align="center"><strong>Description</strong></div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">included_data</td>
+<td align="center">true</td>
+<td align="center">map</td>
+<td align="center">N/A</td>
+<td align="left">The information represented by the Backing Data entity.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="b-attributes_9">b) Attributes</h5>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Required</th>
+<th align="center">Type</th>
+<th align="center">Constraints</th>
+<th align="center"><div align="center"><strong>Description</strong></div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+</tr>
+</tbody>
+</table>
+<h5 id="c-definition_9">c) Definition</h5>
+<div class="highlight"><pre><span></span><code><span class="nt">cna.qualityModel.entities.BackingData</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">derived_from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.nodes.Root</span><span class="w"></span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Node Type to model Backing Data entities</span><span class="w"></span>
+<span class="w">  </span><span class="nt">properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">included_data</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">map</span><span class="w"></span>
+<span class="w">      </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">      </span><span class="nt">key_schema</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">the name specifying the individual Backing Data element</span><span class="w"></span>
+<span class="w">      </span><span class="nt">entry_schema</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">the value of the individual Backing Data element</span><span class="w"></span>
+<span class="w">  </span><span class="nt">capabilities</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">provided_data</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.capabilities.Attachment</span><span class="w"></span>
+<span class="w">        </span><span class="nt">valid_source_types</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.entities.Root.Component</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.entities.SoftwareComponent.Service</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.entities.BackingService</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.entities.Database.StorageService</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.entities.Compute.Infrastructure</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cna.qualityModel.entities.DBMS.Infrastructure</span><span class="w"></span>
+<span class="w">        </span><span class="nt">occurrences</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">]</span><span class="w"></span>
+</code></pre></div>
+<h3 id="35-additionally-required-type-definitions">3.5 Additionally Required Type Definitions</h3>
+<p>The following Type definitions are not used to represent some entities of the quality model but are required to realize them with the previously extended TOSCA definitions.</p>
+<h4 id="351-cnaqualitymodelcapabilitiesdatastorage">3.5.1 <a name="dataStorageCapability">cna.qualityModel.capabilities.DataStorage</a></h4>
+<p>When a Node includes the <em>DataStorage</em> Capability, it is able to store Data Aggregate entities.</p>
+<p>File references:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/TOSCA_Extension/Capabilities/DataStorage.tosca">TOSCA-File</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="Capabilities/DataStorage/">Individual Node Definition</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="Capabilities/DataStorage/#4-example">Example</a></p>
+<table>
+    <tr>
+        <td bgcolor="grey"><b>Shorthand Name</b></td>
+        <td>DataStorage</td>
+    </tr>
+    <tr>
+        <td bgcolor="grey"><b>Type Qualified Name</b></td>
+        <td>qualityModel:DataStorage</td> <!-- TODO keep? -->
+    </tr>
+    <tr>
+        <td bgcolor="grey"><b>Type URI</b></td>
+        <td>cna.qualityModel.capabilities.DataStorage</td>
+    </tr>
+</table>
+
+<h5 id="a-properties_10">a) Properties</h5>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Required</th>
+<th align="center">Type</th>
+<th align="center">Constraints</th>
+<th align="left"><div align="center"><strong>Description</strong></div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">included_data</td>
+<td align="center">true</td>
+<td align="center">map</td>
+<td align="center">N/A</td>
+<td align="left">The information represented by the Backing Data entity.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="b-attributes_10">b) Attributes</h5>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Required</th>
+<th align="center">Type</th>
+<th align="center">Constraints</th>
+<th align="center"><div align="center"><strong>Description</strong></div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+</tr>
+</tbody>
+</table>
+<h5 id="c-definition_10">c) Definition</h5>
+<div class="highlight"><pre><span></span><code><span class="nt">cna.qualityModel.capabilities.DataStorage</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">derived_from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.capabilities.Root</span><span class="w"></span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">When included, the Node is able to store Data Aggregate entities</span><span class="w"></span>
+</code></pre></div>
+<h4 id="352-cnaqualitymodelrelationshipsattachestodata">3.5.2 <a name="attachesToDataRelationship">cna.qualityModel.relationships.AttachesTo.Data</a></h4>
+<p>The <em>AttachtesTo.Data</em> Relationship is used to model the connection between a Component and a <em>Data Aggregate</em> or <em>Backing Data</em> entity.
+It extends the original TOSCA <em>AttachesTo</em> Relationship in order to change the <em>"location"</em> property to a non-required one.</p>
+<p>File references:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/TOSCA_Extension/Relationships/AttachesTo_Data.tosca">TOSCA-File</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="Relationships/AttachesTo_Data/">Individual Node Definition</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="Relationships/AttachesTo_Data/#4-example">Example</a></p>
+<table>
+    <tr>
+        <td bgcolor="grey"><b>Shorthand Name</b></td>
+        <td>AttachesTo.Data</td>
+    </tr>
+    <tr>
+        <td bgcolor="grey"><b>Type Qualified Name</b></td>
+        <td>qualityModel:AttachesTo.Data</td> <!-- TODO keep? -->
+    </tr>
+    <tr>
+        <td bgcolor="grey"><b>Type URI</b></td>
+        <td>cna.qualityModel.relationships.AttachesTo.Data</td>
+    </tr>
+</table>
+
+<h5 id="a-properties_11">a) Properties</h5>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Required</th>
+<th align="center">Type</th>
+<th align="center">Constraints</th>
+<th align="left"><div align="center"><strong>Description</strong></div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">location</td>
+<td align="center">false</td>
+<td align="center">map</td>
+<td align="center">N/A</td>
+<td align="left">The relative location.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="b-attributes_11">b) Attributes</h5>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Required</th>
+<th align="center">Type</th>
+<th align="center">Constraints</th>
+<th align="center"><div align="center"><strong>Description</strong></div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+</tr>
+</tbody>
+</table>
+<h5 id="c-definition_11">c) Definition</h5>
+<div class="highlight"><pre><span></span><code><span class="nt">cna.qualityModel.relationships.AttachesTo.Data</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">derived_from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tosca.relationships.AttachesTo</span><span class="w"></span>
+<span class="w">  </span><span class="nt">valid_target_types</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">tosca.capabilities.Attachment</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">  </span><span class="nt">properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">location</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># Override parent AttachesTo definition to make this property non-required</span><span class="w"></span>
+<span class="w">      </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+</code></pre></div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>last accessed 2022-03-28&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      2022-08-31
+    
+  </small>
+</div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../ToscaModeling/ExtendedTosca/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Extended TOSCA" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Extended TOSCA
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="Nodes/Root_Component/" class="md-footer__link md-footer__link--next" aria-label="Next: Component Entity" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Component Entity
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 <a href="https://github.com/KarolinDuerr"  target="_blank" rel="noopener">Karolin Dürr</a> – <a href="https://github.com/r0light"  target="_blank" rel="noopener">Robin Lichtenthäler</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="https://github.com/KarolinDuerr" target="_blank" rel="noopener" title="Karolin Dürr" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    <a href="https://github.com/r0light" target="_blank" rel="noopener" title="Robin Lichtenthäler" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.top", "search.suggest", "search.share"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.092fa1f6.min.js", "version": 1.0}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.5a9542cf.min.js"></script>
+      
+    
+  </body>
+</html>

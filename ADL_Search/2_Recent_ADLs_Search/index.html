@@ -1,0 +1,2677 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Karolin Dürr">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.11">
+    
+    
+      
+        <title>Recent ADLs Search - Cloud-Native Modeling Support</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50e68009.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#second-systematic-literature-search-focusing-on-recent-adls" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        <aside class="md-banner md-banner--warning">
+          
+        </aside>
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Cloud-Native Modeling Support" class="md-header__button md-logo" aria-label="Cloud-Native Modeling Support" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 7h4v2h-4v2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H9v-2h4v-2h-2a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2m1-5a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2m0 2a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-8-8z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cloud-Native Modeling Support
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Recent ADLs Search
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent=""  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-hidden="true"  type="radio" name="__palette" id="__palette_2">
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-hidden="true"  type="radio" name="__palette" id="__palette_3">
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    KarolinDuerr/MA-CNA-ModelingSupport
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../CNA_Mapping/" class="md-tabs__link">
+        CNA Mapping
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
+        ADL Literature Search & Review
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Modeling_Framework_Search/" class="md-tabs__link">
+        Modeling Libraries Search
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ToscaModeling/" class="md-tabs__link">
+        TOSCA Modeling
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Extension/" class="md-tabs__link">
+        TOSCA Extension
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cloud-Native Modeling Support" class="md-nav__button md-logo" aria-label="Cloud-Native Modeling Support" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 7h4v2h-4v2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H9v-2h4v-2h-2a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2m1-5a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2m0 2a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-8-8z"/></svg>
+
+    </a>
+    Cloud-Native Modeling Support
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    KarolinDuerr/MA-CNA-ModelingSupport
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../..">Home</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LICENSE/" class="md-nav__link">
+        License
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../CNA_Mapping/">CNA Mapping</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="CNA Mapping" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          CNA Mapping
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          ADL Literature Search & Review
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ADL Literature Search & Review" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          ADL Literature Search & Review
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Literature Search</a>
+          
+            <label for="__nav_3_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Literature Search" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Literature Search
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Review_Search/" class="md-nav__link">
+        Review Search
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Recent ADLs Search
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Recent ADLs Search
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    Table of Contents
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-general-information" class="md-nav__link">
+    1. General Information
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-searched-libraries" class="md-nav__link">
+    2. Searched Libraries
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Searched Libraries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-individual-libraries" class="md-nav__link">
+    2.1 Individual Libraries
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 Individual Libraries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acm" class="md-nav__link">
+    ACM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ieee" class="md-nav__link">
+    IEEE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#springerlink" class="md-nav__link">
+    SpringerLink
+  </a>
+  
+    <nav class="md-nav" aria-label="SpringerLink">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conducting-the-advanced-search-using-the-following-restriction" class="md-nav__link">
+    Conducting the advanced search using the following restriction...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conducting-the-advanced-search-using-the-following-restriction_1" class="md-nav__link">
+    Conducting the advanced search using the following restriction...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conducting-the-advanced-search-using-the-following-restriction_2" class="md-nav__link">
+    Conducting the advanced search using the following restriction...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conducting-the-advanced-search-using-the-following-restriction_3" class="md-nav__link">
+    Conducting the advanced search using the following restriction...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conducting-the-advanced-search-using-the-following-restriction_4" class="md-nav__link">
+    Conducting the advanced search using the following restriction...
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-joined-results" class="md-nav__link">
+    2.2 Joined Results
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-selection-of-suitable-literature" class="md-nav__link">
+    3. Selection of Suitable Literature
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Selection of Suitable Literature">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-title-based-selection" class="md-nav__link">
+    3.1 Title-Based Selection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-abstract-based-selection" class="md-nav__link">
+    3.2 Abstract-Based Selection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-full-text-scan" class="md-nav__link">
+    3.3 Full-Text Scan
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-snowballing" class="md-nav__link">
+    3.4 Snowballing
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 Snowballing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backward-snowballing" class="md-nav__link">
+    Backward Snowballing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forward-snowballing" class="md-nav__link">
+    Forward Snowballing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-identified-modeling-languages" class="md-nav__link">
+    4. Identified Modeling Languages
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../ReviewCriteria/">Review Criteria</a>
+          
+            <label for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Review Criteria" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Review Criteria
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReviewCriteria/LanguageCharacteristics/" class="md-nav__link">
+        Language Characteristics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReviewCriteria/CloudModelingCapabilities/" class="md-nav__link">
+        Cloud Modeling Capabilities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReviewCriteria/RepresentationOfProposedEntities/" class="md-nav__link">
+        Representation of Proposed Entities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReviewCriteria/ArchitecturalEvaluations/" class="md-nav__link">
+        Architectural Evaluations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReviewCriteria/ToolingSupport/" class="md-nav__link">
+        Tooling Support
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../ADLReviewSummary/">Review Results</a>
+          
+            <label for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Review Results" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Review Results
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ADLReviewSummary/LanguageCharacteristicsSummary/" class="md-nav__link">
+        Language Characteristics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ADLReviewSummary/CloudModelingCapabilitiesSummary/" class="md-nav__link">
+        Cloud Modeling Capabilities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ADLReviewSummary/RepresentationOfProposedEntitiesSummary/" class="md-nav__link">
+        Representation of Proposed Entities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ADLReviewSummary/ArchitecturalEvaluationsSummary/" class="md-nav__link">
+        Architectural Evaluations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ADLReviewSummary/ToolingSupportSummary/" class="md-nav__link">
+        Tooling Support
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../Modeling_Framework_Search/">Modeling Libraries Search</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Modeling Libraries Search" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Modeling Libraries Search
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../Modeling_Framework_Search/Google/">Google Search Overview</a>
+          
+            <label for="__nav_4_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Google Search Overview" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Google Search Overview
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Modeling_Framework_Search/Google/0_Google_Search_Results_part1/" class="md-nav__link">
+        Google Search Results - 1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Modeling_Framework_Search/Google/0_Google_Search_Results_part2/" class="md-nav__link">
+        Google Search Results - 2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Modeling_Framework_Search/Google/1_Google_Search_Results_Libs/" class="md-nav__link">
+        Google Search Results - Libs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Modeling_Framework_Search/Google/2_Google_Search_firstFiltering/" class="md-nav__link">
+        Google First Filtering
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../Modeling_Framework_Search/Github/">Github Search Overview</a>
+          
+            <label for="__nav_4_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Github Search Overview" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Github Search Overview
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Modeling_Framework_Search/Github/0_Github_Search_raw_results/" class="md-nav__link">
+        Github Search Results
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Modeling_Framework_Search/Github/1_Github_Search_first_filtering/" class="md-nav__link">
+        Github First Filtering
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Modeling_Framework_Search/0_merged_results/" class="md-nav__link">
+        Merged Results
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Modeling_Framework_Search/1_merged_results_first_filtering/" class="md-nav__link">
+        First Filtering
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Modeling_Framework_Search/2_filtered_results_remarks/" class="md-nav__link">
+        Filtered with Remarks
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../ToscaModeling/">TOSCA Modeling</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="TOSCA Modeling" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          TOSCA Modeling
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ToscaModeling/OriginalTosca/" class="md-nav__link">
+        Original TOSCA
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ToscaModeling/ExtendedTosca/" class="md-nav__link">
+        Extended TOSCA
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../Extension/">TOSCA Extension</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="TOSCA Extension" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          TOSCA Extension
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Extension/Nodes/Root_Component/" class="md-nav__link">
+        Component Entity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Extension/Nodes/SoftwareComponent_Service/" class="md-nav__link">
+        Service Entity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Extension/Nodes/Database_StorageBackingService/" class="md-nav__link">
+        Storage Backing Service Entity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Extension/Relationships/ConnectsTo_Link/" class="md-nav__link">
+        Link Entity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_6" type="checkbox" id="__nav_6_6" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6_6">
+          Infrastructure Entity
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Infrastructure Entity" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_6">
+          <span class="md-nav__icon md-icon"></span>
+          Infrastructure Entity
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Extension/Nodes/Compute_Infrastructure/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Extension/Nodes/DBMS_Infrastructure/" class="md-nav__link">
+        Hosting Storage Backing Service
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Extension/Nodes/BackingService/" class="md-nav__link">
+        Backing Service Entity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Extension/Nodes/RequestTrace/" class="md-nav__link">
+        Request Trace Entity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_9" type="checkbox" id="__nav_6_9" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6_9">
+          Data Aggregate Entity
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data Aggregate Entity" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_9">
+          <span class="md-nav__icon md-icon"></span>
+          Data Aggregate Entity
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Extension/Nodes/DataAggregate/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Extension/Capabilities/DataStorage/" class="md-nav__link">
+        DataStorage Capability
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Extension/Relationships/AttachesTo_Data/" class="md-nav__link">
+        AttachesTo.Data Relationship
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Extension/Nodes/BackingData/" class="md-nav__link">
+        Backing Data Entity
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    Table of Contents
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-general-information" class="md-nav__link">
+    1. General Information
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-searched-libraries" class="md-nav__link">
+    2. Searched Libraries
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Searched Libraries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-individual-libraries" class="md-nav__link">
+    2.1 Individual Libraries
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 Individual Libraries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acm" class="md-nav__link">
+    ACM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ieee" class="md-nav__link">
+    IEEE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#springerlink" class="md-nav__link">
+    SpringerLink
+  </a>
+  
+    <nav class="md-nav" aria-label="SpringerLink">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conducting-the-advanced-search-using-the-following-restriction" class="md-nav__link">
+    Conducting the advanced search using the following restriction...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conducting-the-advanced-search-using-the-following-restriction_1" class="md-nav__link">
+    Conducting the advanced search using the following restriction...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conducting-the-advanced-search-using-the-following-restriction_2" class="md-nav__link">
+    Conducting the advanced search using the following restriction...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conducting-the-advanced-search-using-the-following-restriction_3" class="md-nav__link">
+    Conducting the advanced search using the following restriction...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conducting-the-advanced-search-using-the-following-restriction_4" class="md-nav__link">
+    Conducting the advanced search using the following restriction...
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-joined-results" class="md-nav__link">
+    2.2 Joined Results
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-selection-of-suitable-literature" class="md-nav__link">
+    3. Selection of Suitable Literature
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Selection of Suitable Literature">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-title-based-selection" class="md-nav__link">
+    3.1 Title-Based Selection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-abstract-based-selection" class="md-nav__link">
+    3.2 Abstract-Based Selection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-full-text-scan" class="md-nav__link">
+    3.3 Full-Text Scan
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-snowballing" class="md-nav__link">
+    3.4 Snowballing
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 Snowballing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backward-snowballing" class="md-nav__link">
+    Backward Snowballing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forward-snowballing" class="md-nav__link">
+    Forward Snowballing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-identified-modeling-languages" class="md-nav__link">
+    4. Identified Modeling Languages
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+<h1 id="second-systematic-literature-search-focusing-on-recent-adls"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h7c-.41-.25-.8-.56-1.14-.9a6.478 6.478 0 0 1-.36-9.18C13.69 9.5 17.33 9.13 20 11V8l-6-6m-1 7V3.5L18.5 9H13m7.31 9.9c1.33-2.11.69-4.9-1.4-6.22-2.11-1.33-4.91-.68-6.22 1.4-1.34 2.11-.69 4.89 1.4 6.22 1.46.93 3.32.93 4.79.02L22 23.39 23.39 22l-3.08-3.1m-3.81.1a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5z"/></svg></span> Second Systematic Literature Search:</br> Focusing on Recent <abbr title="Architecture Description Languages">ADLs</abbr></h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#1-general-information">General Information</a></li>
+<li><a href="#2-searched-libraries">Searched Libraries</a><ol>
+<li><a href="#21-individual-libraries">Individual Libraries</a><ol>
+<li><a href="#ACM-search">ACM</a></li>
+<li><a href="#IEEE-search">IEEE</a></li>
+<li><a href="#SpringerLink-search">SpringerLink</a></li>
+</ol>
+</li>
+<li><a href="#22-joined-results">Joined Results</a></li>
+</ol>
+</li>
+<li><a href="#3-selection-of-suitable-literature">Selection of Suitable Literature</a><ol>
+<li><a href="#31-title-based-selection">Title-Based Selection</a></li>
+<li><a href="#32-abstract-based-selection">Abstract-Based Selection</a></li>
+<li><a href="#33-full-text-scan">Full-Text Scan</a></li>
+<li><a href="#34-snowballing">Snowballing</a></li>
+</ol>
+</li>
+<li><a href="#4-identified-modeling-languages">Identified Modeling Languages</a></li>
+</ol>
+<hr />
+<h2 id="1-general-information">1. General Information</h2>
+<p>The following search string was used to find literature that introduces or discusses architecture description languages in the context of microservices or the cloud.
+This time, the search string is applied to the title, and the searches only consider publications from 2019 onwards since the latest review from the <a href="../1_Review_Search">previous literature search</a> was then published.</p>
+<p><a name="search-query" style="text-decoration: none; color: black;"><ins>Search string:</ins></a>
+<div class="highlight"><pre><span></span><code>(Title:(((modeling OR modelling) AND (language OR languages))
+OR (&quot;model-driven&quot;) OR
+((modeling OR modelling) AND (architecture OR architectures)) OR
+(&quot;application modeling&quot; OR &quot;application modelling&quot;)) AND
+Title:((microservice OR microservices OR cloud)))
+</code></pre></div>
+</br></p>
+<!--Short summary of the overall procedure:-->
+
+<figure>
+<p><img alt="Overview Second Literature Search" src="../images/overviewSecondLiteratureSearchProcedure.svg" />
+  </p>
+<figcaption>Short summary of the overall procedure for the recent ADL search</figcaption>
+</figure>
+<p><img alt="📆" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f4c6.svg" title=":calendar:" /> Search date: 2022-02-02</p>
+<h2 id="2-searched-libraries">2. Searched Libraries</h2>
+<!--<details><summary>Searched libraries</summary>-->
+<h3 id="21-individual-libraries">2.1 Individual Libraries</h3>
+<h4 id="acm"><a name="ACM-search"><a href="https://dl.acm.org/">ACM</a></a></h4>
+<p><div class="highlight"><pre><span></span><code>&quot;query&quot;: { Title:(((modeling OR modelling) AND (language OR languages)) OR
+(&quot;model-driven&quot;) OR
+((modeling OR modelling) AND (architecture OR architectures)) OR
+(&quot;Document Title&quot;:&quot;application modeling&quot; OR &quot;Document Title&quot;:&quot;application modelling&quot;)) AND
+Title:((microservice OR microservices OR cloud)) }
+&quot;filter&quot;: { Publication Date: (01/01/2019 TO 12/31/2022), ACM Content: DL }
+</code></pre></div>
+<img alt="🔍" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f50d.svg" title=":mag:" /> Results: 11</br>
+<a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/ACM/S2_ACM_raw_results.bib">ACM_second_search_raw_results</a></p>
+<!----------------------------------------------------------------------------->
+<!---------------------------------IEEE---------------------------------------->
+<!----------------------------------------------------------------------------->
+<h4 id="ieee"><a name="IEEE-search"><a href="https://ieeexplore.ieee.org/Xplore/home.jsp">IEEE</a></a></h4>
+<p><div class="highlight"><pre><span></span><code>(((&quot;Document Title&quot;: modeling OR &quot;Document Title&quot;: modelling) AND (&quot;Document Title&quot;: language OR &quot;Document Title&quot;: languages)) OR
+(&quot;Document Title&quot;:&quot;model-driven&quot;) OR
+((&quot;Document Title&quot;: modeling OR &quot;Document Title&quot;: modelling) AND (&quot;Document Title&quot;: architecture OR &quot;Document Title&quot;: architectures)) OR
+(&quot;Document Title&quot;:&quot;application modeling&quot; OR &quot;Document Title&quot;:&quot;application modelling&quot;)) AND
+(&quot;Document Title&quot;:microservice OR &quot;Document Title&quot;:microservices OR &quot;Document Title&quot;:cloud)
+
+Filter Year: 2019 - 2022
+</code></pre></div>
+<img alt="🔍" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f50d.svg" title=":mag:" /> Results: 30</br>
+<a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/IEEE/S2_IEEE_raw_results.bib">IEEE_second_search_raw_results</a></p>
+<!----------------------------------------------------------------------------->
+<!----------------------------SpringerLink------------------------------------->
+<!----------------------------------------------------------------------------->
+<h4 id="springerlink"><a name="SpringerLink-search"><a href="https://link.springer.com/">SpringerLink</a></a></h4>
+<p>SpringerLink's title search does not allow the usage of constraints such as <em>”AND”</em> or <em>”OR”</em>. Consequently, the desired search string has to be assembled manually by executing several steps.
+This requires separating the search strings and combining the results for the <em>"OR"</em> relations. Additionally, to realize the outermost <em>"AND"</em> relation, only the results that appeared in both merged searches are considered, meaning the intersection of the two merged searches.
+The individual intermediate results are documented in the following, and a detailed description of the separation process is also provided if desired.</p>
+<details class="additional-info">
+<summary>Detailed description of the manual separation and search procedure</summary>
+<p>First, the search string can be separated into two parts identified by the outermost <em>”AND”</em> relation:</p>
+<ol>
+<li>Title:(((modeling OR modelling) AND (language OR languages)) OR ("model-driven") OR ((modeling OR modelling) AND (architecture OR architectures)) OR
+("application modeling" OR "application modelling"))</li>
+<li>Title:((microservice OR microservices OR cloud))</li>
+</ol>
+<p>Now, the two remaining search strings can be further divided. This time, at the outermost <em>”OR”</em> relation.
+Additionally, the asterisk (<strong>*</strong>) is used to combine the option (microservice OR microservices) in one search term, since <strong>*</strong> allows any number of following letters:</p>
+<ol>
+<li>
+<p>Results for separating <code>Title:(((modeling OR modelling) AND (language OR languages)) OR ("model-driven") OR ((modeling OR modelling) AND (architecture OR architectures)) OR
+("application modeling" OR "application modelling"))</code>:<br>
+&nbsp;&nbsp;&nbsp; 1. ((modeling OR modelling) AND (language OR languages))<br>
+&nbsp;&nbsp;&nbsp; 2. ("model-driven")<br>
+&nbsp;&nbsp;&nbsp; 3. ((modeling OR modelling) AND (architecture OR architectures))<br>
+&nbsp;&nbsp;&nbsp; 4. ("application modeling" OR "application modelling"))<br></p>
+</li>
+<li>
+<p>Results for separating <code>Title:((microservice OR microservices OR cloud))</code>:<br>
+&nbsp;&nbsp;&nbsp; 1. microservice*<br>
+&nbsp;&nbsp;&nbsp; 2. cloud<br></p>
+</li>
+</ol>
+<p>The retrived results 1.1, 1.3 and 1.4 have to be further simplified by combining and separating the search strings further.
+Additionally, the asterisk (<strong>*</strong>) is used again to combine options like (language OR languages) in one search term:</p>
+<ol>
+<li>Further simplification and separation:<br>
+&nbsp;&nbsp;&nbsp; 1. Combining and simplifying <code>((modeling OR modelling) AND (language OR languages))</code>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. modeling language*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. modelling language*<br>
+&nbsp;&nbsp;&nbsp; 2. model-driven<br>
+&nbsp;&nbsp;&nbsp; 3. Combining and simplifying <code>((modeling OR modelling) AND (architecture OR architectures))</code>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. modeling architecture*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. modelling architecture*<br>
+&nbsp;&nbsp;&nbsp; 4. Combining and simplifying <code>(application modeling OR application modelling)</code>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. application modeling<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. application modelling<br></li>
+</ol>
+<p>Each retrieved search string (1.1.1, 1.1.2, 1.2, 1.3.1, 1.3.2, 1.4.1, 1.4.2) is used for a title search, combined with an additional restriction of the full-text search to <code>(cloud OR microservice OR microservices)</code>.
+The results of these seven searches are then simply merged since they are combined with an <em>"OR"</em> relation in the <a href="#search-query">original search string</a>.
+The merged results are referred to as <strong>FirstHalf</strong> in the following.</p>
+<p>The search strings 2.1 and 2.2 are also used for a title search, but this time combined with a restriction of the full-text search to <code>(((modeling OR modelling) AND (language OR languages)) OR
+("model-driven") OR ((modeling OR modelling) AND (architecture or architectures)) OR
+("application modeling" OR "application modelling"))</code>.</p>
+<p>Afterwards, to reconstruct the <em>"AND"</em> relation, the intersection between the <em>FirstHalf</em> combined with the search results from using the search string 2.1 are built.
+The same is done for the search results of using the search string 2.2.
+The intersections are built using an R-Script, which is provided <a href="#intersection-r-script">later on</a>.
+In order to retrieve the final result of the desired <a href="#search-query">search string</a>, the two intersections are then merged.
+As mentioned before, the intermediate results, as well as the final result, are presented in the following.</p>
+</details>
+<p><br>
+Furthermore, SpringerLink only provides the option to export the search results as .csv-file.
+Therefore, this .csv-file had to be transformed into a .bib-file.
+For this, an R-Script was used to retrieve the DOIs from the .csv-files and save them in a .txt-file:</p>
+<p><div class="highlight"><span class="filename">Retrieve DOIs from CSV-file</span><pre><span></span><code>FoundLiterature &lt;- read.csv(&quot;searchResults.csv&quot;, encoding = &quot;UTF-8&quot;);
+DOIs &lt;- FoundLiterature[&quot;Item.DOI&quot;]
+
+write.table(DOIs,file=&quot;DOIs.txt&quot;, row.names = FALSE, quote=FALSE)
+</code></pre></div>
+The R-Script can also be found in the following file: <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/R-Scripts/Retrieve_DOIs_From_CSV.R">Retrieve_DOIs_From_CSV</a></p>
+<p>The received DOIs were then used with the tool <a href="https://www.zotero.org/">Zotero</a> to create a .bib-file with the respective literature.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Mode(l)ling language(s)</label><label for="__tabbed_1_2">Model-Driven</label><label for="__tabbed_1_3">Model(l)ing Architecture(s)</label><label for="__tabbed_1_4">Application Model(l)ing</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<h5 id="conducting-the-advanced-search-using-the-following-restriction">Conducting the advanced search using the following restriction...</h5>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> title: modeling language*</label><label for="__tabbed_2_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> title: modelling language*</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>(cloud OR microservice OR microservices)
+Filter Year: 2019 - 2022
+</code></pre></div>
+<details class="additional-files">
+<summary>Files for .csv to .bib</summary>
+<ol>
+<li>Export from SpringerLink: <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/SpringerLink/CSV-files/S2_SpringerLink_title_modeling-language%28s%29_raw_results.csv">CSV-Modeling_language(s)_title_raw_results</a></li>
+<li>Retrieved DOIs: <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/SpringerLink/CSV-files/S2_SpringerLink_title_modeling-language%28s%29_DOIs.txt">DOIs_Modeling_language(s)_title</a></li>
+<li>Result: <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/SpringerLink/S2_SpringerLink_title_modeling-language%28s%29_raw_results.bib">Bib-Modeling_language(s)_title_raw_results</a></li>
+</ol>
+</details>
+<p><img alt="🔍" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f50d.svg" title=":mag:" /> Results: 4</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>(cloud OR microservice OR microservices)
+Filter Year: 2019 - 2022
+</code></pre></div>
+<details class="additional-files">
+<summary>Files for .csv to .bib</summary>
+<ol>
+<li>Export from SpringerLink: <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/SpringerLink/CSV-files/S2_SpringerLink_title_modelling-language%28s%29_raw_results.csv">CSV-Modelling_language(s)_title_raw_results</a></li>
+<li>Retrieved DOIs: <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/SpringerLink/CSV-files/S2_SpringerLink_title_modelling-language%28s%29_DOIs.txt">DOIs_Modelling_language(s)_title</a></li>
+<li>Result: <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/SpringerLink/S2_SpringerLink_title_modelling-language%28s%29_raw_results.bib">Bib-Modelling_language(s)_title_raw_results</a></li>
+</ol>
+</details>
+<p><img alt="🔍" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f50d.svg" title=":mag:" /> Results: 4</p>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<h5 id="conducting-the-advanced-search-using-the-following-restriction_1">Conducting the advanced search using the following restriction...</h5>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> title: model-driven</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>(cloud OR microservice OR microservices)
+Filter Year: 2019 - 2022
+</code></pre></div>
+<details class="additional-files">
+<summary>Files for .csv to .bib</summary>
+<ol>
+<li>Export from SpringerLink: <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/SpringerLink/CSV-files/S2_SpringerLink_title_model-driven_raw_results.csv">CSV-Model-driven_title_raw_results</a></li>
+<li>Retrieved DOIs: <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/SpringerLink/CSV-files/S2_SpringerLink_title_model-driven_DOIs.txt">DOIs_Model-driven_title</a></li>
+<li>Result: <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/SpringerLink/S2_SpringerLink_title_model-driven_raw_results.bib">Bib-Model-driven_title_raw_results</a></li>
+</ol>
+</details>
+<p><img alt="🔍" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f50d.svg" title=":mag:" /> Results: 66</p>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<h5 id="conducting-the-advanced-search-using-the-following-restriction_2">Conducting the advanced search using the following restriction...</h5>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> title: modeling architecture*</label><label for="__tabbed_4_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> title: modelling architecture*"</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>(cloud OR microservice OR microservices)
+Filter Year: 2019 - 2022
+</code></pre></div>
+<p><img alt="🔍" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f50d.svg" title=":mag:" /> Results: 0</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>(cloud OR microservice OR microservices)
+Filter Year: 2019 - 2022
+</code></pre></div>
+<details class="additional-files">
+<summary>Files for .csv to .bib</summary>
+<ol>
+<li>Export from SpringerLink: <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/SpringerLink/CSV-files/S2_SpringerLink_title_modelling-architecture%28s%29_raw_results.csv">CSV-Modelling_architecture(s)_title_raw_results</a></li>
+<li>Retrieved DOIs: <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/SpringerLink/CSV-files/S2_SpringerLink_title_modelling-architecture%28s%29_DOIs.txt">DOIs_Modelling_architecture(s)_title</a></li>
+<li>Result: <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/SpringerLink/S2_SpringerLink_title_modelling-architecture%28s%29_raw_results.bib">Bib-Modelling_architecture(s)_title_raw_results</a></li>
+</ol>
+</details>
+<p><img alt="🔍" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f50d.svg" title=":mag:" /> Results: 1</p>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<h5 id="conducting-the-advanced-search-using-the-following-restriction_3">Conducting the advanced search using the following restriction...</h5>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> title: application modeling</label><label for="__tabbed_5_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> title: application modelling</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>(cloud OR microservice OR microservices)
+Filter Year: 2019 - 2022
+</code></pre></div>
+<p><img alt="🔍" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f50d.svg" title=":mag:" /> Results: 0</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>(cloud OR microservice OR microservices)
+Filter Year: 2019 - 2022
+</code></pre></div>
+<details class="additional-files">
+<summary>Files for .csv to .bib</summary>
+<ol>
+<li>Export from SpringerLink: <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/SpringerLink/CSV-files/S2_SpringerLink_title_application-modelling_raw_results.csv">CSV-Application_modelling_title_raw_results</a></li>
+<li>Retrieved DOIs: <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/SpringerLink/CSV-files/S2_SpringerLink_title_application-modelling_DOIs.txt">DOIs_Application_modelling_title</a></li>
+<li>Result: <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/SpringerLink/S2_SpringerLink_title_application-modelling_raw_results.bib">Bib-Application_modelling_title_raw_results</a></li>
+</ol>
+</details>
+<p><img alt="🔍" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f50d.svg" title=":mag:" /> Results: 2</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!----------------------------------------------------------------------------->
+<!-----------------------------Merging First Half ----------------------------->
+<!----------------------------------------------------------------------------->
+<hr />
+<p>Merging first half of original query statement:
+<div class="highlight"><pre><span></span><code>(Title:(((modeling OR modelling) AND (language OR languages)) OR
+(&quot;model-driven&quot;) OR
+((modeling OR modelling) AND (architecture or architectures)) OR
+(&quot;application modeling&quot; OR &quot;application modelling&quot;)))
+</code></pre></div></p>
+<p>Merged first half search results:</br>
+<a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/SpringerLink/S2_SpringerLink_merged_first_half_raw_results.bib">SpringerLink_merged_first_half_raw_results</a></p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 16H3V8h8V2l10 10-10 10v-6m2-9v3H5v4h8v3l5-5-5-5z"/></svg></span> Result after removing duplicates: <img alt="🔍" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f50d.svg" title=":mag:" /> 76</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/SpringerLink/S2_SpringerLink_merged_first_half_removed_duplicates.bib">SpringerLink_merged_first_half_removed_duplicates</a></p>
+<hr />
+<!----------------------------------------------------------------------------->
+<!-----------------------------Search Second Half ----------------------------->
+<!----------------------------------------------------------------------------->
+<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Cloud OR Microservice(s)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<h5 id="conducting-the-advanced-search-using-the-following-restriction_4">Conducting the advanced search using the following restriction...</h5>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> title: cloud</label><label for="__tabbed_7_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> title: microservice*</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>(((modeling OR modelling) AND (language OR languages)) OR
+(&quot;model-driven&quot;) OR
+((modeling OR modelling) AND (architecture or architectures)) OR
+(&quot;application modeling&quot; OR &quot;application modelling&quot;))
+Filter Year: 2019 - 2022
+</code></pre></div>
+<details class="additional-files">
+<summary>Files for .csv to .bib</summary>
+<ol>
+<li>Export from SpringerLink: The number of search results was too big (&gt; 1000), and thus, they had to be split several times to retrieve them. However, splitting by the year the papers were published in was still too large, so they were further split by content type. Since the same papers can be assigned to different content types, duplicates had to be removed when merging the individual files. All individual files, as well as the merged files, can be found in the following directory: <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/SpringerLink/CSV-files/Cloud">CSV-Cloud_title_raw_results_directory</a></li>
+<li>Retrieved DOIs: <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/SpringerLink/CSV-files/Cloud/S2_SpringerLink_title_cloud_DOIs_merged_raw_results.txt">DOIs_Modeling_language_review</a></li>
+<li>Result: <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/SpringerLink/S2_SpringerLink_title_cloud_raw_results.bib">Bib-Modeling_language_review_raw_results</a></li>
+</ol>
+</details>
+<p><img alt="🔍" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f50d.svg" title=":mag:" /> Results: 4320</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>(((modeling OR modelling) AND (language OR languages)) OR
+(&quot;model-driven&quot;) OR
+((modeling OR modelling) AND (architecture or architectures)) OR
+(&quot;application modeling&quot; OR &quot;application modelling&quot;))
+Filter Year: 2019 - 2022
+</code></pre></div>
+<details class="additional-files">
+<summary>Files for .csv to .bib</summary>
+<ol>
+<li>Export from SpringerLink: <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/SpringerLink/CSV-files/S2_SpringerLink_title_microservice%28s%29_raw_results.csv">CSV-Microservice(s)_title_raw_results</a></li>
+<li>Retrieved DOIs: <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/SpringerLink/CSV-files/S2_SpringerLink_title_microservice%28s%29_DOIs.txt">DOIs_Microservice(s)_title</a></li>
+<li>Result: <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/SpringerLink/S2_SpringerLink_title_microservice%28s%29_raw_results.bib">Bib-Microservice(s)_title_raw_results</a></li>
+</ol>
+</details>
+<p><img alt="🔍" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f50d.svg" title=":mag:" /> Results: 256</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>In order to build the intersection of the respective search results, the following <a name="intersection-r-script" style="text-decoration: none; color: black;">R-Script</a> is applied:</p>
+<div class="highlight"><span class="filename">Build intersection for search results</span><pre><span></span><code>library(dplyr)
+
+FirstHalf &lt;- read.table(&quot;S2_SpringerLink_FirstHalf_merged_DOIs.txt&quot;, encoding = &quot;UTF-8&quot;, header= TRUE);
+
+FirstHalf_removedDuplicates &lt;- unique(FirstHalf)
+
+Microservice &lt;- read.table(&quot;S2_SpringerLink_title_microservice(s)_DOIs.txt&quot;, encoding = &quot;UTF-8&quot;, header= TRUE);
+
+Intersection &lt;- generics::intersect(FirstHalf, Microservice)
+
+write.table(Intersection,file=&quot;S2_SpringerLink_Intersection_Microservice-FirstHalf_DOIs.txt&quot;, row.names = FALSE, quote=FALSE)
+</code></pre></div>
+<p>The R-Script can also be found in the following file: <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/R-Scripts/Determine_Intersection_DOIs.R">Determine_Intersection_DOIs</a></p>
+<p>The following table summarizes the results after building the intersection between the different search results.</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="left"><center>FirstHalf - Cloud</center></th>
+<th align="left"><center>FirstHalf - Microservice*</center></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><img alt="🔍" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f50d.svg" title=":mag:" /></td>
+<td align="left"><center>5</center></td>
+<td align="left"><center>4</center></td>
+</tr>
+<tr>
+<td align="center">DOIs</td>
+<td align="left"><center><a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/SpringerLink/Intersection_Cloud_FirstHalf/S2_SpringerLink_Intersection_Cloud-FirstHalf_DOIs.txt">S2_SpringerLink_Intersection_Cloud-FirstHalf_DOIs</a></center></td>
+<td align="left"><center><a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/SpringerLink/Intersection_Microservice_FirstHalf/S2_SpringerLink_Intersection_Microservice-FirstHalf_DOIs.txt">S2_SpringerLink_Intersection_Microservice-FirstHalf_DOIs</a></center></td>
+</tr>
+<tr>
+<td align="center">Bib-Result</td>
+<td align="left"><center><a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/SpringerLink/Intersection_Cloud_FirstHalf/S2_SpringerLink_Intersection_Cloud-FirstHalf_result.bib">S2_SpringerLink_Intersection_Cloud-FirstHalf_result</a></center></td>
+<td align="left"><center><a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/SpringerLink/Intersection_Microservice_FirstHalf/S2_SpringerLink_Intersection_Microservice-FirstHalf_result.bib">S2_SpringerLink_Intersection_Microservice-FirstHalf_result</a></center></td>
+</tr>
+<tr>
+<td align="center">Current Query</td>
+<td align="left"><code>(Title:(((modeling OR modelling) AND (language OR languages)) OR ("model-driven") OR ((modeling OR modelling) AND (architecture or architectures)) OR ("application modeling" OR "application modelling")) AND Title:(cloud))</code></td>
+<td align="left"><code>(Title:(((modeling OR modelling) AND (language OR languages)) OR ("model-driven") OR ((modeling OR modelling) AND (architecture or architectures)) OR ("application modeling" OR "application modelling")) AND Title:(microservice OR microservices))</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Finally, to receive the result of the desired <a href="#search-query">search string</a>, the two
+intersections above are merged.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 16H3V8h8V2l10 10-10 10v-6m2-9v3H5v4h8v3l5-5-5-5z"/></svg></span> Merged search results: <img alt="🔍" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f50d.svg" title=":mag:" /> 9</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/SpringerLink/S2_SpringerLink_merged_raw_results.bib">SpringerLink_merged_removed_duplicates</a></p>
+<h3 id="22-joined-results">2.2 Joined Results</h3>
+<p>The search results from all three libraries were merged and existing duplicates removed.
+However, no duplicates were found in this merge.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 16H3V8h8V2l10 10-10 10v-6m2-9v3H5v4h8v3l5-5-5-5z"/></svg></span> Merged search results: <img alt="🔍" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f50d.svg" title=":mag:" /> 50</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/S2_0_Total_search-results_merged.bib">Total_search-results_merged</a></p>
+<h2 id="3-selection-of-suitable-literature">3. Selection of Suitable Literature</h2>
+<p>In order to find suitable literature to determine which <abbr title="Architecture Description Languages">ADLs</abbr> are worth evaluating, the following steps were conducted.
+For this, the focus lies on recently proposed or mentioned modeling languages in the context of Microservice Architectures or the cloud.</p>
+<h3 id="31-title-based-selection">3.1 Title-Based Selection</h3>
+<p><img alt="❌" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/274c.svg" title=":x:" /> Exclusion Criteria:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Paper already considered in first literature search</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Modeling language already considered due to the first literature search</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Modeling clearly does not refer to the system's architecture</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> The terms "model" or "modeling" appear in a different and unrelated context, such as a data access model or CaaS model</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Focus too narrow or specific, for example runtime safety assurance or reliability modeling with focus on dynamic routing</li>
+</ul>
+<p><img alt="✔" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/2714.svg" title=":heavy_check_mark:" /> Inclusion criteria:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Reference to model or modeling Microservice Architectures</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Reference to Application or Architecture modeling</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Reference to specific modeling language(s)</br>
+      <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> exceptions see above</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Some model-driven approach in the context of microservices or the cloud, especially concerning development or architecture</li>
+</ul>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 16H3V8h8V2l10 10-10 10v-6m2-9v3H5v4h8v3l5-5-5-5z"/></svg></span> The result after filtering based on the title: <img alt="🔍" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f50d.svg" title=":mag:" /> 26</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/S2_1_Title_filtering_results.bib">1_Title_Filtering_results</a></p>
+<h3 id="32-abstract-based-selection">3.2 Abstract-Based Selection</h3>
+<p><img alt="❌" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/274c.svg" title=":x:" /> Exclusion Criteria:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> The modeling language's focus is too specific, for example solely considering
+  data architecture aspects</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Modeling does not focus on architectural aspects but instead, for instance, business aspects</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Referenced modeling language already considered due to the first literature search</li>
+</ul>
+<p><img alt="✔" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/2714.svg" title=":heavy_check_mark:" /> Inclusion Criteria:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Reference to (a) specific architecture language(s) in the context of microservices or the cloud</br>
+      <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> exceptions see above</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Reference to modelling approach(es) in the context of microservices or the cloud</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Too general review on or reference to model-driven engineering to be already excluded</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Reference to a simulation platform/environment that also provides architectural modelling</li>
+</ul>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 16H3V8h8V2l10 10-10 10v-6m2-9v3H5v4h8v3l5-5-5-5z"/></svg></span> The result after filtering based on the abstract: <img alt="🔍" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f50d.svg" title=":mag:" /> 16</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/S2_2_Abstract_filtering_results.bib">2_Abstract_Filtering_results</a></p>
+<h3 id="33-full-text-scan">3.3 Full-Text Scan</h3>
+<p><img alt="❌" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/274c.svg" title=":x:" /> Exclusion Criteria:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Referencing already considered modeling language(s)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Not mentioning an actual modeling language</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Missing focus on architectural aspects</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Modeling language requires source code as a must</li>
+</ul>
+<p><img alt="✔" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/2714.svg" title=":heavy_check_mark:" /> Inclusion Criteria:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Presents or introduces a modeling language considering architectures in the context of microservices or the cloud</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Name existing modeling languages which allows architectural view/focus</li>
+</ul>
+<details class="file-removal">
+<summary>Removal Reasoning per paper</summary>
+<p><em>Bibtex-Keys</em> refer to the <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/S2_2_Abstract_filtering_results.bib">2_Abstract_Filtering_results</a> file.</br>
+<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> The previous <em>citationkeys</em> have been adapted for standardization purposes but can be found in the <em>comment</em> field.</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>Bibtex-Key</strong></th>
+<th align="left"><div align="center"><strong>Title</strong></div></th>
+<th align="left"><div align="center"><strong>Removal Reason</strong></div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a href="https://doi.org/10.1145/3344341.3368805">Elhabbash2019</a></td>
+<td align="left">SLO-ML: A Language for Service Level Objective Modelling in Multi-Cloud Applications</td>
+<td align="left">Proposes a new cloud modeling language that capture service level requirements. <ul><li>Captures service level requirements<br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> No focus on detailed architectural aspects</li></ul></td>
+</tr>
+<tr>
+<td align="center"><a href="https://doi.org/10.1007/978-3-030-63161-1_1">Ghirardini2020</a></td>
+<td align="left">Model-Driven Simulation for Performance Engineering of Kubernetes-Style Cloud Cluster Architectures</td>
+<td align="left">Proposes a model for the Palladio simulation environment with the aim to balance resource demands. <ul><li>Introduce an abstract model for Paladio<br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> No mentioning of specific modeling architecture</li></ul></td>
+</tr>
+<tr>
+<td align="center"><a href="https://dl.acm.org/doi/10.5555/3432601.3432616">Podolskiy2020</a></td>
+<td align="left">The Weakest Link: Revealing and Modeling the Architectural Patterns of Microservice Applications</td>
+<td align="left">Considering Github projects, containerized microservice applications are analyzed concerning their structure. Additionally, network models are considered and evaluated for their usefulness in this context.<ul><li>Analyze the structure of microservices and their connections<br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> Not focusing on other architectural aspects</li><li>Consider network models<br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> Not modeling language for considering archtictural details</li></ul></td>
+</tr>
+<tr>
+<td align="center"><a href="https://doi.org/10.1145/3297280.3300182">Rademacher2019</a></td>
+<td align="left">A Model-Driven Workflow for Distributed Microservice Development</td>
+<td align="left">A description of a model-driven development workflow for microservices. <ul><li>Describe a model-driven workflow which uses (a) modeling language(s)<br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> Not mentioning an actual modeling language(s)</li></ul></td>
+</tr>
+<tr>
+<td align="center"><a href="https://doi.org/10.1109/EDOC49727.2020.00015">Yussupov2020</a></td>
+<td align="left">Pattern-Based Modelling, Integration, and Deployment of Microservice Architectures</td>
+<td align="left">Introduces a model-driven approach for composing microservices by modelling microservices while considering integrational and deployment aspects. <ul><li>Introduces the MICO meta model which focuses on integration patterns and deployment aspects<br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> Not suited for more detailed architectural modeling</li></ul></td>
+</tr>
+</tbody>
+</table>
+</details>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 16H3V8h8V2l10 10-10 10v-6m2-9v3H5v4h8v3l5-5-5-5z"/></svg></span> The result after filtering based on full-text scan: <img alt="🔍" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f50d.svg" title=":mag:" /> 11</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/S2_3_Full-text_scan_results.bib">3_Full-text_scan_results</a></p>
+<h3 id="34-snowballing">3.4 Snowballing</h3>
+<p>As the last step, the Snowballing technique was chosen to obtain more relevant literature potentially.
+This approach also allows a certain quality to check whether most relevant papers have already been retrieved.
+In order to achieve this, both backward snowballing as well as forward snowballing were carried out.
+The <em>Bibtex-Keys</em> refer to the <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/S2_4_Final_Selection.bib">4_Final_Selection</a> file.</p>
+<h4 id="backward-snowballing">Backward Snowballing</h4>
+<p>For the backward approach, the references of all identified reviews from the <a href="#33-full-text-scan">Full-text Scan</a> are checked.
+Especially, the literature mentioned in the respective <em>related work</em> section is considered in more detail.
+For the following papers, further relevant literature could be found:</p>
+<p><ins><a href="https://doi.org/10.1109/SCC53864.2021.00013">[Bibartiu2021]</a></ins>:</p>
+<ul>
+<li><em>Modelling service-oriented systems and cloud services with Heraklit</em> <a href="https://doi.org/10.1007/978-3-030-71906-7_7">[Fettke2020]</a><br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> Heraklit</li>
+</ul>
+<p><ins><a href="https://doi.org/10.1007/978-3-030-78142-2_17">[Giallorenzo2021]</a></ins>:</p>
+<ul>
+<li><em>Domain-Driven Service Design: Context Modeling, Model Refactoring and Contract Generation</em> <a href="https://doi.org/10.1007/978-3-030-64846-6_11">[Kapferer2020]</a><br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> Context Mapper DSL</li>
+<li><em>MicroBuilder: A Model-Driven Tool for the Specification of REST Microservice Architectures</em> <a href="https://doi.org/10.1080/17517575.2018.1460766">[Terzic2018]</a><br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> MicroDSL by MicroBuilder</li>
+</ul>
+<p><ins><a href="https://doi.org/10.1109/SEAA51224.2020.00047">[Rademacher2020]</a></ins>:  </p>
+<ul>
+<li><em>MicroBuilder: A Model-Driven Tool for the Specification of REST Microservice Architectures</em> <a href="https://doi.org/10.1080/17517575.2018.1460766">[Terzic2018]</a><br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> MicroDSL by MicroBuilder</li>
+</ul>
+<p><ins><a href="https://doi.org/10.1007/978-3-030-31646-4_7">[Rademacher2020a]</a></ins>:</p>
+<ul>
+<li><em>MicroBuilder: A Model-Driven Tool for the Specification of REST Microservice Architectures</em> <a href="https://doi.org/10.1080/17517575.2018.1460766">[Terzic2018]</a><br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> MicroDSL by MicroBuilder</li>
+<li><em>Ajil: Enabling Model-Driven Microservice Development</em> <a href="https://doi.org/10.1145/3241403.3241406">[Sorgalla2018]</a><br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> AjiL</li>
+<li><em>Infrastructure-as-Code for Data-Intensive Architectures: A Model-Driven Development Approach</em> <a href="https://doi.org/10.1109/ICSA.2018.00025">[Artac2018]</a><br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> DICER</li>
+</ul>
+<p><ins><a href="https://doi.org/10.23919/CISTI49556.2020.9141150">[Schmidt2020]</a></ins>:</p>
+<ul>
+<li><em>Ajil: Enabling Model-Driven Microservice Development</em> <a href="https://doi.org/10.1145/3241403.3241406">[Sorgalla2018]</a><br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> AjiL</li>
+</ul>
+<p><ins><a href="https://doi.org/10.1145/3341105.3374065">[Sorgalla2020]</a></ins>:</p>
+<ul>
+<li><em>Ajil: Enabling Model-Driven Microservice Development</em> <a href="https://doi.org/10.1145/3241403.3241406">[Sorgalla2018]</a><br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> AjiL</li>
+</ul>
+<h4 id="forward-snowballing">Forward Snowballing</h4>
+<p>On the other hand, the search engine Google Scholar<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> was used for the forward approach.
+Google Scholar allows investigating papers that cited the searched paper.
+With this approach, the following papers from <a href="#33-full-text-scan">Full-text Scan</a> were used to identify further relevant literature:</p>
+<p><ins><a href="https://doi.org/10.1109/ICSA.2019.00011">[Rademacher2019a]</a></ins>:</p>
+<ul>
+<li><em>Model-driven Development of Microservice Architecture: An Experiment on the Quality in Use of a UML- and a DSL-based Approach</em> <a href="https://doi.org/10.17170/kobra-202010302034">[Sorgalla2020a]</a><br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> LEMMA<br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> mentiones MicroBuilder</li>
+</ul>
+<p><ins><a href="https://doi.org/10.1109/SOSE.2019.00018">[Rademacher2019b]</a></ins>:</p>
+<ul>
+<li><em>Model-driven Development of Microservice Architecture: An Experiment on the Quality in Use of a UML- and a DSL-based Approach</em> <a href="https://doi.org/10.17170/kobra-202010302034">[Sorgalla2020a]</a><br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> LEMMA<br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> mentiones MicroBuilder</li>
+<li><em>A Model Driven Framework for the Development of Adaptable REST SERVICES</em> <a href="https://doi.org/10.5220/0010718200003058">[Kenzi2021]</a><br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> MicroDSL by MicroBuilder</li>
+</ul>
+<p><ins><a href="https://doi.org/10.1109/SEAA51224.2020.00047">[Rademacher2020]</a></ins>:  </p>
+<ul>
+<li><em>Applying Model‑Driven Engineering to Stimulate the Adoption of DevOps Processes in Small and Medium‑Sized Development Organizations</em> <a href="https://doi.org/10.1007/s42979-021-00825-z">[Sorgalla2021]</a><br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> LEMMA<br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> MicroDSL by MicroBuilder<br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> MicroART</li>
+<li><em>Towards Holistic Modeling of Microservice Architectures Using LEMMA</em> <a href="http://ceur-ws.org/Vol-2978/mde4sa-paper2.pdf">[Rademacher2021]</a><br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> LEMMA<br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> MicroBuilder</li>
+</ul>
+<p><ins><a href="https://doi.org/10.1007/978-3-030-31646-4_7">[Rademacher2020a]</a></ins>:</p>
+<ul>
+<li><em>Applying Model‑Driven Engineering to Stimulate the Adoption of DevOps Processes in Small and Medium‑Sized Development Organizations</em> <a href="https://doi.org/10.1007/s42979-021-00825-z">[Sorgalla2021]</a><br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> LEMMA<br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> MicroDSL by MicroBuilder<br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> MicroART</li>
+<li><em>Towards Holistic Modeling of Microservice Architectures Using LEMMA</em> <a href="http://ceur-ws.org/Vol-2978/mde4sa-paper2.pdf">[Rademacher2021]</a><br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> LEMMA<br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> MicroBuilder</li>
+</ul>
+<p><ins><a href="https://doi.org/10.1007/978-3-030-79382-1_27">[Verginadis2021]</a></ins>:</p>
+<ul>
+<li><em>MODAClouds: A model-driven approach for the design and execution of applications on multiple Clouds</em> <a href="https://doi.org/10.1109/MISE.2012.6226014">[Ardagna2012]</a><br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> ModaCloudML</li>
+</ul>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 16H3V8h8V2l10 10-10 10v-6m2-9v3H5v4h8v3l5-5-5-5z"/></svg></span> The Bibtex-file that includes the final selection of relevant literature: <img alt="🔍" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f50d.svg" title=":mag:" /> 21</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/S2_4_Final_Selection.bib">4_Final_Selection</a></p>
+<h2 id="4-identified-modeling-languages">4. Identified Modeling Languages</h2>
+<p>The following table summarizes all found modeling languages mentioned in some way in the <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/S2_4_Final_Selection.bib">4_Final_Selection</a>-file.
+However, if the modeling language has already been considered in the previous literature search or one of the mentioned exclusion criteria apply, it will not be mentioned in the following table.
+Additionally, each modeling language includes a link to the original paper and the papers from the <a href="https://github.com/KarolinDuerr/MA-CNA-ModelingSupport/tree/main/ADL_Literature_Search/2_Recent_ADLs_Search/S2_4_Final_Selection.bib">Final_Selection</a> that mention the respective modeling language.
+In order to help with the later selection process, important aspects discovered while analyzing the proposed language are also noted in the table.</p>
+<p><ins>Legend:</ins>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img alt="❌" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/274c.svg" title=":x:" /> Negative remark &nbsp;&nbsp;&nbsp;  <img alt="✅" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/2705.svg" title=":white_check_mark:" /> Positive remark &nbsp;&nbsp;&nbsp; <img alt="🔲" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f532.svg" title=":black_square_button:" /> Neutral remark</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>Modeling Language</strong></th>
+<th align="left"><div align="center"><strong>Discovered in Paper</strong></div></th>
+<th align="left"><div align="center"><strong>Main Important Notes for Selection</strong></div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a href="https://doi.org/10.1145/3241403.3241406">AjiL</a></td>
+<td align="left"><ul><li><a href="https://doi.org/10.1007/978-3-030-31646-4_7">[Rademacher2020a]</a></li><li><a href="https://doi.org/10.23919/CISTI49556.2020.9141150">[Schmidt2020]</a></li><li><a href="https://doi.org/10.1145/3241403.3241406">[Sorgalla2018]</a></li><li><a href="https://doi.org/10.1145/3341105.3374065">[Sorgalla2020]</a></li></ul></td>
+<td align="left"><img alt="❌" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/274c.svg" title=":x:" /> LEMMA is based on experience from this approach</td>
+</tr>
+<tr>
+<td align="center"><a href="https://doi.org/10.1109/SCC53864.2021.00013">Clams</a></td>
+<td align="left"><ul><li><a href="https://doi.org/10.1109/SCC53864.2021.00013">[Bibartiu2021]</a></li></ul></td>
+<td align="left"><img alt="❌" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/274c.svg" title=":x:" /> Focus on a scenario-based language to bridge the gap between informal functional-views of an application and its formal architectural description<br>&nbsp;&nbsp;&nbsp; <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5z"/></svg></span> provides a user-centric perspective</td>
+</tr>
+<tr>
+<td align="center"><a href="https://doi.org/10.5220/0008910502990306">Context Mapper DSL</a></td>
+<td align="left"><ul><li><a href="https://doi.org/10.1007/978-3-030-64846-6_11">[Kapferer2020]</a></li></ul></td>
+<td align="left"><img alt="✅" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/2705.svg" title=":white_check_mark:" /> New version was recently published (<a href="https://contextmapper.org/news/2021/10/06/v6.6.0-released/">Release Notes</a><sup id="fnref6:2"><a class="footnote-ref" href="#fn:2">2</a></sup>)<br><br> <img alt="✅" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/2705.svg" title=":white_check_mark:" /> detailed but compact and up-to-date <a href="https://contextmapper.org/docs/home/">documentation</a><sup id="fnref7:2"><a class="footnote-ref" href="#fn:2">2</a></sup> online available<br><br> <img alt="✅" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/2705.svg" title=":white_check_mark:" /> Several supportive tools available<br><br> <img alt="🔲" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f532.svg" title=":black_square_button:" /> Based on Domain-driven Design (DDD)</td>
+</tr>
+<tr>
+<td align="center"><a href="https://doi.org/10.1109/ICSA.2018.00025">DICER</a></td>
+<td align="left"><ul><li><a href="https://doi.org/10.1109/ICSA.2018.00025">[Artac2018]</a></li><li><a href="https://doi.org/10.1007/978-3-030-31646-4_7">[Rademacher2020a]</a></li><li><a href="https://doi.org/10.1007/s42979-021-00825-z">[Sorgalla2021]</a></li></ul></td>
+<td align="left"><img alt="❌" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/274c.svg" title=":x:" /> Based on CloudML</td>
+</tr>
+<tr>
+<td align="center"><a href="https://doi.org/10.1007/978-3-030-71906-7_7">HERAKLIT</a></td>
+<td align="left"><ul><li><a href="https://doi.org/10.1007/978-3-030-71906-7_7">[Fettke2020]</a></li></ul></td>
+<td align="left"><img alt="✅" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/2705.svg" title=":white_check_mark:" /> Detailed language <a href="https://heraklit.dfki.de/#resources">manual</a><sup id="fnref5:2"><a class="footnote-ref" href="#fn:2">2</a></sup> online available<br><br> <img alt="❌" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/274c.svg" title=":x:" /> All supportive tools still under development and thus not available yet<br><br> <img alt="🔲" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f532.svg" title=":black_square_button:" /> Mathematically based and uses Petri Nets</td>
+</tr>
+<tr>
+<td align="center"><a href="https://github.com/SeelabFhdo/lemma/">LEMMA</a><sup id="fnref2:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
+<td align="left"><ul><li><a href="https://doi.org/10.1007/978-3-030-78142-2_17">[Giallorenzo2021]</a></li><li><a href="https://doi.org/10.1109/ICSA.2019.00011">[Rademacher2019a]</a></li><li><a href="https://doi.org/10.1109/SEAA51224.2020.00047">[Rademacher2020]</a></li><li><a href="http://ceur-ws.org/Vol-2978/mde4sa-paper2.pdf">[Rademacher2021]</a></li><li><a href="https://doi.org/10.1145/3341105.3374065">[Sorgalla2020]</a></li><li><a href="https://doi.org/10.17170/kobra-202010302034">[Sorgalla2020a]</a></li><li><a href="https://doi.org/10.1007/s42979-021-00825-z">[Sorgalla2021]</a></li><li><a href="https://link.springer.com/10.1007/978-3-030-88583-0_16">[Trebbau2021]</a></li></ul></td>
+<td align="left"><img alt="✅" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/2705.svg" title=":white_check_mark:" /> <a href="https://github.com/SeelabFhdo/lemma/">Github page</a><sup id="fnref3:2"><a class="footnote-ref" href="#fn:2">2</a></sup> with tools and descriptions, among other things, still receives updates<br><br> <img alt="❌" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/274c.svg" title=":x:" /> <a href="https://seelabfhdo.github.io/lemma-docs/">Documentation</a><sup id="fnref4:2"><a class="footnote-ref" href="#fn:2">2</a></sup> only partially online available since it is still under development, but:<br><br> <img alt="✅" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/2705.svg" title=":white_check_mark:" /> extensive amount of research given</td>
+</tr>
+<tr>
+<td align="center"><a href="https://ieeexplore.ieee.org/document/7958455">MicroART</a></td>
+<td align="left"><ul><li><a href="https://doi.org/10.1007/s42979-021-00825-z">[Sorgalla2021]</a></li></ul></td>
+<td align="left"><br><img alt="❌" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/274c.svg" title=":x:" /> Proposed in 2017, since then no new additions<br> <br><img alt="❌" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/274c.svg" title=":x:" /> Provided Tool (<a href="https://github.com/microart/microART-Tool">MicroART Tool</a><sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>) has not received any updates for the last five years</td>
+</tr>
+<tr>
+<td align="center"><a href="https://doi.org/10.1080/17517575.2018.1460766">MicroDSL by MicroBuilder</a></td>
+<td align="left"><ul><li><a href="https://doi.org/10.1007/978-3-030-78142-2_17">[Giallorenzo2021]</a></li><li><a href="https://doi.org/10.5220/0010718200003058">[Kenzi2021]</a></li><li><a href="https://doi.org/10.1007/978-3-030-31646-4_7">[Rademacher2020a]</a></li><li><a href="http://ceur-ws.org/Vol-2978/mde4sa-paper2.pdf">[Rademacher2021]</a></li><li><a href="https://doi.org/10.17170/kobra-202010302034">[Sorgalla2020a]</a></li><li><a href="https://doi.org/10.1007/s42979-021-00825-z">[Sorgalla2021]</a></li><li><a href="https://doi.org/10.1080/17517575.2018.1460766">[Terzic2018]</a></li></ul></td>
+<td align="left"><img alt="❌" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/274c.svg" title=":x:" /> Restricted to domain of REST Microservice Architecture development</td>
+</tr>
+<tr>
+<td align="center"><a href="https://doi.org/10.1109/MISE.2012.6226014">ModaCloudML</a></td>
+<td align="left"><ul><li><a href="https://doi.org/10.1109/MISE.2012.6226014">[Ardagna2012]</a></li><li><a href="https://doi.org/10.1007/978-3-030-79382-1_27">[Verginadis2021]</a></li></ul></td>
+<td align="left"><img alt="❌" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/274c.svg" title=":x:" /> Based on CloudML<br><br><img alt="❌" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/274c.svg" title=":x:" /> Development Project ended already in 2015 <sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup></td>
+</tr>
+<tr>
+<td align="center"><a href="https://doi.org/10.1145/3444757.3485108">OMSAC-based</a></td>
+<td align="left"><ul><li><a href="https://doi.org/10.1145/3444757.3485108">[Morais2021]</a></li></ul></td>
+<td align="left"><img alt="🔲" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f532.svg" title=":black_square_button:" /> Used ontology designed to cover only aspects recorded as Microservice Architecture principles or anti-patterns in literature</td>
+</tr>
+</tbody>
+</table>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p><a href="https://scholar.google.com/">https://scholar.google.com/</a>, last accessed: 2022-01-31&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>last accessed: 2022-03-23&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref7:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p><a href="https://cordis.europa.eu/project/id/318484">MODACloud Project</a>, last accessed: 2022-03-23&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      2022-08-31
+    
+  </small>
+</div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../1_Review_Search/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Review Search" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Review Search
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../ReviewCriteria/" class="md-footer__link md-footer__link--next" aria-label="Next: Criteria Catalog" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Criteria Catalog
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 <a href="https://github.com/KarolinDuerr"  target="_blank" rel="noopener">Karolin Dürr</a> – <a href="https://github.com/r0light"  target="_blank" rel="noopener">Robin Lichtenthäler</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="https://github.com/KarolinDuerr" target="_blank" rel="noopener" title="Karolin Dürr" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    <a href="https://github.com/r0light" target="_blank" rel="noopener" title="Robin Lichtenthäler" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.top", "search.suggest", "search.share"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.092fa1f6.min.js", "version": 1.0}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.5a9542cf.min.js"></script>
+      
+    
+  </body>
+</html>
