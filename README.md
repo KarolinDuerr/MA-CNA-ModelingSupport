@@ -1,6 +1,8 @@
 # MA-CNA-ModelingSupport
 Accompanying repository to the master thesis “Providing Tooling Support for Modeling Cloud-Native Application Architectures”.
 
+Please refer to [https://karolinduerr.github.io/MA-CNA-ModelingSupport/](https://karolinduerr.github.io/MA-CNA-ModelingSupport/) for a better overview and more detailed documentation.
+
 __This repository is currently still under development, while the thesis is still in progress.__
 
 ## Table of Contents
