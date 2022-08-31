@@ -18,5 +18,5 @@
 *.backup
 
 # Github pages Mkdocs
-/site
-/aux
+/docs/site
+/docs/aux
